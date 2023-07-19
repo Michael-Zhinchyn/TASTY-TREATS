@@ -1,25 +1,85 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
 @import url('./reset.css');
-@import url('./vite-promo.css');
 @import url('./header.css');
+@import url('./hero.css');
+
+@import url('./recipe-modal.css');
+@import url('./favorites.css');
+
+@import url('./create-order.css');
+@import url('./filters.css');
+@import url('./recipe-modal.css');
+@import url('./favorites.css');
+@import url('./add-rating.css');
+@import url('./starability-slot.css');
+@import url('./loader.css');
+@import url('./scroll-up.css');
+@import url('./card_template.css');
+/* @import url('./swiper.css'); */
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --brand-black: #050505;
+  --brand-white: #f7f7f7;
+  --clear-white: #fff;
+  --brand-grey-darker: #05050580;
+  --brand-grey-lighter: rgba(5, 5, 5, 0.302);
+  --brand-orange: #eea10c;
+  --brand-green: #9bb537;
+  --dark-mode-bg: #1e1e1e;
+  --basic-transition: all 300ms ease;
+}
+
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--brand-black);
+  background-color: var(--brand-white);
+  transition: all 300ms ease;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dark-mode {
+  color: var(--clear-white);
+  background-color: var(--dark-mode-bg);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 }
