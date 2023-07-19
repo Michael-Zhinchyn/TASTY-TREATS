@@ -63,10 +63,12 @@ svg {
   margin-right: auto;
 }
 
+
 .dark-mode {
   color: var(--clear-white);
   background-color: var(--dark-mode-bg);
 }
+
 
 @media screen and (min-width: 768px) {
   .container {
