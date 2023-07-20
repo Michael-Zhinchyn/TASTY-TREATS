@@ -16,3 +16,68 @@
         </nav>
     </div>
     <!-------- END OF HEADER FOR MOBILE -------->
+
+    <!-------- TABLET AND DESKTOP MARKUP -------->
+    <div class="tablet-desktop container">
+        <nav class="tablet-desktop-nav">
+            <div>
+                <a id="home-link" class="tablet-menu-nav-links" href="./index.html">Home</a>
+                <a id="favorites-link" class="tablet-menu-nav-links" href="./favorites.html">Favorites</a>
+            </div>
+
+            <div class="logo-block">
+                <a class="logo-first-color" href="./index.html">tasty<span class="logo-second-color">treats.</span></a>
+            </div>
+
+            <div class="tablet-desktop-nav-icons">
+                <svg id="cart-icon-desktop" class="header-cart-icon icon" width="24" height="24">
+                    <use href="/img/sprite.svg#icon-cart"></use>
+                </svg>
+
+                <svg class="switcher" id="desktop-switch" width="76" viewBox="0 0 76 44" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="paint0_linear_desktop" x1="-2.2" y1="23" x2="62.8" y2="23.4"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#9BB537" />
+                            <stop offset="1" stop-color="#9BB537" stop-opacity="0.69" />
+                        </linearGradient>
+
+                        <filter id="filterOffDesktop" x="3" y="1" width="76" height="50" filterUnits="userSpaceOnUse"
+                            color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dx="7" dy="5" />
+                            <feGaussianBlur stdDeviation="7.5" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.627451 0 0 0 0 0.619608 0 0 0 0 0.627451 0 0 0 0.4 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                        </filter>
+
+                        <filter id="filterOnDesktop" x="0" y="1" width="76" height="50" filterUnits="userSpaceOnUse"
+                            color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dx="7" dy="5" />
+                            <feGaussianBlur stdDeviation="7.5" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.0862745 0 0 0 0 0.0862745 0 0 0 0 0.0862745 0 0 0 0.6 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                        </filter>
+                    </defs>
+
+                    <g filter="url(#filterOffDesktop)">
+                        <rect id="switch-rect" x="8" y="11" width="46" height="20" rx="10" fill="#CECDCD" />
+                    </g>
+
+                    <circle id="switch-circle" cx="18" cy="21" r="9.4" fill="#F8F8F8" />
+                </svg>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-----------  END  OF  TABLET   AND   DESKTOP   MARKUP------------>
