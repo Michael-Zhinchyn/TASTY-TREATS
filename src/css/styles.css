@@ -1,20 +1,18 @@
-/* @import url('./reset.css');
+@import url('./reset.css');
 @import url('./header.css');
-@import url('./hero.css');
-
-@import url('./recipe-modal.css');
-@import url('./favorites.css');
-
-@import url('./create-order.css');
-@import url('./filters.css');
-@import url('./recipe-modal.css');
-@import url('./favorites.css');
-@import url('./add-rating.css');
-@import url('./starability-slot.css');
-@import url('./loader.css');
-@import url('./scroll-up.css');
-@import url('./card_template.css'); */
-/* @import url('./swiper.css'); */
+/* @import url('./hero.css'); */
+/* @import url('./recipe-modal.css'); */
+/* @import url('./favorites.css'); */
+/* @import url('./create-order.css'); */
+/* @import url('./filters.css'); */
+/* @import url('./recipe-modal.css'); */
+/* @import url('./favorites.css'); */
+/* @import url('./add-rating.css'); */
+/* @import url('./starability-slot.css'); */
+/* @import url('./loader.css'); */
+/* @import url('./scroll-up.css'); */
+/* @import url('./card_template.css');  */
+/* @import url('./swiper.css');  */
 
 :root {
   font-synthesis: none;
