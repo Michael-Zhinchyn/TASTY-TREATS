@@ -140,3 +140,57 @@
     overflow: hidden;
     height: 100vh;
 }
+
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .block-for-mobile,
+    .mobile-menu {
+        display: none;
+    }
+
+    .tablet-desktop {
+        display: block;
+    }
+
+    .tablet-desktop-nav {
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tablet-menu-nav-links {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .tablet-menu-nav-links:not(:last-child) {
+        margin-right: 16px;
+    }
+
+    .tablet-menu-nav-links:hover {
+        color: var(--brand-green);
+    }
+
+    .tablet-desktop-nav-icons {
+        display: flex;
+        align-items: center;
+    }
+
+    .switcher {
+        margin-left: 24px;
+        flex-shrink: 0;
+    }
+
+    .switcher {
+        margin-left: 24px;
+    }
+
+}
