@@ -194,3 +194,16 @@
     }
 
 }
+
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .tablet-desktop-nav {
+        padding-top: 40px;
+
+    }
+}
