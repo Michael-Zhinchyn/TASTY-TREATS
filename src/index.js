@@ -1,4 +1,4 @@
-import './js/header';
+import './';
 // import './js/recipe-modal';
 // import './js/order-modal';
 // import './js/all-categories';
