@@ -81,3 +81,61 @@
     </div>
 </header>
 <!-----------  END  OF  TABLET   AND   DESKTOP   MARKUP------------>
+
+<!-- MOBILE MENU MODAL -->
+<div class="mobile-menu">
+    <svg class="close-menu-icon icon" id="js-close-menu" width="32" height="32">
+        <use href="/img/sprite.svg#icon-close-x"></use>
+    </svg>
+
+    <div class="mobile-menu-nav">
+        <a id="mobile-home-link" class="mobile-menu-nav-links" href="./index.html">Home</a>
+        <a id="mobile-favorites-link" class="mobile-menu-nav-links" href="./favorites.html">Favorites</a>
+    </div>
+
+    <div class="mobile-menu-switcher">
+        <svg class="switcher" id="mobile-switch" width="76" height="51" viewBox="0 0 76 51" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="paint0_linear_mobile" x1="-2.2" y1="23" x2="62.8" y2="23.4"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9BB537" />
+                    <stop offset="1" stop-color="#9BB537" stop-opacity="0.69" />
+                </linearGradient>
+
+                <filter id="filterOffMobile" x="3" y="1" width="76" height="50" filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha" />
+                    <feOffset dx="7" dy="5" />
+                    <feGaussianBlur stdDeviation="7.5" />
+                    <feColorMatrix type="matrix"
+                        values="0 0 0 0 0.627451 0 0 0 0 0.619608 0 0 0 0 0.627451 0 0 0 0.4 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                </filter>
+
+                <filter id="filterOnMobile" x="0" y="1" width="76" height="50" filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha" />
+                    <feOffset dx="7" dy="5" />
+                    <feGaussianBlur stdDeviation="7.5" />
+                    <feColorMatrix type="matrix"
+                        values="0 0 0 0 0.0862745 0 0 0 0 0.0862745 0 0 0 0 0.0862745 0 0 0 0.6 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                </filter>
+            </defs>
+
+            <g filter="url(#filterOffMobile)">
+                <rect id="switch-rect" x="8" y="11" width="46" height="20" rx="10" fill="#CECDCD" />
+            </g>
+
+            <circle id="switch-circle" cx="18" cy="21" r="9.4" fill="#F8F8F8" />
+        </svg>
+    </div>
+</div>
+<!------ END    OF    MOBILE    MENU    MODAL ------>
