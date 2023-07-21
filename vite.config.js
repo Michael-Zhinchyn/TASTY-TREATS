@@ -11,5 +11,8 @@ export default defineConfig({
     },
     outDir: '../dist',
   },
+  optimizeDeps: {
+    include: ['axios', 'notiflix', 'swiper', 'tui-pagination'],
+  },
   plugins: [injectHTML(), FullReload(['./src/**/**.html'])],
 });
