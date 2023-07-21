@@ -11,13 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="/TASTY-TREATS/assets/order-modal-17824ad4.js"></script>
+  <script type="module" crossorigin src="/TASTY-TREATS/assets/order-modal-64476b8b.js"></script>
   <link rel="stylesheet" href="/TASTY-TREATS/assets/order-modal-065987cf.css">
 </head>
 
 <body id="favorites-page">
-    <header class="header ">
-        <!-- HEADER FOR MOBILE -->
+    <!-- HEADER FOR MOBILE -->
 <header class="header">
     <div class="block-for-mobile container">
         <nav class="nav">
@@ -58,7 +57,7 @@
                     <defs>
                         <linearGradient id="paint0_linear_desktop" x1="-2.2" y1="23" x2="62.8" y2="23.4"
                             gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#9BB537" />
+                            <stop offset="0" stop-color="#9BB537" />
                             <stop offset="1" stop-color="#9BB537" stop-opacity="0.69" />
                         </linearGradient>
 
@@ -90,10 +89,10 @@
                     </defs>
 
                     <g filter="url(#filterOffDesktop)">
-                        <rect id="switch-rect" x="8" y="11" width="46" height="20" rx="10" fill="#CECDCD" />
+                        <rect id="switch-rect-desktop" x="8" y="11" width="46" height="20" rx="10" fill="#CECDCD" />
                     </g>
 
-                    <circle id="switch-circle" cx="18" cy="21" r="9.4" fill="#F8F8F8" />
+                    <circle id="switch-circle-desktop" cx="18" cy="21" r="9.4" fill="#F8F8F8" />
                 </svg>
             </div>
         </nav>
@@ -118,7 +117,7 @@
             <defs>
                 <linearGradient id="paint0_linear_mobile" x1="-2.2" y1="23" x2="62.8" y2="23.4"
                     gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9BB537" />
+                    <stop offset="0" stop-color="#9BB537" />
                     <stop offset="1" stop-color="#9BB537" stop-opacity="0.69" />
                 </linearGradient>
 
@@ -150,16 +149,14 @@
             </defs>
 
             <g filter="url(#filterOffMobile)">
-                <rect id="switch-rect" x="8" y="11" width="46" height="20" rx="10" fill="#CECDCD" />
+                <rect id="switch-rect-mobile" x="8" y="11" width="46" height="20" rx="10" fill="#CECDCD" />
             </g>
 
-            <circle id="switch-circle" cx="18" cy="21" r="9.4" fill="#F8F8F8" />
+            <circle id="switch-circle-mobile" cx="18" cy="21" r="9.4" fill="#F8F8F8" />
         </svg>
     </div>
 </div>
-<!-- END    OF    MOBILE    MENU    MODAL -->
-    </header>
-
+<!-- END  OF  MOBILE  MENU  MODAL -->
 
     <main>
         <section class="favorites-section">
@@ -179,7 +176,8 @@
                 </div>
                 <div class="block-for-empty">
                     <img class="head-icon" src="/TASTY-TREATS/assets/favorites-icon-1272fce9.svg" alt="head-icon">
-                    <p class="message-for-empty">It appears that you haven't added any recipes to your favorites yet. To
+                    <p class="message-for-empty">It appears that you haven't added any recipes to your favorites
+                        yet. To
                         get
                         started,
                         you can add recipes that you like
@@ -188,8 +186,6 @@
             </div>
         </section>
     </main>
-
-    <footer></footer>
 
     <div class="order-form-backdrop" id="backdrop">
     <div class="order-modal" id="modal">
@@ -223,7 +219,6 @@
         </form>
     </div>
 </div>
-
 
     <script src="./js/header.js"></script>
     <script src="./js/order-modal.js"></script>
