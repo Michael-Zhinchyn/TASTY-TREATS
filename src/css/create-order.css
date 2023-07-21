@@ -1,0 +1,208 @@
+.order-form-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity 250ms;
+    z-index: 11;
+    overflow-y: hidden;
+}
+
+.order-modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 335px;
+    border-radius: 15px;
+
+}
+
+.dark-mode .order-modal {
+    background-color: var(--brand-black);
+}
+
+
+.order-form-close-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    transition: var(--basic-transition);
+}
+
+.order-form-close-icon:hover {
+    fill: var(--brand-green);
+}
+
+.dark-mode .order-form-close-icon:hover {
+    fill: var(--brand-green);
+}
+
+.dark-mode .order-form-close-icon {
+    fill: var(--clear-white);
+}
+
+.order-form {
+    padding: 28px 20px;
+}
+
+.order-form-heading {
+    margin-bottom: 28px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    text-transform: uppercase;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    width: 295px;
+}
+
+.order-form-label {
+    color: #05050580;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.dark-mode .order-form-label {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.order-form-input {
+    height: 46px;
+    padding-left: 18px;
+    margin-bottom: 16px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    background-color: transparent;
+}
+
+.order-form-input:focus {
+    outline: none;
+    border: 2px solid var(--brand-green);
+}
+
+.dark-mode .order-form-input {
+    color: var(--clear-white);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.dark-mode .order-form-input:focus {
+    outline: none;
+    border: 1px solid var(--brand-green);
+}
+
+.order-form-textarea {
+    height: 100px;
+    resize: none;
+    color: var(--brand-black);
+    background-color: transparent;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    padding: 14px 18px;
+    margin-bottom: 40px;
+}
+
+.order-form-textarea:focus {
+    outline: none;
+    border: 2px solid var(--brand-green);
+}
+
+.dark-mode .order-form-textarea:focus {
+    outline: none;
+    border: 2px solid var(--brand-green);
+}
+
+
+.dark-mode .order-form-textarea {
+    color: var(--clear-white);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.order-form-send-btn {
+    width: 295px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid var(--brand-green);
+    background-color: transparent;
+    color: var(--brand-black);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    transition: var(--basic-transition);
+}
+
+.dark-mode .order-form-send-btn {
+    border: 1px solid var(--brand-green);
+    color: #FFF;
+}
+
+.order-form-send-btn:hover,
+.order-form-send-btn:focus {
+    background-color: var(--brand-green);
+    color: #F8F8F8;
+    outline: none;
+}
+
+.notiflix-notify-success {
+    background-color: var(--brand-green) !important;
+    color: var(--clear-white) !important;
+    font-size: 16px !important;
+}
+
+.notiflix-loading-pulse {
+    color: var(--brand-green) !important;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .order-modal {
+        width: 440px;
+    }
+
+    .order-form-close-icon {
+        width: 24px;
+        height: 24px;
+        top: 16px;
+        right: 16px;
+    }
+
+    .order-form {
+        padding: 40px;
+    }
+
+    .order-form-heading {
+        margin-bottom: 40px;
+    }
+
+    .input-block {
+        width: 360px;
+    }
+
+    .order-form-input {
+        height: 48px;
+        margin-bottom: 18px;
+    }
+
+    .order-form-send-btn {
+        width: 360px;
+        padding: 14px;
+    }
+
+}
