@@ -1,0 +1,143 @@
+.hero {
+    min-width: 0;
+    padding-top: 93px;
+
+}
+
+
+.hero-heading {
+    max-width: 320px;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+.hero-heading-span {
+    color: var(--brand-green);
+    font-style: italic;
+    font-family: Arial, sans-serif;
+font-weight: 400;
+}
+
+
+.hero-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-top: 14px;
+}
+
+
+.hero-order-btn:hover {
+    color: var(--brand-white);
+    background-color: var(--brand-green);
+}
+
+
+.dark-mode .hero-order-btn {
+    color: var(--brand-white);
+}
+
+
+.hero-order-btn {
+    margin-top: 28px;
+    display: inline-flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 12px;
+    border: 1px solid #9BB537;
+    background-color: transparent;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    transition: var(--basic-transition);
+}
+
+
+@media screen and (min-width: 768px) {
+    .container {
+        min-width: 0;
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .hero {
+        padding-top: 89px;
+    }
+
+    .hero-heading {
+     max-width: 446px;
+        font-size: 36px;
+    }
+
+    .hero-description {
+        max-width: 408px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin-top: 16px;
+    }
+
+    .hero-order-btn {
+        display: inline-flex;
+        padding: 14px 28px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 32px;
+
+        border-radius: 15px;
+        border: 1px solid #9BB537;
+        background-color: transparent;
+
+        font-size: 14px;
+        font-weight: 500;
+        line-height: normal;
+        transition: var(--basic-transition);
+    }
+
+}
+
+
+@media screen and (min-width: 1280px) {
+   .hero-section {
+    padding-left: 100px;
+    padding-right: 100px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+
+    .hero {
+        min-width: 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 22px;
+    }
+
+    .hero .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .hero-left {
+        margin-top: 34px;
+    }
+
+
+
+    @media screen and (min-width: 1450px) {
+        .hero-left {
+           margin-top: 44px;
+       }
+   }
+}
