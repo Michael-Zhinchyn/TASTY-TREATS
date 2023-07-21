@@ -13,7 +13,7 @@
 /* @import url('./loader.css'); */
 /* @import url('./scroll-up.css'); */
 /* @import url('./card_template.css');  */
-/* @import url('./swiper.css');  */
+@import url('./swiper.css'); 
 
 @font-face {
   font-family: 'Inter';
