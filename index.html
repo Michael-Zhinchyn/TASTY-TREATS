@@ -233,23 +233,23 @@
         <form class="order-form" type="submit">
             <h2 class="order-form-heading">Order now</h2>
             <div class="input-block">
-                <label class="order-form-label">Name</label>
-                <input class="order-form-input" type="text" required pattern="[A-Za-zА-Яа-я '-]+" />
+                <label for="name" class="order-form-label">Name</label>
+                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-zА-Яа-я '-]+" />
             </div>
 
             <div class="input-block">
-                <label class="order-form-label">Phone number</label>
-                <input class="order-form-input" type="tel" required pattern="[0-9]{9,13}" />
+                <label for="phone" class="order-form-label">Phone number</label>
+                <input id="phone" class="order-form-input" type="tel" required pattern="[0-9]{9,13}" />
             </div>
 
             <div class="input-block">
-                <label class="order-form-label">Email</label>
-                <input class="order-form-input" type="email" required pattern=".+@.+\.+.+" />
+                <label for="email" class="order-form-label">Email</label>
+                <input id="email" class="order-form-input" type="email" required pattern=".+@.+\.+.+" />
             </div>
 
             <div class="input-block">
-                <label class="order-form-label">Comment</label>
-                <textarea class="order-form-textarea" id="comments"></textarea>
+                <label for="comments" class="order-form-label">Comment</label>
+                <textarea id="comments" class="order-form-textarea"></textarea>
             </div>
 
             <button class="order-form-send-btn">Send</button>
