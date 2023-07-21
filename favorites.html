@@ -8,8 +8,10 @@
     <title>TASTY TREATS'</title>
 
     
-  <script type="module" crossorigin src="/TASTY-TREATS/assets/order-modal-ac629974.js"></script>
-  <link rel="stylesheet" href="/TASTY-TREATS/assets/order-modal-f2e8d8b5.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/TASTY-TREATS/assets/styles-e47b1b3a.css">
 </head>
 
 <body id="favorites-page">
@@ -157,8 +159,34 @@
 <!-- END    OF    MOBILE    MENU    MODAL -->
     </header>
 
-    <main></main>
 
+    <main>
+        <section class="favorites-section">
+            <div class="container">
+                <div class="favorites">
+                    <h1 class="visually-hidden">Favorites</h1>
+                    <picture class="favorites-hero-picture">
+                        <source srcset="/TASTY-TREATS/assets/mobile@1x-f31f6ed4.png 1x, /TASTY-TREATS/assets/mobile@1x-f31f6ed4.png 2x" media="(max-width: 767px)" />
+                        <source srcset="/TASTY-TREATS/assets/tablet@1x-7b0b15a6.png 1x, /TASTY-TREATS/assets/tablet@1x-7b0b15a6.png 2x"
+                            media="(max-width: 1199px)" />
+                        <source srcset="/TASTY-TREATS/assets/desctop@1x-8124e596.png 1x, /TASTY-TREATS/assets/desctop@1x-8124e596.png 2x"
+                            media="(min-width: 1280px)" />
+                        <img src="./img/favorites/desktop@1x.png" alt="bowl with food" width="1280px" />
+                    </picture>
+                    <div id="category-filter-div"></div>
+                    <div class="added-card-set"></div>
+                </div>
+                <div class="block-for-empty">
+                    <img class="head-icon" src="/TASTY-TREATS/assets/favorites-icon-1272fce9.svg" alt="head-icon">
+                    <p class="message-for-empty">It appears that you haven't added any recipes to your favorites yet. To
+                        get
+                        started,
+                        you can add recipes that you like
+                        to your favorites for easier access in the future.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer></footer>
 
@@ -198,7 +226,7 @@
 
     <script src="./js/header.js"></script>
     <script src="./js/order-modal.js"></script>
-    
+    <!-- <script type="module" src="/index.js"></script> -->
 </body>
 
 </html>
