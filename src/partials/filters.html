@@ -1,45 +1,52 @@
 <section>
   <div class="container">
-  <form class="form-wrapper">
-    <div class="form-group">
-      <label class="label-input"><span>Search</span></label>
-      <span class="input-wrapper">
-        <input class="input-search" type="text" id="id-input-search" placeholder="Enter Text">
-        <svg class="search-icon" width="18" height="18">
-          <use href="../img/sprite.svg#icon-search"></use>
-        </svg>
-    </span>
+    <form class="form-wrapper">
+      <div class="form-group">
+        <label class="label-input"><span>Search</span></label>
+        <span class="input-wrapper">
+          <input class="input-search" type="text" id="id-input-search" placeholder="Enter Text">
+          <svg class="search-icon" width="18" height="18">
+            <use href="../img/sprite.svg#icon-search"></use>
+          </svg>
+        </span>
+      </div>
+    </form>
+
+    <div class="flex-container">
+      <div class="selector">
+        <label class="label-selector" for="select-time"><span>Time</span></label>
+        <select name="Time" id="select-time" class="time-selector">
+          <option value="value1">10 min</option>
+          <option value="value2">20 min</option>
+          <option value="value3">30 min</option>
+          <option value="value4">40 min</option>
+        </select>
+      </div>
+
+      <div class="selector">
+        <label class="label-selector" for="select-area"><span>Area</span></label>
+        <select name="Area" id="select-area" class="area-selector">
+          <option value="value1">French</option>
+          <option value="value2">Spanish</option>
+          <option value="value3">Italian</option>
+          <option value="value4">English</option>
+          <option value="value5">Norwegian</option>
+          <option value="value6">Ukrainian</option>
+        </select>
+      </div>
     </div>
-  </form>
 
-  <div class="selector">
-    <label class="label-selector"><span>Time</span></label>
-  <select name="Time" id="select-time" class="time-selector">
-    <option value="value1">10 min</option>
-    <option value="value2">20 min</option>
-    <option value="value3">30 min</option>
-    <option value="value4">40 min</option>
-  </select>
-
-  <label class="label-selector"><span>Area</span></label>
-  <select name="Area" id="select-area" class="area-selector">
-    <option value="value1">French</option>
-    <option value="value2">Spanish</option>
-    <option value="value3">Italian</option>
-    <option value="value4">English</option>
-    <option value="value5">Norwegian</option>
-    <option value="value6">Ukrainian</option>
-  </select>
-</div>
-
-<label class="label-selector"><span>Ingredients</span></label>
-<select name="Ingredients" id="select-Ingredients" class="Ingredients-selector">
-  <option value="value1">Cabbage</option>
-  <option value="value2">Cucumber</option>
-  <option value="value3">Tomato</option>
-  <option value="value4">Corn</option>
-  <option value="value5">Radish</option>
-  <option value="value6">Parsley</option>
-</select>
-</div>
+      <div class="selector">
+        <label class="label-selector" for="select-Ingredients"><span>Ingredients</span></label>
+        <select name="Ingredients" id="select-Ingredients" class="Ingredients-selector">
+          <option value="value1">Cabbage</option>
+          <option value="value2">Cucumber</option>
+          <option value="value3">Tomato</option>
+          <option value="value4">Corn</option>
+          <option value="value5">Radish</option>
+          <option value="value6">Parsley</option>
+        </select>
+      </div>
+    
+  </div>
 </section>

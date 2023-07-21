@@ -4,7 +4,7 @@
 };
 
     
-.label-input .span{
+.label-input span{
     display: block;
     font-weight: 400;
     font-size: 12px;
@@ -21,9 +21,9 @@
 
 .search-icon{
     position: absolute;
-    bottom: 50%;
-    padding-left: 18px;
+    top: 50%;
     transform: translateY(-50%);
+    padding-left: 18px;
     fill: rgba(5, 5, 5, 0.50);
     pointer-events: none;
 }
@@ -38,35 +38,65 @@
     
     padding: 0;
     margin-top: 10px;
-    margin-bottom: 14px;
     display: flex;
-    width: 335px;
+    width: 320px;
     height: 46px;
     padding-left: 48px;
     border-radius: 15px;
     border: 1px solid rgba(5, 5, 5, 0.20);
 };
+  
+  .label-selector span{
+    color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    margin-bottom: 10px;
+        
+  }
+  
+  .selector {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+.time-selector, .area-selector{
+    width: 160px;
+    height: 46px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+
+    color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.Ingredients-selector{
+    width: 190px;
+    height: 46px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+
+    color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+
+
 
 @media screen and (min-width: 768px){
 
-    .label-form span {
-        font-weight: 500;
-        font-size: 14px;
-    }
-
-    .input-container {
-        max-width: 278px;
-        height: 48px;
-    }
-    
-    .input-search {
-        max-width: 278px;
-        height: 48px;
-
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1.2;
-    };
+   
 }
 
 
