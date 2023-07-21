@@ -1,0 +1,104 @@
+.form-group{
+    padding: 0;
+    margin: 0;
+};
+
+    
+.label-form span{
+    display: block;
+    
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: rgba(5, 5, 5, 0.50);
+};
+.input-wrapper{
+    position: relative;
+    width: 100%;
+    height: 46px;
+    border-radius: 15px;
+}
+
+.search-icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 18px;
+    pointer-events: none;
+}
+
+.input-search {
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    width: 325px;
+    height: 46px;
+    padding-left: 48px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.3;
+    color: rgba(5, 5, 5, 0.50);
+};
+
+.label-time{
+    color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.1;
+}
+
+.label-Ingredients{
+    color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.input-time{
+    width: 160px;
+    height: 46px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: rgba(5, 5, 5, 0.50);
+}
+
+@media screen and (min-width: 768px){
+
+    .label-form span {
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .input-container {
+        max-width: 278px;
+        height: 48px;
+    }
+    
+    .input-search {
+        max-width: 278px;
+        height: 48px;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.2;
+    };
+}
+
+
+
