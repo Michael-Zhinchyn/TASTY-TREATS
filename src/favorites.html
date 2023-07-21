@@ -8,6 +8,9 @@
     <title>TASTY TREATS'</title>
 
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 
 <body id="favorites-page">
@@ -15,8 +18,37 @@
         <load src="./partials/header.html" />
     </header>
 
-    <main></main>
 
+    <main>
+        <section class="favorites-section">
+            <div class="container">
+                <div class="favorites">
+                    <h1 class="visually-hidden">Favorites</h1>
+                    <picture class="favorites-hero-picture">
+                        <source srcset="./img/favorites/mobile@1x.png 1x,
+                                                        ./img/favorites/mobile@1x.png 2x" media="(max-width: 767px)" />
+                        <source srcset="./img/favorites/tablet@1x.png 1x,
+                                                        ./img/favorites/tablet@1x.png 2x"
+                            media="(max-width: 1199px)" />
+                        <source srcset="./img/favorites/desctop@1x.png 1x,
+                                                        ./img/favorites/desctop@1x.png 2x"
+                            media="(min-width: 1280px)" />
+                        <img src="./img/favorites/desktop@1x.png" alt="bowl with food" width="1280px" />
+                    </picture>
+                    <div id="category-filter-div"></div>
+                    <div class="added-card-set"></div>
+                </div>
+                <div class="block-for-empty">
+                    <img class="head-icon" src="./img/favorites/favorites-icon.svg" alt="head-icon">
+                    <p class="message-for-empty">It appears that you haven't added any recipes to your favorites yet. To
+                        get
+                        started,
+                        you can add recipes that you like
+                        to your favorites for easier access in the future.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer></footer>
 
@@ -25,7 +57,7 @@
 
     <script src="./js/header.js"></script>
     <script src="./js/order-modal.js"></script>
-    <script type="module" src="/index.js"></script>
+    <!-- <script type="module" src="/index.js"></script> -->
 </body>
 
 </html>
