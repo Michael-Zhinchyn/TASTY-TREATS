@@ -9,7 +9,10 @@ Ingredient Options and Step-by-Step Video Guides.</span>
 
 <div style="display: flex; justify-content: center; align-items: center; margin-top:70px;">
     <h3 style='margin-right:100px;'>Magic Made by: <br></br></h3>
-    <img src="./src/img/readme-img/not-broken-team-on-transparent-background.png" alt="Logo" width="200"> 
+    <p align="right">
+  <img src="./src/img/readme-img/not-broken-team-on-transparent-background.png" alt="Logo" width="200" />
+</p>
+ 
 </div>
 
 ### Group #13
