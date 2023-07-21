@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 document.addEventListener('DOMContentLoaded', function () {
   // Весь ваш код JS тут
   const modalOpenBtn = document.getElementById('hero-order-btn');
@@ -42,6 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function onSubmit(evt) {
     evt.preventDefault();
+
+    // let name = document.getElementById('name').value;
+    // let phone = document.getElementById('phone').value;
+    // let email = document.getElementById('email').value;
+    // let comments = document.getElementById('comments').value;
 
     Notiflix.Loading.pulse('Sending...');
 
