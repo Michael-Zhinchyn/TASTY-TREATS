@@ -1,4 +1,4 @@
-# <span style="color:#9BB537">_TASTY</span> TREATS'_
+<!-- # <span style="color:#9BB537">_TASTY</span> TREATS'_
 
 <span style="font-size:20px; font-weight:600;">Customize Your Meal with
 Ingredient Options and Step-by-Step Video Guides.</span>
@@ -171,7 +171,7 @@ Ingredient Options and Step-by-Step Video Guides.</span>
       <a href="https://swiperjs.com/">
           <img src="./src/img/readme-img/swiper-logo.svg" alt="Swiper Logo" width="30"  style="vertical-align: middle;">
           <span style="font-size:1.17em; margin-left:10px">Swiper</span>
-      </a> 
+      </a>
     </td>
     <td align="center" style="border:none">
       <a href="https://ui.toast.com/tui-pagination/">
@@ -224,4 +224,4 @@ Ingredient Options and Step-by-Step Video Guides.</span>
       </a>
     </td>
   </tr>
-</table>
+</table> -->
