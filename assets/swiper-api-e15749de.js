@@ -62,18 +62,18 @@ Notiflix needs to be appended to the "<`+v+'>" element, but you called it before
         class="swiper-slide-img food-center-card" />
       <p class="master-class">${r.name}</p>
       <p class="master-class-coutry">${r.area}</p>`,a=({firstSlideTopic:r})=>`<img src="${r.imgUrl}" alt = "tasty food"
-      class="swiper-slide-img big-slide-salat-img" />`;if(!Ci)console.error(error);else{const r=n({firstSlideCook:e});Ci.innerHTML=r}if(!Ni)console.error(error);else{const r=s({firstSlideTopic:i});Ni.innerHTML=r}if(!Pi)console.error(error);else{const r=a({firstSlideTopic:i});Pi.innerHTML=r}return t}).then(t=>{const{cook:e,topic:i}=t[1],n=({secondSlideCook:r})=>`<img src="${r.imgUrl}"
-         srcset="${r.imgWebpUrl}" alt ="${r.name}"
-         class="swiper-slide-img cook-card" />`,s=({secondSlideTopic:r})=>`<img src="${r.previewUrl}" alt = "masterclass"
-  class="swiper-slide-img food-center-card" />
-<p class="master-class">${r.name}</p>
-<p class="master-class-coutry">${r.area}</p>`,a=({secondSlideTopic:r})=>`<img src="${r.imgUrl}" alt = "tasty food"
-      class="big-slide-img" />`;if(!Mi)console.error(error);else{const r=n({secondSlideCook:e});Mi.innerHTML=r}if(!zi)console.error(error);else{const r=s({secondSlideTopic:i});zi.innerHTML=r}if(!Ii)console.error(error);else{const r=a({secondSlideTopic:i});Ii.innerHTML=r}return t}).then(t=>{const{cook:e,topic:i}=t[2],n=({thirdSlideCook:r})=>`<img src="${r.imgUrl}"
+      class="swiper-slide-img big-slide-salat-img" />`;try{if(Ci){const r=n({firstSlideCook:e});Ci.innerHTML=r}}catch(r){console.error(r)}try{if(Ni){const r=s({firstSlideTopic:i});Ni.innerHTML=r}}catch(r){console.error(r)}try{if(Pi){const r=a({firstSlideTopic:i});Pi.innerHTML=r}}catch(r){console.error(r)}return t}).then(t=>{const{cook:e,topic:i}=t[1],n=({secondSlideCook:r})=>`<img src="${r.imgUrl}"
            srcset="${r.imgWebpUrl}" alt ="${r.name}"
-          class="swiper-slide-img cook-card" />`,s=({thirdSlideTopic:r})=>`<img src="${r.previewUrl}" alt = "masterclass"
-  class="swiper-slide-img food-center-card" />
-<p class="master-class">${r.name}</p>
-<p class="master-class-coutry">${r.area}</p>`,a=({thirdSlideTopic:r})=>`<img
-      src="${r.imgUrl}" alt = "tasty food"
-      class="big-slide-img pancakes-img"
-    />`;if(!Li)console.error(error);else{const r=n({thirdSlideCook:e});Li.innerHTML=r}if(!Ai)console.error(error);else{const r=s({thirdSlideTopic:i});Ai.innerHTML=r}if(!Oi)console.error(error);else{const r=a({thirdSlideTopic:i});Oi.innerHTML=r}return t}).catch(t=>console.error(t));window.addEventListener("load",cn);
+           class="swiper-slide-img cook-card" />`,s=({secondSlideTopic:r})=>`<img src="${r.previewUrl}" alt = "masterclass"
+    class="swiper-slide-img food-center-card" />
+  <p class="master-class">${r.name}</p>
+  <p class="master-class-coutry">${r.area}</p>`,a=({secondSlideTopic:r})=>`<img src="${r.imgUrl}" alt = "tasty food"
+        class="big-slide-img" />`;try{if(Mi){const r=n({secondSlideCook:e});Mi.innerHTML=r}}catch(r){console.error(r)}try{if(zi){const r=s({secondSlideTopic:i});zi.innerHTML=r}}catch(r){console.error(r)}try{if(Ii){const r=a({secondSlideTopic:i});Ii.innerHTML=r}}catch(r){console.error(r)}return t}).then(t=>{const{cook:e,topic:i}=t[2],n=({thirdSlideCook:r})=>`<img src="${r.imgUrl}"
+             srcset="${r.imgWebpUrl}" alt ="${r.name}"
+            class="swiper-slide-img cook-card" />`,s=({thirdSlideTopic:r})=>`<img src="${r.previewUrl}" alt = "masterclass"
+    class="swiper-slide-img food-center-card" />
+  <p class="master-class">${r.name}</p>
+  <p class="master-class-coutry">${r.area}</p>`,a=({thirdSlideTopic:r})=>`<img
+        src="${r.imgUrl}" alt = "tasty food"
+        class="big-slide-img pancakes-img"
+      />`;try{if(Li){const r=n({thirdSlideCook:e});Li.innerHTML=r}}catch(r){console.error(r)}try{if(Ai){const r=s({thirdSlideTopic:i});Ai.innerHTML=r}}catch(r){console.error(r)}try{if(Oi){const r=a({thirdSlideTopic:i});Oi.innerHTML=r}}catch(r){console.error(r)}return t}).catch(t=>console.error(t));window.addEventListener("load",cn);
