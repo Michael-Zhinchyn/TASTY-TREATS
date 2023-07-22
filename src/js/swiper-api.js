@@ -1,0 +1,166 @@
+import axios from 'axios';
+
+const masterCookCard = document.querySelector('.first-cook');
+const masterCookSecondCard = document.querySelector('.second-cook');
+const masterCookThirdCard = document.querySelector('.third-cook');
+
+const masterCookCenterCard = document.querySelector('.first-cook-center-card');
+const masterCookSecondSlideCenterCard = document.querySelector(
+  '.second-cook-center-card'
+);
+const masterCookThirdSlideCenterCard = document.querySelector(
+  '.third-cook-center-card'
+);
+
+const masterCookLastCard = document.querySelector('.first-cook-last-card');
+const masterCookSecondSlideLastCard = document.querySelector(
+  '.second-cook-last-card'
+);
+const masterCookThirdSlideLastCard = document.querySelector(
+  '.third-cook-last-card'
+);
+
+const EVENTS_URL = 'https://tasty-treats-backend.p.goit.global/api/events';
+
+// асинхронна функція запиту на сервер
+const events = async () => {
+  try {
+    const response = await axios.get(`${EVENTS_URL}`);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+// активуємо виконання асинхронної функції
+events()
+  // отримання даних
+  .then(data => {
+    const { cook: firstSlideCook, topic: firstSlideTopic } = data[0];
+
+    // ----------------------------------------------функція створення розмітки для першого повара----------------------------------------------
+    const firstCookCard = ({ firstSlideCook }) => {
+      return `<img src="${firstSlideCook.imgUrl}"
+          srcset="${firstSlideCook.imgWebpUrl}" alt ="${firstSlideCook.name}"
+          class="swiper-slide-img cook-card" />`;
+    };
+
+    // функція створення розмітки для першого слайду центральної картки
+    const firstCookCenterCard = ({ firstSlideTopic }) => {
+      return `<img src="${firstSlideTopic.previewUrl}"
+        class="swiper-slide-img food-center-card" />
+      <p class="master-class">${firstSlideTopic.name}</p>
+      <p class="master-class-coutry">${firstSlideTopic.area}</p>`;
+    };
+
+    // функція створення розмітки для третьої картки
+    const firstCookLastCard = ({ firstSlideTopic }) => {
+      return `<img src="${firstSlideTopic.imgUrl}"
+      class="swiper-slide-img big-slide-salat-img" />`;
+    };
+
+    // Виклик функції firstCookCard та вставка розмітки в masterCookCard
+    const firstCookCardMarkup = firstCookCard({ firstSlideCook });
+    masterCookCard.innerHTML = firstCookCardMarkup;
+
+    // виклик функції firstCookCenterCard та вставка розмітки в masterCookCenterCard
+    const firstCenterCookCardMarkup = firstCookCenterCard({ firstSlideTopic });
+    masterCookCenterCard.innerHTML = firstCenterCookCardMarkup;
+
+    // виклик функції firstCookLastCard та вставка розмітки
+    const firstCookLastCardMarkup = firstCookLastCard({ firstSlideTopic });
+    masterCookLastCard.innerHTML = firstCookLastCardMarkup;
+
+    //   повернення даних для використання в наступному then
+    return data;
+  })
+
+  // отримання наних
+  .then(data => {
+    const { cook: secondSlideCook, topic: secondSlideTopic } = data[1];
+
+    // -------------------------------------функція створення розмітки для другого слайда повара-------------------------------------
+    const secondCookCard = ({ secondSlideCook }) => {
+      return `<img src="${secondSlideCook.imgUrl}"
+         srcset="${secondSlideCook.imgWebpUrl}" alt ="${secondSlideCook.name}"
+         class="swiper-slide-img cook-card" />`;
+    };
+
+    // функція створення розмітки для центральної картки
+    const secondCookCenterCard = ({ secondSlideTopic }) => {
+      return `<img src="${secondSlideTopic.previewUrl}"
+  class="swiper-slide-img food-center-card" />
+<p class="master-class">${secondSlideTopic.name}</p>
+<p class="master-class-coutry">${secondSlideTopic.area}</p>`;
+    };
+
+    // функція створення розмітки для третьої картки
+    const secondCookLastCard = ({ secondSlideTopic }) => {
+      return `<img src="${secondSlideTopic.imgUrl}"
+      class="big-slide-img" />`;
+    };
+
+    // Виклик функції secondCookCard та створення розмітки для першої картки
+    const secondCookCardMarkup = secondCookCard({ secondSlideCook });
+    masterCookSecondCard.innerHTML = secondCookCardMarkup;
+
+    // Виклик функції secondCookCard та створення розмітки для центральної картки
+    const secondCenterCookCardMarkup = secondCookCenterCard({
+      secondSlideTopic,
+    });
+    masterCookSecondSlideCenterCard.innerHTML = secondCenterCookCardMarkup;
+
+    //  Виклик функції thirdCookLastCard та створення розмітки для третьої картки
+    const secondLastCookCardMarkup = secondCookLastCard({ secondSlideTopic });
+    masterCookSecondSlideLastCard.innerHTML = secondLastCookCardMarkup;
+
+    //   повернення даних для використання в наступному then
+    return data;
+  })
+
+  // отримання даних
+  .then(data => {
+    const { cook: thirdSlideCook, topic: thirdSlideTopic } = data[2];
+
+    // -------------------------------------функція створення розмітки для третього слайда повара-------------------------------------
+    const thirdCookCard = ({ thirdSlideCook }) => {
+      return `<img src="${thirdSlideCook.imgUrl}"
+           srcset="${thirdSlideCook.imgWebpUrl}" alt ="${thirdSlideCook.name}"
+          class="swiper-slide-img cook-card" />`;
+    };
+
+    // функція створення розмітки для центральної картки
+    const thirdCookCenterCard = ({ thirdSlideTopic }) => {
+      return `<img src="${thirdSlideTopic.previewUrl}"
+  class="swiper-slide-img food-center-card" />
+<p class="master-class">${thirdSlideTopic.name}</p>
+<p class="master-class-coutry">${thirdSlideTopic.area}</p>`;
+    };
+
+    //  функція створення розмітки для останньої картки
+    const thirdCookLastCard = ({ thirdSlideTopic }) => {
+      return `<img
+      src="${thirdSlideTopic.imgUrl}"
+      class="big-slide-img pancakes-img"
+    />`;
+    };
+
+    // Виклик функції thirdCookCard та створення розмітки
+    const thirdCookCardMarkup = thirdCookCard({ thirdSlideCook });
+    masterCookThirdCard.innerHTML = thirdCookCardMarkup;
+
+    // Виклик функції thirdCookCard та створення розмітки
+    const thirdCenterCookCardMarkup = thirdCookCenterCard({ thirdSlideTopic });
+    masterCookThirdSlideCenterCard.innerHTML = thirdCenterCookCardMarkup;
+
+    // Виклик функції thirdCookLastCard та створення розмітки
+    const thirdLastCookCardMarkup = thirdCookLastCard({ thirdSlideTopic });
+    masterCookThirdSlideLastCard.innerHTML = thirdLastCookCardMarkup;
+
+    //   повернення даних для використання в наступному then
+    return data;
+  })
+
+  .catch(error => console.error(error));
+
+window.addEventListener('load', events);
