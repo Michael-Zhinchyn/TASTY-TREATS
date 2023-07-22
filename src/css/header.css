@@ -69,24 +69,47 @@
 }
 
 
-.mobile-menu {
+/* .mobile-menu {
     display: none;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     overflow-y: hidden;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    width: 200px;
     height: 100%;
     background-color: var(--brand-green);
-    transition: opacity 250ms;
+    transition: opacity 300ms,;
     z-index: 11;
+} */
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* Змінено, щоб меню висовувалося з правого боку */
+    overflow-y: hidden;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 100%;
+    background-color: var(--brand-green);
+    transition: transform 0.3s ease;
+    /* Змінено, використовуємо transform для плавного висування */
+    z-index: 11;
+    transform: translateX(100%);
+    /* Змінено, початкове значення зсуву на 100% праворуч */
 }
 
-.dark-mode .mobile-menu {
+
+
+
+
+*/ .dark-mode .mobile-menu {
     background-color: var(--dark-mode-bg);
 }
 

@@ -1,3 +1,192 @@
+// document.addEventListener('DOMContentLoaded', function () {
+//   const mobileMenu = document.querySelector('.mobile-menu');
+//   mobileMenu.style.display = 'none';
+
+//   const hamburger = document.getElementById('hamburger');
+//   const closeMenuBtn = document.getElementById('js-close-menu');
+//   const desktopSwitch = document.querySelector('#desktop-switch');
+//   const mobileSwitch = document.querySelector('#mobile-switch');
+//   const body = document.body;
+
+//   hamburger.addEventListener('click', openMenuDisplay);
+//   closeMenuBtn.addEventListener('click', closeMenuDisplay);
+//   desktopSwitch.addEventListener('click', () =>
+//     toggleThemeSwitch(desktopSwitch, mobileSwitch)
+//   );
+//   mobileSwitch.addEventListener('click', () =>
+//     toggleThemeSwitch(desktopSwitch, mobileSwitch)
+//   );
+
+//   let isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+//   applyTheme(desktopSwitch, isDarkMode);
+//   applyTheme(mobileSwitch, isDarkMode);
+
+//   function openMenuDisplay() {
+//     mobileMenu.style.display = 'block';
+//     document.body.classList.add('no-scroll');
+//   }
+
+//   function closeMenuDisplay() {
+//     mobileMenu.style.display = 'none';
+//     document.body.classList.remove('no-scroll');
+//   }
+
+//   function toggleThemeSwitch(desktopSwitch, mobileSwitch) {
+//     isDarkMode = !isDarkMode;
+//     localStorage.setItem('isDarkMode', isDarkMode);
+//     applyTheme(desktopSwitch, isDarkMode);
+//     applyTheme(mobileSwitch, isDarkMode);
+//   }
+
+//   function applyTheme(switchElement, isDarkMode) {
+//     const circle =
+//       switchElement.querySelector('#switch-circle-desktop') ||
+//       switchElement.querySelector('#switch-circle-mobile');
+//     const rect =
+//       switchElement.querySelector('#switch-rect-desktop') ||
+//       switchElement.querySelector('#switch-rect-mobile');
+
+//     if (isDarkMode) {
+//       animate(circle, 'cx', 18, 44, 300);
+//       rect.setAttribute(
+//         'fill',
+//         `url(#paint0_linear_${
+//           switchElement.id === 'desktop-switch' ? 'desktop' : 'mobile'
+//         })`
+//       );
+//       body.classList.add('dark-mode');
+//     } else {
+//       animate(circle, 'cx', 44, 18, 300);
+//       rect.setAttribute('fill', '#CECDCD');
+//       body.classList.remove('dark-mode');
+//     }
+//   }
+
+//   function animate(element, property, from, to, duration) {
+//     let start = performance.now();
+
+//     requestAnimationFrame(function animateFrame(time) {
+//       let elapsed = time - start;
+//       let progress = Math.min(elapsed / duration, 1);
+//       let current = from + (to - from) * progress;
+
+//       element.setAttribute(property, current);
+
+//       if (progress < 1) {
+//         requestAnimationFrame(animateFrame);
+//       }
+//     });
+//   }
+// });
+
+// if (document.body.id === 'home-page') {
+//   document.getElementById('home-link').classList.add('active-page');
+//   document.getElementById('mobile-home-link').classList.add('active-page');
+// } else if (document.body.id === 'favorites-page') {
+//   document.getElementById('favorites-link').classList.add('active-page');
+//   document.getElementById('mobile-favorites-link').classList.add('active-page');
+// }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   const mobileMenu = document.querySelector('.mobile-menu');
+//   mobileMenu.style.display = 'none';
+
+//   const hamburger = document.getElementById('hamburger');
+//   const closeMenuBtn = document.getElementById('js-close-menu');
+//   const desktopSwitch = document.querySelector('#desktop-switch');
+//   const mobileSwitch = document.querySelector('#mobile-switch');
+//   const body = document.body;
+
+//   hamburger.addEventListener('click', openMenuDisplay);
+//   closeMenuBtn.addEventListener('click', closeMenuDisplay);
+//   desktopSwitch.addEventListener('click', () =>
+//     toggleThemeSwitch(desktopSwitch, mobileSwitch)
+//   );
+//   mobileSwitch.addEventListener('click', () =>
+//     toggleThemeSwitch(desktopSwitch, mobileSwitch)
+//   );
+
+//   let isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+//   applyTheme(desktopSwitch, isDarkMode);
+//   applyTheme(mobileSwitch, isDarkMode);
+
+//   function openMenuDisplay() {
+//     mobileMenu.style.display = 'block';
+//     document.body.classList.add('no-scroll');
+
+//     // Застосуємо плавний перехід для прозорості та висоти
+//     mobileMenu.style.opacity = '1';
+//     mobileMenu.style.height = '100%';
+//   }
+
+//   function closeMenuDisplay() {
+//     // Застосуємо плавний перехід для прозорості та висоти
+//     mobileMenu.style.opacity = '0';
+//     mobileMenu.style.height = '0';
+
+//     // Після закриття меню, зачекайте кілька мілісекунд перед зміною display на 'none'
+//     setTimeout(() => {
+//       mobileMenu.style.display = 'none';
+//     }, 300); // Тривалість переходу в мілісекундах, повинно співпадати з тривалістю CSS-переходу
+//     document.body.classList.remove('no-scroll');
+//   }
+
+//   function toggleThemeSwitch(desktopSwitch, mobileSwitch) {
+//     isDarkMode = !isDarkMode;
+//     localStorage.setItem('isDarkMode', isDarkMode);
+//     applyTheme(desktopSwitch, isDarkMode);
+//     applyTheme(mobileSwitch, isDarkMode);
+//   }
+
+//   function applyTheme(switchElement, isDarkMode) {
+//     const circle =
+//       switchElement.querySelector('#switch-circle-desktop') ||
+//       switchElement.querySelector('#switch-circle-mobile');
+//     const rect =
+//       switchElement.querySelector('#switch-rect-desktop') ||
+//       switchElement.querySelector('#switch-rect-mobile');
+
+//     if (isDarkMode) {
+//       animate(circle, 'cx', 18, 44, 300);
+//       rect.setAttribute(
+//         'fill',
+//         `url(#paint0_linear_${
+//           switchElement.id === 'desktop-switch' ? 'desktop' : 'mobile'
+//         })`
+//       );
+//       body.classList.add('dark-mode');
+//     } else {
+//       animate(circle, 'cx', 44, 18, 300);
+//       rect.setAttribute('fill', '#CECDCD');
+//       body.classList.remove('dark-mode');
+//     }
+//   }
+
+//   function animate(element, property, from, to, duration) {
+//     let start = performance.now();
+
+//     requestAnimationFrame(function animateFrame(time) {
+//       let elapsed = time - start;
+//       let progress = Math.min(elapsed / duration, 1);
+//       let current = from + (to - from) * progress;
+
+//       element.setAttribute(property, current);
+
+//       if (progress < 1) {
+//         requestAnimationFrame(animateFrame);
+//       }
+//     });
+//   }
+// });
+
+// if (document.body.id === 'home-page') {
+//   document.getElementById('home-link').classList.add('active-page');
+//   document.getElementById('mobile-home-link').classList.add('active-page');
+// } else if (document.body.id === 'favorites-page') {
+//   document.getElementById('favorites-link').classList.add('active-page');
+//   document.getElementById('mobile-favorites-link').classList.add('active-page');
+// }
+
 document.addEventListener('DOMContentLoaded', function () {
   const mobileMenu = document.querySelector('.mobile-menu');
   mobileMenu.style.display = 'none';
@@ -22,12 +211,18 @@ document.addEventListener('DOMContentLoaded', function () {
   applyTheme(mobileSwitch, isDarkMode);
 
   function openMenuDisplay() {
+    mobileMenu.style.transform = 'translateX(0%)'; // Зсув до початкового значення 0% - меню висовується з правої сторони
     mobileMenu.style.display = 'block';
     document.body.classList.add('no-scroll');
   }
 
   function closeMenuDisplay() {
-    mobileMenu.style.display = 'none';
+    mobileMenu.style.transform = 'translateX(100%)'; // Зсув до 100% - меню ховається за межами екрану з правої сторони
+
+    // Після закриття меню, зачекайте 300 мілісекунд перед зміною display на 'none'
+    setTimeout(() => {
+      mobileMenu.style.display = 'none';
+    }, 300); // Тривалість переходу в мілісекундах, повинно співпадати з тривалістю CSS-переходу
     document.body.classList.remove('no-scroll');
   }
 
