@@ -112,3 +112,39 @@
 .heard-acc:checked + .card-heard {
   fill: var(--clear-white);
 }
+
+@media screen and (min-width: 768px) {
+  .card {
+    position: relative;
+    width: 240px;
+    height: 264px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    position: absolute;
+    top: 143px;
+    left: 16px;
+  }
+  .card-description {
+    position: absolute;
+    top: 169px;
+    left: 16px;
+    width: 208px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .card-starbtn {
+    position: absolute;
+    top: 217px;
+    left: 16px;
+    margin-right: 16px;
+    width: 208px;
+  }
+  .card-button {
+    margin-left: 23px;
+    width: 89px;
+    height: 31px;
+    padding: 8px 14px;
+    font-size: 10px;
+  }
+}
