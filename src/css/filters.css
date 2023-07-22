@@ -80,3 +80,282 @@
     color: var(--brand-green);
     cursor: pointer;
 }
+
+/* END OF "ALL CATEGORIES" */
+
+/* --------------------------------------------------------POPULAR RECIP BLOCK --------------------------------------------------------*/
+
+.popular-recipes-block {
+    width: 332px;
+}
+
+.popular-recipes-heading {
+    color: #050505;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.33;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.dark-mode .popular-recipes-heading {
+    color: rgba(255, 255, 255, 1);
+}
+
+.popular-recipes-list .recip-item:nth-child(n+3) {
+    display: none;
+}
+
+.recip-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.recip-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 15%;
+}
+
+.recip-heading {
+    color: #050505;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.29;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.dark-mode .recip-heading {
+    color: rgba(255, 255, 255, 1);
+}
+
+.recip-short-descr {
+    overflow: hidden;
+    color: rgba(5, 5, 5, 0.80);
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+}
+
+.dark-mode .recip-short-descr {
+    color: rgba(255, 255, 255, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .main-filter {
+        padding-top: 80px;
+    }
+
+    .filter-left-side {
+        width: 176px;
+        box-sizing: border-box;
+    }
+
+    .filter-left-side * {
+        box-sizing: border-box;
+    }
+
+    .filter-all-categories {
+        width: 176px;
+        box-sizing: border-box;
+        margin-top: 24px;
+        margin-bottom: 64px;
+    }
+
+    .filter-all-categories-button {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .filter-categories-block {
+        min-width: 176px;
+        height: 416px;
+        overflow: overlay;
+    }
+
+
+    .filter-categories-block::-webkit-scrollbar-thumb {
+        border-radius: 12px;
+        background: rgba(5, 5, 5, 0.18);
+    }
+
+    .popular-recipes-heading {
+        width: 166px;
+    }
+
+    .category-item {
+        margin-bottom: 24px;
+    }
+
+    .category-name {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .popular-recipes-block {
+        width: 166px;
+    }
+
+    .popular-recipes-list .recip-item:nth-child(n+3) {
+        display: flex;
+    }
+
+    .recip-item {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+
+    .recip-img {
+        width: 48px;
+        height: 48px;
+        border-radius: 15%;
+    }
+
+    .recip-short-descr {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .all-categories-button {
+        width: 174px;
+    }
+
+    .filter-categories-block {
+        min-width: 235px;
+        height: 416px;
+        overflow: overlay;
+    }
+
+    .popular-recipes-heading {
+        width: 221px;
+        font-size: 24px;
+        line-height: 1.16;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+    }
+
+    .recip-item {
+        width: 235px;
+        margin-bottom: 32px;
+    }
+
+    .recip-short-descr {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+}
+
+
+
+/* Search input start */
+
+.form-group {
+    padding: 0;
+    margin: 0;
+}
+
+.label-form span {
+    display: block;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: rgba(5, 5, 5, 0.50);
+}
+
+.dark-mode .label-form span {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    border-radius: 15px;
+}
+
+.input-search {
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    width: 325px;
+    height: 46px;
+    padding-left: 48px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.3;
+    color: rgba(5, 5, 5, 0.50);
+}
+
+
+.dark-mode .input-search {
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: #161616;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    fill: orange;
+    pointer-events: none;
+}
+
+.dark-mode .search-icon {
+   fill: red;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .label-form span {
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .input-container {
+        max-width: 278px;
+        height: 48px;
+    }
+
+    .input-search {
+        max-width: 278px;
+        height: 48px;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+}
+
+/* Search input end */
