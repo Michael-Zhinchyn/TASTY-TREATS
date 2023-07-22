@@ -55,13 +55,13 @@
 }
 
 
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   display: none;
 }
 
 ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 body {
   font-family: 'Inter', sans-serif;
