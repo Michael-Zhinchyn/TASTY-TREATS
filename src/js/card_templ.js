@@ -53,7 +53,7 @@ export function createCard(data) {
 
 function changeColorOfStars() {
   let icons = document.querySelectorAll('.card-star');
-
+    let stars = document.querySelector('.card-raiting');
   for (let i = 0; i < icons.length; i += 1) {
     if (i < stars) {
       icons[i].style.fill = '#ffa500';
