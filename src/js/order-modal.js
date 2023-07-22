@@ -41,29 +41,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   
-
   if (form) form.addEventListener('submit', onSubmit);
 
-  function onSubmit(evt) {
+  const createUser = async (newUser) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/orders/add`, newUser);
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+ function onSubmit(evt) {
     evt.preventDefault();
 
     let name = document.getElementById('name').value;
     let phone = document.getElementById('phone').value;
     let email = document.getElementById('email').value;
     let comments = document.getElementById('comments').value;
-    const createUser = newUser => axios.post(`${BASE_URL}/orders/add`, newUser)
-    createUser({
+
+    const newUser = {
       name: `${name}`,
       phone: `${phone}`,
       email: `${email}`,
       comment: `${comments}`
-    })
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    }
+createUser(newUser)
+    // .then(response => {
+    //   console.log(response.data);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // });
 
 
     Notiflix.Loading.pulse('Sending...');
