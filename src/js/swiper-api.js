@@ -39,6 +39,7 @@ events()
     const { cook: firstSlideCook, topic: firstSlideTopic } = data[0];
 
     // ----------------------------------------------функція створення розмітки для першого повара----------------------------------------------
+
     const firstCookCard = ({ firstSlideCook }) => {
       return `<img src="${firstSlideCook.imgUrl}"
           srcset="${firstSlideCook.imgWebpUrl}" alt ="${firstSlideCook.name}"
@@ -59,17 +60,30 @@ events()
       class="swiper-slide-img big-slide-salat-img" />`;
     };
 
-    // Виклик функції firstCookCard та вставка розмітки в masterCookCard
-    const firstCookCardMarkup = firstCookCard({ firstSlideCook });
-    masterCookCard.innerHTML = firstCookCardMarkup;
+    if (!masterCookCard) {
+      console.error(error);
+    } else {
+      // Виклик функції firstCookCard та вставка розмітки в masterCookCard
+      const firstCookCardMarkup = firstCookCard({ firstSlideCook });
+      masterCookCard.innerHTML = firstCookCardMarkup;
+    }
 
-    // виклик функції firstCookCenterCard та вставка розмітки в masterCookCenterCard
-    const firstCenterCookCardMarkup = firstCookCenterCard({ firstSlideTopic });
-    masterCookCenterCard.innerHTML = firstCenterCookCardMarkup;
-
-    // виклик функції firstCookLastCard та вставка розмітки
-    const firstCookLastCardMarkup = firstCookLastCard({ firstSlideTopic });
-    masterCookLastCard.innerHTML = firstCookLastCardMarkup;
+    if (!masterCookCenterCard) {
+      console.error(error);
+    } else {
+      // виклик функції firstCookCenterCard та вставка розмітки в masterCookCenterCard
+      const firstCenterCookCardMarkup = firstCookCenterCard({
+        firstSlideTopic,
+      });
+      masterCookCenterCard.innerHTML = firstCenterCookCardMarkup;
+    }
+    if (!masterCookLastCard) {
+      console.error(error);
+    } else {
+      // виклик функції firstCookLastCard та вставка розмітки
+      const firstCookLastCardMarkup = firstCookLastCard({ firstSlideTopic });
+      masterCookLastCard.innerHTML = firstCookLastCardMarkup;
+    }
 
     //   повернення даних для використання в наступному then
     return data;
@@ -100,19 +114,29 @@ events()
       class="big-slide-img" />`;
     };
 
-    // Виклик функції secondCookCard та створення розмітки для першої картки
-    const secondCookCardMarkup = secondCookCard({ secondSlideCook });
-    masterCookSecondCard.innerHTML = secondCookCardMarkup;
+    if (!masterCookSecondCard) {
+      console.error(error);
+    } else {
+      // Виклик функції secondCookCard та створення розмітки для першої картки
+      const secondCookCardMarkup = secondCookCard({ secondSlideCook });
+      masterCookSecondCard.innerHTML = secondCookCardMarkup;
+    }
 
+    if (!masterCookSecondSlideCenterCard) {
+      console.error(error);
+    } else {
     // Виклик функції secondCookCard та створення розмітки для центральної картки
-    const secondCenterCookCardMarkup = secondCookCenterCard({
-      secondSlideTopic,
-    });
+    const secondCenterCookCardMarkup = secondCookCenterCard({ secondSlideTopic });
     masterCookSecondSlideCenterCard.innerHTML = secondCenterCookCardMarkup;
+    }
 
-    //  Виклик функції thirdCookLastCard та створення розмітки для третьої картки
+    if (!masterCookSecondSlideLastCard) {
+      console.error(error);
+    } else {
+          //  Виклик функції thirdCookLastCard та створення розмітки для третьої картки
     const secondLastCookCardMarkup = secondCookLastCard({ secondSlideTopic });
     masterCookSecondSlideLastCard.innerHTML = secondLastCookCardMarkup;
+    }
 
     //   повернення даних для використання в наступному then
     return data;
@@ -145,18 +169,30 @@ events()
     />`;
     };
 
-    // Виклик функції thirdCookCard та створення розмітки
+
+    if (!masterCookThirdCard) {
+      console.error(error);
+    } else {
+          // Виклик функції thirdCookCard та створення розмітки
     const thirdCookCardMarkup = thirdCookCard({ thirdSlideCook });
     masterCookThirdCard.innerHTML = thirdCookCardMarkup;
+    }
 
-    // Виклик функції thirdCookCard та створення розмітки
+    if (!masterCookThirdSlideCenterCard) {
+      console.error(error);
+    } else {
+          // Виклик функції thirdCookCard та створення розмітки
     const thirdCenterCookCardMarkup = thirdCookCenterCard({ thirdSlideTopic });
     masterCookThirdSlideCenterCard.innerHTML = thirdCenterCookCardMarkup;
+    }
 
-    // Виклик функції thirdCookLastCard та створення розмітки
+    if (!masterCookThirdSlideLastCard) {
+      console.error(error);
+    } else {
+         // Виклик функції thirdCookLastCard та створення розмітки
     const thirdLastCookCardMarkup = thirdCookLastCard({ thirdSlideTopic });
     masterCookThirdSlideLastCard.innerHTML = thirdLastCookCardMarkup;
-
+    }
     //   повернення даних для використання в наступному then
     return data;
   })
