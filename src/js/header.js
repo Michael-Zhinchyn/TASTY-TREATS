@@ -39,8 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function applyTheme(switchElement, isDarkMode) {
-    const circle = switchElement.querySelector('#switch-circle');
-    const rect = switchElement.querySelector('#switch-rect');
+    const circle =
+      switchElement.querySelector('#switch-circle-desktop') ||
+      switchElement.querySelector('#switch-circle-mobile');
+    const rect =
+      switchElement.querySelector('#switch-rect-desktop') ||
+      switchElement.querySelector('#switch-rect-mobile');
 
     if (isDarkMode) {
       animate(circle, 'cx', 18, 44, 300);
