@@ -8,7 +8,9 @@ export async function getCategories() {
   try {
     const response = await axios.get(BASE_URL);
     const markUp = createMarkUp(response.data);
-    categoriesList.innerHTML = markUp;
+    if (categoriesList) {
+      categoriesList.innerHTML = markUp;
+    }
   } catch (error) {
     console.error(error);
   }
@@ -25,3 +27,4 @@ function createMarkUp(data) {
     )
     .join('');
 }
+
