@@ -150,7 +150,7 @@
 }
 
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) and (max-width: 1198px){
     .container {
         max-width: 768px;
     }
@@ -203,6 +203,7 @@
         transform: unset;
         right: unset;
         display: flex;
+        left: 0;
         flex-direction: column;
         width: 140px;
         height: 48px;
