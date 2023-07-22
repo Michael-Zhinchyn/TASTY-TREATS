@@ -1,20 +1,42 @@
-/* @import url('./reset.css');
+@import url('./reset.css');
 @import url('./header.css');
 @import url('./hero.css');
-
 @import url('./recipe-modal.css');
 @import url('./favorites.css');
-
-@import url('./create-order.css');
+/* @import url('./create-order.css'); */
 @import url('./filters.css');
-@import url('./recipe-modal.css');
-@import url('./favorites.css');
+@import url('./create-order.css');
+/* @import url('./recipe-modal.css'); */
+/* @import url('./favorites.css'); */
 @import url('./add-rating.css');
 @import url('./starability-slot.css');
-@import url('./loader.css');
-@import url('./scroll-up.css'); */
-@import url('./card_templ.css');
-/* @import url('./swiper.css'); */
+
+/* @import url('./loader.css'); */
+/* @import url('./scroll-up.css'); */
+/* @import url('./card_template.css');  */
+@import url('./swiper.css'); 
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 
 :root {
   font-synthesis: none;
@@ -34,11 +56,13 @@
   --basic-transition: all 300ms ease;
 }
 
-::-webkit-scrollbar-track {
+
+body::-webkit-scrollbar-track {
+
   display: none;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
@@ -75,9 +99,9 @@ svg {
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .container {
-    max-width: 1280px;
+    max-width: 1200px;
     padding-left: 100px;
     padding-right: 100px;
   }
