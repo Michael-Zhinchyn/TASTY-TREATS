@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-
+import axios from 'axios';
 document.addEventListener('DOMContentLoaded', function () {
   // Весь ваш код JS тут
   const modalOpenBtn = document.getElementById('hero-order-btn');
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalBackdrop = document.getElementById('backdrop');
   const modal = document.getElementById('modal');
   const form = document.querySelector('.order-form');
+  const BASE_URL =  "https://tasty-treats-backend.p.goit.global/api"
 
   if (modalBackdrop) modalBackdrop.style.display = 'none';
 
@@ -39,16 +40,31 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = 'auto';
     }
   }
+  
 
   if (form) form.addEventListener('submit', onSubmit);
 
   function onSubmit(evt) {
     evt.preventDefault();
 
-    // let name = document.getElementById('name').value;
-    // let phone = document.getElementById('phone').value;
-    // let email = document.getElementById('email').value;
-    // let comments = document.getElementById('comments').value;
+    let name = document.getElementById('name').value;
+    let phone = document.getElementById('phone').value;
+    let email = document.getElementById('email').value;
+    let comments = document.getElementById('comments').value;
+    const createUser = newUser => axios.post(`${BASE_URL}/orders/add`, newUser)
+    createUser({
+      name: `${name}`,
+      phone: `${phone}`,
+      email: `${email}`,
+      comment: `${comments}`
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
 
     Notiflix.Loading.pulse('Sending...');
 
