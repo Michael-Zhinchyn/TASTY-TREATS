@@ -213,7 +213,7 @@ Ingredient Options and Step-by-Step Video Guides.</span>
   <tr>
     <td align="center" style="border:none">
       <a href="https://www.figma.com/">
-          <img src="./src/img/readme-img/figma-logo.png" alt="Figma Logo" width="60"  style="vertical-align: middle;">
+          <img src="./src/img/readme-img/figma_logo.svg" alt="Figma Logo" width="15"  style="vertical-align: middle;">
           <span style="font-size:1.17em; margin-left:10px">Figma</span>
       </a>
     </td>
