@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { popularRecipList } from './popular-recipes';
-
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
@@ -17,21 +16,26 @@ const starField = document.querySelector('.starability-slot');
 const addRatingEmail = document.querySelector('.add-rating-email');
 const BASE_RECIPE_URL =
   'https://tasty-treats-backend.p.goit.global/api/recipes/';
-
 let targetId = null;
 let stars = null;
 let giveRatingBtn = null;
-[recipeBackdrop, backdrop].forEach(el => (el.style.display = 'none'));
-
+[recipeBackdrop, backdrop].forEach(el => {
+  if (el) {
+    el.style.display = 'none';
+  }
+});
 // EVENT LISTENERS
-popularRecipList.addEventListener('click', handleListClick);
-modalRecipe.addEventListener('click', event => event.stopPropagation());
-
-// Combine all listeners for closeRecipe() into one
-[recipeBackdrop, recipeCloseBtn, closeModalBtn].forEach(el =>
-  el.addEventListener('click', closeRecipe)
-);
-
+if (popularRecipList) {
+  popularRecipList.addEventListener('click', handleListClick);
+}
+if (modalRecipe) {
+  modalRecipe.addEventListener('click', event => event.stopPropagation());
+}
+[recipeBackdrop, recipeCloseBtn, closeModalBtn].forEach(el => {
+  if (el) {
+    el.addEventListener('click', closeRecipe);
+  }
+});
 // Combine all listeners for 'Escape' keydown into one
 document.addEventListener('keydown', evt => {
   if (evt.key === 'Escape') {
@@ -39,45 +43,41 @@ document.addEventListener('keydown', evt => {
     onClose();
   }
 });
-
 // Combine all listeners for starRatingChanger into one
-starField.addEventListener('click', starRatingChanger);
-
+if (starField) {
+  starField.addEventListener('click', starRatingChanger);
+}
 // Combine all listeners for submitRating into one
-form.addEventListener('submit', submitRating);
-
-closeModalBtn.addEventListener('click', onClose);
-
+if (form) {
+  form.addEventListener('submit', submitRating);
+}
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', onClose);
+}
 // FUNCTIONS
 function handleListClick(event) {
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
-
   let targetEl = event.target;
   let listItem = targetEl.closest('li');
-
   if (listItem) {
     let itemId = listItem.id;
     targetId = itemId;
   }
-
   getRecipe();
 }
-
 // Функція для зміни кольору іконок
 function changeColorOfStars() {
   let icons = document.querySelectorAll('.icon-star');
-
   for (let i = 0; i < icons.length; i += 1) {
     if (i < stars) {
-      icons[i].style.fill = '#ffa500';
+      icons[i].style.fill = '#FFA500';
     } else {
       icons[i].style.fill = '#ffffff1a';
     }
   }
 }
-
-// Функція отримання рецепту з API
+/// Функція отримання рецепту з API
 export async function getRecipe() {
   try {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
@@ -85,17 +85,17 @@ export async function getRecipe() {
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
     changeColorOfStars();
-
     giveRatingBtn = document.getElementById('give-rating');
-    giveRatingBtn.addEventListener('click', function () {
-      backdrop.style.display = 'block';
-    });
+    if (giveRatingBtn) {
+      giveRatingBtn.addEventListener('click', function () {
+        backdrop.style.display = 'block';
+      });
+    }
     return giveRatingBtn;
   } catch (error) {
     console.error(error);
   }
 }
-
 // функція створення розмітки
 export function recipeMarkup({
   title,
@@ -117,16 +117,12 @@ export function recipeMarkup({
     )
     .join('')}
 </div>`;
-
   const tagsMarkup = tags
     .map(tag => `<div class="recipe-tag">#${tag}</div>`)
     .join('');
-
   const videoId = youtube.split('=')[1];
   const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-
   const mq = window.matchMedia('(max-width: 767px)');
-
   if (mq.matches) {
     return `<div class="recipe-header">
               <iframe class="recipe-video" src="${embedUrl}" frameborder="0"></iframe>
@@ -167,13 +163,11 @@ export function recipeMarkup({
             </div>`;
   }
 }
-
 // MODAL-CLOSING
 function closeRecipe() {
   recipeBackdrop.style.display = 'none';
   document.body.style.overflow = 'auto';
 }
-
 function starRatingChanger() {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
@@ -184,18 +178,15 @@ function starRatingChanger() {
     starChoosed.textContent = '0.0';
   }
 }
-
 function onClose() {
   form.reset();
   backdrop.style.display = 'none';
 }
-
 function submitRating(e) {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
   const mail = addRatingEmail.value;
-
   // надсилання на бек
   //   axios.post(
   //     `${BASE_URL}/recipes/${id}/${options}`
@@ -205,7 +196,6 @@ function submitRating(e) {
   setTimeout(() => {
     Notiflix.Loading.remove();
     onClose();
-
     setTimeout(() => {
       Notiflix.Notify.success(' Thank you for your response ');
     }, 500);
