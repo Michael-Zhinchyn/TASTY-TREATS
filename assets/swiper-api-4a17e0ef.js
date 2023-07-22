@@ -58,22 +58,22 @@ Notiflix needs to be appended to the "<`+v+'>" element, but you called it before
         scale(${A})
       `;if(d.slideShadows){let w=x.querySelector(".swiper-slide-shadow");w||(w=_e("cards",x)),w&&(w.style.opacity=Math.min(Math.max((Math.abs(y)-.5)/.5,0),1))}x.style.zIndex=-Math.abs(Math.round(m))+r.length;const M=it(d,x);M.style.transform=N}},setTransition:r=>{const l=e.slides.map(o=>$e(o));l.forEach(o=>{o.style.transitionDuration=`${r}ms`,o.querySelectorAll(".swiper-slide-shadow").forEach(d=>{d.style.transitionDuration=`${r}ms`})}),vt({swiper:e,duration:r,transformElements:l})},perspective:()=>!0,overwriteParams:()=>({watchSlidesProgress:!0,virtualTranslate:!e.params.cssMode})})}const Pr=[ar,sr,rr,or,lr,cr,dr,fr,pr,ur,mr,hr,gr,xr,yr,br,Tr,Cr,Mr,Lr,Nr,zr,Ar];xe.use(Pr);new xe(".swiper",{pagination:{el:".swiper-pagination",type:"bullets",clickable:!0,dynamicBullets:!0},spaceBetween:10,autoplay:{delay:5e3,disableOnInteraction:!1},grabCursor:!0,loop:!0,mousewheel:{invert:!0},slidesPerView:1,slidesPerGroup:1});const Ir=document.querySelector(".first-cook"),Or=document.querySelector(".second-cook"),Rr=document.querySelector(".third-cook"),Dr=document.querySelector(".first-cook-center-card"),Br=document.querySelector(".second-cook-center-card"),$r=document.querySelector(".third-cook-center-card"),Wr=document.querySelector(".first-cook-last-card"),Hr=document.querySelector(".second-cook-last-card"),Fr=document.querySelector(".third-cook-last-card"),Xr="https://tasty-treats-backend.p.goit.global/api/events",Ji=async()=>{try{return(await bt.get(`${Xr}`)).data}catch(t){console.log(t)}};Ji().then(t=>{const{cook:e,topic:i}=t[0],n=({firstSlideCook:d})=>`<img src="${d.imgUrl}"
           srcset="${d.imgWebpUrl}" alt ="${d.name}"
-          class="swiper-slide-img cook-card" />`,s=({firstSlideTopic:d})=>`<img src="${d.previewUrl}"
+          class="swiper-slide-img cook-card" />`,s=({firstSlideTopic:d})=>`<img src="${d.previewUrl}" alt = "masterclass"
         class="swiper-slide-img food-center-card" />
       <p class="master-class">${d.name}</p>
-      <p class="master-class-coutry">${d.area}</p>`,a=({firstSlideTopic:d})=>`<img src="${d.imgUrl}"
+      <p class="master-class-coutry">${d.area}</p>`,a=({firstSlideTopic:d})=>`<img src="${d.imgUrl}" alt = "tasty food"
       class="swiper-slide-img big-slide-salat-img" />`,r=n({firstSlideCook:e});Ir.innerHTML=r;const l=s({firstSlideTopic:i});Dr.innerHTML=l;const o=a({firstSlideTopic:i});return Wr.innerHTML=o,t}).then(t=>{const{cook:e,topic:i}=t[1],n=({secondSlideCook:d})=>`<img src="${d.imgUrl}"
          srcset="${d.imgWebpUrl}" alt ="${d.name}"
-         class="swiper-slide-img cook-card" />`,s=({secondSlideTopic:d})=>`<img src="${d.previewUrl}"
+         class="swiper-slide-img cook-card" />`,s=({secondSlideTopic:d})=>`<img src="${d.previewUrl}" alt = "masterclass"
   class="swiper-slide-img food-center-card" />
 <p class="master-class">${d.name}</p>
-<p class="master-class-coutry">${d.area}</p>`,a=({secondSlideTopic:d})=>`<img src="${d.imgUrl}"
+<p class="master-class-coutry">${d.area}</p>`,a=({secondSlideTopic:d})=>`<img src="${d.imgUrl}" alt = "tasty food"
       class="big-slide-img" />`,r=n({secondSlideCook:e});Or.innerHTML=r;const l=s({secondSlideTopic:i});Br.innerHTML=l;const o=a({secondSlideTopic:i});return Hr.innerHTML=o,t}).then(t=>{const{cook:e,topic:i}=t[2],n=({thirdSlideCook:d})=>`<img src="${d.imgUrl}"
            srcset="${d.imgWebpUrl}" alt ="${d.name}"
-          class="swiper-slide-img cook-card" />`,s=({thirdSlideTopic:d})=>`<img src="${d.previewUrl}"
+          class="swiper-slide-img cook-card" />`,s=({thirdSlideTopic:d})=>`<img src="${d.previewUrl}" alt = "masterclass"
   class="swiper-slide-img food-center-card" />
 <p class="master-class">${d.name}</p>
 <p class="master-class-coutry">${d.area}</p>`,a=({thirdSlideTopic:d})=>`<img
-      src="${d.imgUrl}"
+      src="${d.imgUrl}" alt = "tasty food"
       class="big-slide-img pancakes-img"
     />`,r=n({thirdSlideCook:e});Rr.innerHTML=r;const l=s({thirdSlideTopic:i});$r.innerHTML=l;const o=a({thirdSlideTopic:i});return Fr.innerHTML=o,t}).catch(t=>console.error(t));window.addEventListener("load",Ji);
