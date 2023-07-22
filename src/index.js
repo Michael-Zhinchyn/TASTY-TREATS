@@ -1,5 +1,5 @@
 import './js/header';
-// import './js/recipe-modal';
+import './js/recipe-modal';
 import './js/order-modal';
 import './js/popular-recipes';
 import './js/all-categories';
