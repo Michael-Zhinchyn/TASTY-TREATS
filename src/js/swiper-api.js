@@ -47,7 +47,7 @@ events()
 
     // функція створення розмітки для першого слайду центральної картки
     const firstCookCenterCard = ({ firstSlideTopic }) => {
-      return `<img src="${firstSlideTopic.previewUrl}"
+      return `<img src="${firstSlideTopic.previewUrl}" alt = "masterclass"
         class="swiper-slide-img food-center-card" />
       <p class="master-class">${firstSlideTopic.name}</p>
       <p class="master-class-coutry">${firstSlideTopic.area}</p>`;
@@ -55,7 +55,7 @@ events()
 
     // функція створення розмітки для третьої картки
     const firstCookLastCard = ({ firstSlideTopic }) => {
-      return `<img src="${firstSlideTopic.imgUrl}"
+      return `<img src="${firstSlideTopic.imgUrl}" alt = "tasty food"
       class="swiper-slide-img big-slide-salat-img" />`;
     };
 
@@ -88,7 +88,7 @@ events()
 
     // функція створення розмітки для центральної картки
     const secondCookCenterCard = ({ secondSlideTopic }) => {
-      return `<img src="${secondSlideTopic.previewUrl}"
+      return `<img src="${secondSlideTopic.previewUrl}" alt = "masterclass"
   class="swiper-slide-img food-center-card" />
 <p class="master-class">${secondSlideTopic.name}</p>
 <p class="master-class-coutry">${secondSlideTopic.area}</p>`;
@@ -96,7 +96,7 @@ events()
 
     // функція створення розмітки для третьої картки
     const secondCookLastCard = ({ secondSlideTopic }) => {
-      return `<img src="${secondSlideTopic.imgUrl}"
+      return `<img src="${secondSlideTopic.imgUrl}" alt = "tasty food"
       class="big-slide-img" />`;
     };
 
@@ -131,7 +131,7 @@ events()
 
     // функція створення розмітки для центральної картки
     const thirdCookCenterCard = ({ thirdSlideTopic }) => {
-      return `<img src="${thirdSlideTopic.previewUrl}"
+      return `<img src="${thirdSlideTopic.previewUrl}" alt = "masterclass"
   class="swiper-slide-img food-center-card" />
 <p class="master-class">${thirdSlideTopic.name}</p>
 <p class="master-class-coutry">${thirdSlideTopic.area}</p>`;
@@ -140,7 +140,7 @@ events()
     //  функція створення розмітки для останньої картки
     const thirdCookLastCard = ({ thirdSlideTopic }) => {
       return `<img
-      src="${thirdSlideTopic.imgUrl}"
+      src="${thirdSlideTopic.imgUrl}" alt = "tasty food"
       class="big-slide-img pancakes-img"
     />`;
     };
