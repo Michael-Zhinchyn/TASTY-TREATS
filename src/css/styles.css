@@ -10,6 +10,7 @@
 /* @import url('./favorites.css'); */
 @import url('./add-rating.css');
 @import url('./starability-slot.css');
+
 /* @import url('./loader.css'); */
 /* @import url('./scroll-up.css'); */
 /* @import url('./card_template.css');  */
@@ -36,6 +37,7 @@
   font-style: normal;
 }
 
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -56,6 +58,7 @@
 
 
 body::-webkit-scrollbar-track {
+
   display: none;
 }
 
@@ -83,12 +86,10 @@ svg {
   margin-right: auto;
 }
 
-
 .dark-mode {
   color: var(--clear-white);
   background-color: var(--dark-mode-bg);
 }
-
 
 @media screen and (min-width: 768px) {
   .container {
@@ -105,3 +106,4 @@ svg {
     padding-right: 100px;
   }
 }
+
