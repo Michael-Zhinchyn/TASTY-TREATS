@@ -21,12 +21,12 @@ const heartIconRed = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height=
 function generateHeartBlock(id) {
   return `
     <div class="heart-block">
-      <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" />
-      <label for="card-checkbox-${id}" class="card-checkbox-label">
-        <span class="unchecked-heart">${heartIconGrey}</span>
-        <span class="checked-heart">${heartIconRed}</span>
-      </label>
-    </div>`;
+  <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" aria-label="card-checkbox-${id}" />
+  <label for="card-checkbox-${id}" class="card-checkbox-label">
+    <span class="unchecked-heart">${heartIconGrey}</span>
+    <span class="checked-heart">${heartIconRed}</span>
+  </label>
+</div>`;
 }
 
 // Решта коду тут ...
@@ -111,7 +111,6 @@ async function getAllRecipes() {
     // Перевіряємо, чи є збережені дані в локальному сховищі
     const storedData = localStorage.getItem('inFavorite');
     if (storedData) {
-
       // Розпарсуємо дані з локального сховища назад у масив
       selectedHeartCheckBox = JSON.parse(storedData);
 
