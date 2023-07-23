@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="/TASTY-TREATS/assets/favorites-56334b07.js"></script>
+  <script type="module" crossorigin src="/TASTY-TREATS/assets/favorites-50c97505.js"></script>
   <link rel="stylesheet" href="/TASTY-TREATS/assets/favorites-70e1ae10.css">
 </head>
 
@@ -199,17 +199,17 @@
             <h2 class="order-form-heading">Order now</h2>
             <div class="input-block">
                 <label for="name" class="order-form-label">Name</label>
-                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-zА-Яа-я '-]+" />
+                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-z - ]+" />
             </div>
 
             <div class="input-block">
                 <label for="phone" class="order-form-label">Phone number</label>
-                <input id="phone" class="order-form-input" type="tel" required pattern="[0-9]{9,13}" />
+                <input id="phone" class="order-form-input" type ="tel" required pattern="[\+]\d{12}" />
             </div>
 
             <div class="input-block">
                 <label for="email" class="order-form-label">Email</label>
-                <input id="email" class="order-form-input" type="email" required pattern=".+@.+\.+.+" />
+                <input id="email" class="order-form-input" type="email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}" />
             </div>
 
             <div class="input-block">
