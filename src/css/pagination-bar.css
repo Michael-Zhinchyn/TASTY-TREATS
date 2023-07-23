@@ -66,6 +66,10 @@
     line-height: 1.23;
 }
 
+.pag-btn-white-tablet {
+    display: none;
+}
+
 .pag-btn-left-icon {
     display: flex;
     justify-content: center;
