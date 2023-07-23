@@ -8,3 +8,4 @@ import './js/swiper-api';
 import './js/all-cards-api';
 import './js/filters'
 // import './js/search';
+import './js/favorites'
