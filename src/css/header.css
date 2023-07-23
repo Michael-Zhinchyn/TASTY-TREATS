@@ -56,12 +56,14 @@
 .header-cart-icon:hover,
 .header-hamburger-icon:hover {
     fill: var(--brand-green);
+    transition: all 300ms ease;
 }
 
 .dark-mode .header-cart-icon:hover,
 .dark-mode .header-hamburger-icon:hover,
 .dark-mode .close-menu-icon:hover {
     fill: var(--brand-green);
+
 }
 
 
@@ -136,6 +138,11 @@
     transform: translateX(-50%);
 }
 
+.mobile-menu-nav {
+    transition: all 300ms ease;
+}
+
+
 .mobile-menu-nav-links {
     margin-bottom: 16px;
     color: #FFF;
@@ -144,6 +151,9 @@
     font-weight: 400;
     line-height: normal;
 }
+
+
+
 
 .mobile-menu-nav-links.active-link {
     font-size: 500;
@@ -208,6 +218,7 @@
 
     .tablet-menu-nav-links:hover {
         color: var(--brand-green);
+        transition: all 300ms ease;
     }
 
     .tablet-desktop-nav-icons {
