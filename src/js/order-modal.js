@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(err);
     }
   }
- function onSubmit(evt) {
+async function onSubmit(evt){
     evt.preventDefault();
 
     let name = document.getElementById('name').value;
@@ -65,24 +65,24 @@ document.addEventListener('DOMContentLoaded', function () {
       email: `${email}`,
       comment: `${comments}`
     }
-createUser(newUser)
-    // .then(response => {
-    //   console.log(response.data);
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // });
-
 
     Notiflix.Loading.pulse('Sending...');
+    try{
+const response = await createUser(newUser)
+console.log(response)
+setTimeout(() => {
+  Notiflix.Loading.remove();
+  modalClose();
 
-    setTimeout(() => {
-      Notiflix.Loading.remove();
-      modalClose();
+  setTimeout(() => {
+    Notiflix.Notify.success('Your order successfully sent');
+  }, 500);
+}, 1500);
+    }
+    catch(err){
+      console.log(err);
+      Notiflix.Notify.failure('Your order was not sent')
+    };
 
-      setTimeout(() => {
-        Notiflix.Notify.success('Your order successfully sent ');
-      }, 500);
-    }, 1500);
   }
 });
