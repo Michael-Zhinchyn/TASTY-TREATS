@@ -4,17 +4,17 @@ export const popularRecipList = document.querySelector('.popular-recipes-list');
 const BASE_URL =
   'https://tasty-treats-backend.p.goit.global/api/recipes/popular';
 
-  export async function getPopularRecip() {
-    try {
-      const response = await axios.get(BASE_URL);
-      const markUp = createMarkUp(response.data);
-      if (popularRecipList) {
-        popularRecipList.innerHTML = markUp;
-      }
-    } catch (error) {
-      console.error(error);
+export async function getPopularRecip() {
+  try {
+    const response = await axios.get(BASE_URL);
+    const markUp = createMarkUp(response.data);
+    if (popularRecipList) {
+      popularRecipList.innerHTML = markUp;
     }
+  } catch (error) {
+    console.error(error);
   }
+}
 
 getPopularRecip();
 
