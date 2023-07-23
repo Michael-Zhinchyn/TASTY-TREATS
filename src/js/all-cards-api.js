@@ -42,7 +42,7 @@ function generateStars(rating) {
 }
 
 // Функція, що генерує HTML-код для карточки рецепту
-function generateRecipeCard(recipe) {
+export function generateRecipeCard(recipe) {
   return `
     <li class="card-item">
       <div class="card-block">
@@ -68,7 +68,7 @@ function generateRecipeCard(recipe) {
 }
 
 // Функція, що отримує рецепти з API та додає їх на сторінку
-async function getAllRecipes() {
+export async function getAllRecipes() {
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
