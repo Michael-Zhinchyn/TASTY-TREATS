@@ -21,7 +21,7 @@
     height: 40px;
     border-radius: 50%;
     background-color: #050505;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .pag-btn-green {
@@ -32,7 +32,7 @@
     height: 40px;
     border-radius: 50%;
     background-color: #9BB537;
-    border: none;
+    border: 1px solid transparent;
 
     
     font-size: 18px;
