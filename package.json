@@ -15,6 +15,7 @@
   "author": "Michael Zhinchyn <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@lottiefiles/lottie-player": "^2.0.2",
     "axios": "^1.4.0",
     "notiflix": "^3.2.6",
     "swiper": "^10.0.4",
