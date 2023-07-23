@@ -28,16 +28,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #9BB537;
     border: 1px solid transparent;
-
-    
     font-size: 18px;
     font-weight: 600;
     line-height: 1.23;
+}
+
+.pag-btn-right-icon {
+    position: absolute;
+    left: -12px;
+    bottom: -10px;
+}
+
+.icon-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .pag-btn-white {
@@ -49,16 +61,37 @@
     border-radius: 50%;
     background-color: #F8F8F8;
     border: 1px solid rgba(5, 5, 5, 0.30);
-
     font-size: 18px;
     font-weight: 600;
     line-height: 1.23;
-   
 }
 
 .pag-btn-left-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     width: 20px;
     height: 20px;
-    fill: #F8F8F8;
+    fill: #f8f8f8c0;
     transform: rotate(180deg);
+}
+
+.icon-wrap {
+    display: inline-block;
+    position: relative;
+    left: 13px;
+}
+
+.icon-wrap.overlap {
+    left: -13px;
+}
+
+.icon-wrap-right {
+    position: relative;
+}
+
+.icon-wrap-right.overlap-right {
+    position: absolute;
+    Left: 6px;
 }
