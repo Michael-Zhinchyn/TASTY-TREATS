@@ -14,6 +14,9 @@ Group #13
 </p>
 <p>
    <strong>:sparkles: Scrum Master: Anna Zakharchuk</strong>
+   <span><a href="https://github.com/AnnaHort">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        </a></span>
 </p>
 <div style="display: flex; justify-content: center;">
     <table  style="margin-bottom:70px">
@@ -156,12 +159,6 @@ Libraries and Frameworks:
       <a href="https://swiperjs.com/">
           <img src="./src/img/readme-img/swiper-logo.svg" alt="Swiper Logo" width="30"  style="vertical-align: middle;">
           <span style="font-size:1.17em; margin-left:10px">Swiper</span>
-      </a>
-    </td>
-    <td align="center" style="border:none">
-      <a href="https://ui.toast.com/tui-pagination/">
-          <img src="./src/img/readme-img/tui.jpg" alt="TUI Pagination Logo" width="90" style="vertical-align: middle;">
-          <span style="font-size:1.17em; margin-left:10px">TUI Pagination</span>
       </a>
     </td>
     <td align="center" style="border:none">
