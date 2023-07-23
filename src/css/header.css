@@ -40,6 +40,7 @@
 
 .dark-mode .active-page {
     color: var(--brand-green);
+
 }
 
 .cart-menu-block {
@@ -55,12 +56,14 @@
 .header-cart-icon:hover,
 .header-hamburger-icon:hover {
     fill: var(--brand-green);
+    transition: all 300ms ease;
 }
 
 .dark-mode .header-cart-icon:hover,
 .dark-mode .header-hamburger-icon:hover,
 .dark-mode .close-menu-icon:hover {
     fill: var(--brand-green);
+
 }
 
 
@@ -69,24 +72,49 @@
 }
 
 
-.mobile-menu {
+/* .mobile-menu {
     display: none;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     overflow-y: hidden;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    width: 200px;
     height: 100%;
     background-color: var(--brand-green);
-    transition: opacity 250ms;
+    transition: opacity 300ms, ;
     z-index: 11;
+} */
+
+
+/* ------------------------- */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 100%;
+    background-color: var(--brand-green);
+    z-index: 11;
+    transform: translateX(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
 }
 
-.dark-mode .mobile-menu {
+.visible {
+    opacity: 1;
+}
+
+/* --------------------------- */
+
+
+*/ .dark-mode .mobile-menu {
     background-color: var(--dark-mode-bg);
 }
 
@@ -99,6 +127,7 @@
     fill: var(--brand-white);
 }
 
+
 .mobile-menu-nav {
     display: flex;
     flex-direction: column;
@@ -109,17 +138,29 @@
     transform: translateX(-50%);
 }
 
+.mobile-menu-nav {
+    transition: all 300ms ease;
+}
+
+
 .mobile-menu-nav-links {
     margin-bottom: 16px;
     color: #FFF;
     font-size: 12px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
 }
 
+
+
+
+.mobile-menu-nav-links.active-link {
+    font-size: 500;
+}
+
 .mobile-menu-nav-links:hover {
-    color: var(--brand-white);
+    color: var(--dark-mode-bg);
 }
 
 .dark-mode .mobile-menu-nav-links:hover {
@@ -177,6 +218,7 @@
 
     .tablet-menu-nav-links:hover {
         color: var(--brand-green);
+        transition: all 300ms ease;
     }
 
     .tablet-desktop-nav-icons {
