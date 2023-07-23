@@ -7,6 +7,7 @@
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 .filter-all-categories {
   margin-bottom: 40px;
