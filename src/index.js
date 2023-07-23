@@ -5,4 +5,6 @@ import './js/popular-recipes';
 import './js/all-categories';
 import './js/swiper';
 import './js/swiper-api';
+import './js/card-template';
+import './js/all-cards-api';
 // import './js/search';

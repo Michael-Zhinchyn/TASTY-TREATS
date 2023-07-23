@@ -43,7 +43,6 @@ document.addEventListener('keydown', evt => {
     onClose();
   }
 });
-// Combine all listeners for starRatingChanger into one
 if (starField) {
   starField.addEventListener('click', starRatingChanger);
 }
@@ -77,6 +76,7 @@ function changeColorOfStars() {
     }
   }
 }
+
 /// Функція отримання рецепту з API
 export async function getRecipe() {
   try {
