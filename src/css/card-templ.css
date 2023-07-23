@@ -59,11 +59,14 @@
     cursor: pointer;
 }
 
-.card-checkbox:not(:checked)+.card-checkbox-label .icon-unchecked,
-.card-checkbox:checked+.card-checkbox-label .icon-checked {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
+.card-checkbox-label .unchecked-heart,
+.card-checkbox:checked~.card-checkbox-label .checked-heart {
+    display: inline;
+}
+
+.card-checkbox-label .checked-heart,
+.card-checkbox:checked~.card-checkbox-label .unchecked-heart {
+    display: none;
 }
 
 .card-content {
