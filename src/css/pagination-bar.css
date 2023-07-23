@@ -66,6 +66,13 @@
     line-height: 1.23;
 }
 
+.dark-mode .pag-btn-white,
+.dark-mode .pag-btn-white-tablet {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.30);;
+}
+
 .pag-btn-white-tablet {
     display: none;
 }
@@ -98,4 +105,50 @@
 .icon-wrap-right.overlap-right {
     position: absolute;
     Left: 6px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .pagination-bar {
+        gap: 24px;
+    }
+
+    .pag-btn-white-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #F8F8F8;
+    border: 1px solid rgba(5, 5, 5, 0.30);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.23;
+    }
+
+    .pag-btn-block {
+        gap: 8px;
+    }
+
+    .gag-btn-black {
+        width: 44px;
+        height: 44px;
+    }
+
+    .pag-btn-green {
+        width: 44px;
+        height: 44px;
+    }
+
+    .pag-btn-white {
+        width: 44px;
+        height: 44px;
+    }
 }
