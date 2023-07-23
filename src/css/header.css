@@ -40,6 +40,7 @@
 
 .dark-mode .active-page {
     color: var(--brand-green);
+
 }
 
 .cart-menu-block {
@@ -81,32 +82,34 @@
     width: 200px;
     height: 100%;
     background-color: var(--brand-green);
-    transition: opacity 300ms,;
+    transition: opacity 300ms, ;
     z-index: 11;
 } */
 
+
+/* ------------------------- */
 .mobile-menu {
-    display: none;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    /* Змінено, щоб меню висовувалося з правого боку */
     overflow-y: hidden;
     flex-direction: column;
     justify-content: space-between;
     width: 200px;
     height: 100%;
     background-color: var(--brand-green);
-    transition: transform 0.3s ease;
-    /* Змінено, використовуємо transform для плавного висування */
     z-index: 11;
     transform: translateX(100%);
-    /* Змінено, початкове значення зсуву на 100% праворуч */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
 }
 
+.visible {
+    opacity: 1;
+}
 
-
+/* --------------------------- */
 
 
 */ .dark-mode .mobile-menu {
@@ -121,6 +124,7 @@
     right: 20px;
     fill: var(--brand-white);
 }
+
 
 .mobile-menu-nav {
     display: flex;
@@ -137,12 +141,16 @@
     color: #FFF;
     font-size: 12px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
 }
 
+.mobile-menu-nav-links.active-link {
+    font-size: 500;
+}
+
 .mobile-menu-nav-links:hover {
-    color: var(--brand-white);
+    color: var(--dark-mode-bg);
 }
 
 .dark-mode .mobile-menu-nav-links:hover {
