@@ -86,6 +86,7 @@ export async function getAllRecipes() {
     // Функція для обробки зміни стану чекбоксів
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо
+      console.log(checkbox);
       const checkboxId = checkbox.id;
 
       if (checkbox.checked) {
@@ -123,7 +124,7 @@ export async function getAllRecipes() {
         }
       });
     }
-
+    
     // -------------------------------------------------------------------------------------------------------------------------------------
 
     const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');
