@@ -12,6 +12,8 @@ import './js/favorites'
 
 // import './js/filters'
 // import './js/search';
+
 import './js/favorites';
 import './js/scroll-up';
+
 

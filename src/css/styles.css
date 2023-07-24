@@ -8,12 +8,10 @@
 @import url('./add-rating.css');
 @import url('./starability-slot.css');
 /* @import url('./loader.css'); */
-
 /* @import url('./scroll-up.css'); */
 @import url('./all-cards.css'); 
 @import url('./swiper.css'); 
 @import url('./pagination-bar.css');
-
 
 @font-face {
   font-family: 'Inter';
@@ -36,6 +34,7 @@
   font-style: normal;
 }
 
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -54,13 +53,12 @@
   --basic-transition: all 300ms ease;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 body::-webkit-scrollbar-track {
+
   display: none;
 }
 
@@ -108,3 +106,4 @@ svg {
     padding-right: 100px;
   }
 }
+
