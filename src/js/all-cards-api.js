@@ -32,7 +32,7 @@ export function generateHeartBlock(id) {
 // Решта коду тут ...
 
 // Функція, що генерує HTML-код зірок на основі рейтингу рецепту
-function generateStars(rating) {
+export function generateStars(rating) {
   let stars = '';
   let roundedRating = Math.round(rating);
   for (let i = 0; i < 5; i++) {
@@ -126,21 +126,133 @@ export async function getAllRecipes() {
     
     // -------------------------------------------------------------------------------------------------------------------------------------
 
-    const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');
-    seeRecipeButtons.forEach(button => {
-      button.addEventListener('click', event => {
-        const buttonElement = event.target.closest('.card-button');
-        const recipeId = buttonElement.getAttribute('data-id');
+    // const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');
+    // seeRecipeButtons.forEach(button => {
+    //   button.addEventListener('click', event => {
+    //     const buttonElement = event.target.closest('.card-button');
+    //     const recipeId = buttonElement.getAttribute('data-id');
 
-        console.log('Recipe ID:', recipeId);
-        console.log(results);
+    //     console.log('Recipe ID:', recipeId);
+    //     console.log(results);
 
-        getRecipe(recipeId);
-      });
-    });
-  } catch (error) {
+    //     getRecipe(recipeId);
+    //   });
+    // });
+  } 
+  
+  catch (error) {
     console.log(error);
   }
 }
+let cardsPerPage;
+let pageNumb = 1 ;
+export async function getAllRecipesWithOptions() {
 
-getAllRecipes();
+  
+    if (window.innerWidth < 768) {
+      cardsPerPage = 6;
+    } else if(window.innerWidth >= 768 && window.innerWidth < 1200 ) {
+      cardsPerPage = 8;
+    } 
+   else {
+      cardsPerPage = 9;}
+  
+    try {
+      const response = await axios.get(`${API_URL}`, {params:{ limit: cardsPerPage,
+        page: pageNumb
+      }})
+    console.log(response.data)
+    const { results } = response.data;
+  // Створюємо карточки рецептів та додаємо їх на сторінку
+  const recipeCards = results.map(generateRecipeCard).join('');
+  const recipesContainer = document.querySelector('.filter-card-set');
+  recipesContainer.innerHTML = recipeCards}
+    catch (error) {
+      console.log(error);
+    }
+}
+getAllRecipesWithOptions()
+const pageOneBtn = document.querySelector("#pag-btn-1")
+const pageTwoBtn = document.querySelector("#pag-btn-2")
+const pageThreeBtn = document.querySelector("#pag-btn-3")
+const lastPageBtn= document.querySelector("#pag-btn-last")
+const nextPagePagBtn=document.querySelector("#pag-btn-next")
+
+const loadfirstPage = async()=>{
+  pageNumb=pageOneBtn.textContent;
+  console.log(pageNumb)
+  try {
+    const response = await axios.get(`${API_URL}`, {params:{ limit: cardsPerPage,
+      page: pageNumb
+    }})
+  console.log(response.data)
+  const { results } = response.data;
+  // Створюємо карточки рецептів та додаємо їх на сторінку
+  const recipeCards = results.map(generateRecipeCard).join('');
+  const recipesContainer = document.querySelector('.filter-card-set');
+  recipesContainer.innerHTML = recipeCards}
+  catch (error) {
+    console.log(error);
+  }}
+
+
+const loadPageAccordingToBtnNumb = async()=>{
+pageNumb = pageTwoBtn.textContent;
+try {
+  const response = await axios.get(`${API_URL}`, {params:{ limit: cardsPerPage,
+    page: pageNumb
+  }})
+console.log(response.data)
+const { results } = response.data;
+// Створюємо карточки рецептів та додаємо їх на сторінку
+const recipeCards = results.map(generateRecipeCard).join('');
+const recipesContainer = document.querySelector('.filter-card-set');
+recipesContainer.innerHTML = recipeCards}
+catch (error) {
+  console.log(error);
+}}
+
+const loadPageThree = async()=>{
+  pageNumb = pageThreeBtn.textContent;
+  try {
+    const response = await axios.get(`${API_URL}`, {params:{ limit: cardsPerPage,
+      page: pageNumb
+    }})
+  console.log(response.data)
+  const { results } = response.data;
+  // Створюємо карточки рецептів та додаємо їх на сторінку
+  const recipeCards = results.map(generateRecipeCard).join('');
+  const recipesContainer = document.querySelector('.filter-card-set');
+  recipesContainer.innerHTML = recipeCards}
+  catch (error) {
+    console.log(error);
+  }}
+  const loadLastPage = async()=>{
+
+    try {
+   
+          const response = await axios.get(`${API_URL}`, {params:{ limit: cardsPerPage,
+        page: pageNumb
+     
+      }})
+    console.log(response.data)
+    const pagesAmount=response.data.totalPages
+    pageNumb=pagesAmount/cardsPerPage
+      console.log(pageNumb)
+    const { results } = response.data;
+   
+    // Створюємо карточки рецептів та додаємо їх на сторінку
+    const recipeCards = results.map(generateRecipeCard).join('');
+    const recipesContainer = document.querySelector('.filter-card-set');
+    recipesContainer.innerHTML = recipeCards}
+    catch (error) {
+      console.log(error);
+    }}
+    // ---------------------------------------------------------------------------------------------------------------------------------------
+
+    pageOneBtn.addEventListener("click", loadfirstPage )
+    pageTwoBtn.addEventListener("click", loadPageAccordingToBtnNumb)
+    pageThreeBtn.addEventListener("click", loadPageThree)
+    lastPageBtn.addEventListener("click", loadLastPage)
+// getAllRecipes();
+// getAllRecipesWithOptions()
