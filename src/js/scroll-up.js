@@ -5,7 +5,7 @@ const pathLength = scrollUpSvgPath.getTotalLength();
 
 scrollUpSvgPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
 scrollUpSvgPath.style.transition = 'stroke-dashoffset 20ms';
-
+   
 
 
 scrollUp.addEventListener('click', () => {
