@@ -67,7 +67,7 @@ function handleListClick(event) {
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
   let targetEl = event.target;
-  let listItem = targetEl.closest('li');
+  let listItem = targetEl.closest('li.recip-item');
   if (listItem) {
     let itemId = listItem.id;
     targetId = itemId;
@@ -75,22 +75,20 @@ function handleListClick(event) {
   getRecipe();
 }
 
-function handleContainerClick() {
+function handleContainerClick(event) {
+  const buttonElement = event.target.closest('.card-button');
+  if (!buttonElement) return; // Return early if click isn't on a button
+
+  event.stopPropagation(); // Stop the event from propagating up the DOM tree
+
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
 
-  let allBtns = recipesContainer.querySelectorAll('.card-button');
-  allBtns.forEach(button => {
-    button.addEventListener('click', event => {
-      const buttonElement = event.target.closest('.card-button');
-      const recipeId = buttonElement.getAttribute('data-id');
-      if (recipeId) {
-        targetId = recipeId;
-      }
+  const recipeId = buttonElement.getAttribute('data-id');
+  if (recipeId) {
+    targetId = recipeId;
+  }
 
-      // console.log('Recipe ID:', recipeId);
-    });
-  });
   getRecipe();
 }
 
