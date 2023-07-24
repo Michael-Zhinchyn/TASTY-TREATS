@@ -85,9 +85,15 @@ export async function getAllRecipes() {
 
     // Функція для обробки зміни стану чекбоксів
     function handleCheckboxChange(event) {
-      const checkbox = event.target; // елемент на який клікаємо
+      const checkbox = event.target; // елемент на який клікаємо <input>
       console.log(checkbox);
+      const favoriteImgEl = document.querySelector('.')
       const checkboxId = checkbox.id;
+
+
+      // дістати всю інформацію з картки за запушити її у масив
+
+
 
       if (checkbox.checked) {
         selectedHeartCheckBox.push(checkboxId);
