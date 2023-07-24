@@ -56,7 +56,7 @@ function generateRecipeCard(recipe) {
         </div>
         <div class="card-bottom">
           <div class="card-rating-block">
-            <p class="card-rating">${recipe.rating}</p>
+            <p class="card-rating">${recipe.rating.toFixed(1)}</p>
             <div class="eating-stars">${generateStars(recipe.rating)}</div>
           </div>
           <button class="card-button" data-id="${

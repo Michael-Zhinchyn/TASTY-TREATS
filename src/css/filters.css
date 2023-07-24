@@ -1,3 +1,8 @@
+.filter-card-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -318,7 +323,21 @@
   border-radius: 15px;
   border: 1px solid rgba(5, 5, 5, 0.2);
 }
+.input-search::before {
+  display: inline-flex;
+  content: '';
 
+  /* Using the background-image and
+               its related properties to add
+               the SVG content */
+  background-image: url('../img/sprite.svg#icon-search');
+  background-size: 40px 40px;
+  height: 40px;
+  width: 40px;
+}
+/* <svg class="search-icon" width="18" height="18">
+                  <use href="../img/sprite.svg#icon-search"></use>
+                </svg> */
 .dark-mode .input-search {
   color: rgba(255, 255, 255, 0.5);
   border-radius: 15px;
@@ -482,10 +501,27 @@
     font-size: 10px;
   }
 }
+/* reset styles */
+.reset-filter {
+    display: flex;
+    justify-content: end;
+    gap: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(5, 5, 5, 0.5);
+    margin-bottom: 20px;
+}
+.link-reset-svg {
+    fill: var(--brand-green)
+}
 /* illia tablet styles */
 @media screen and (min-width: 768px) {
+  .flex-container {
+    flex-wrap: nowrap;
+  }
   .right-side {
-    width: 496px;
+    width: 100%;
   }
   .selector-flex-container {
     gap: 16px;
@@ -505,8 +541,14 @@
   .label-selector {
     margin-top: 0;
   }
+  .filter-card-set {
+    gap: 16px;
+  }
+  .reset-filter {
+    margin-bottom: 14px;
+  }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .right-side {
     width: 782px;
   }
