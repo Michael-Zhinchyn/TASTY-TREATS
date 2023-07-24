@@ -5,11 +5,11 @@
     z-index: 1000;
     width: 50px;
     height: 50px;
-    color: olive;
+    color: var(--brand-green);
     cursor: pointer;
     visibility: hidden;
     border-radius: 50px;
-    box-shadow: inset 0 0 0 4px olive;
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.337);
     opacity: 0;
     transition: 0.2s;
     transform: translateY(25px);
@@ -29,7 +29,7 @@
 }
 
 .scroll-up:hover {
-    color: red;
+    color: #ccff00;
 }
 
 .scroll-up--active {
@@ -41,7 +41,7 @@
 .scroll-up--path {
     box-sizing: border-box;
     fill: none;
-    stroke: blue;
+    stroke: rgba(255, 255, 255, 0.593);
     stroke-width: 1px;
     transition: 0.2s;
 }

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getRecipe } from './recipe-modal';
 
 // URL нашого API
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
@@ -16,6 +15,8 @@ const heartIconGrey = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height
 const heartIconRed = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9937 4.70783C9.16096 2.5652 6.10475 1.98884 3.80845 3.95085C1.51215 5.91285 1.18887 9.19323 2.99216 11.5137C4.49148 13.443 9.02894 17.5121 10.5161 18.8291C10.6825 18.9764 10.7656 19.0501 10.8627 19.0791C10.9474 19.1043 11.04 19.1043 11.1247 19.0791C11.2218 19.0501 11.305 18.9764 11.4713 18.8291C12.9585 17.5121 17.4959 13.443 18.9952 11.5137C20.7985 9.19323 20.5147 5.89221 18.179 3.95085C15.8432 2.00948 12.8264 2.5652 10.9937 4.70783Z" fill="#F8F8F8"/>
 </svg>`;
+
+export const recipesContainer = document.querySelector('.filter-card-set');
 
 // Функція, що генерує HTML-блок з іконкою серця
 export function generateHeartBlock(id) {
@@ -75,7 +76,6 @@ export async function getAllRecipes() {
 
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
     recipesContainer.innerHTML = recipeCards;
 
     // ---------------------------------------------------------------------------------------------------------------------------------------
@@ -89,10 +89,7 @@ export async function getAllRecipes() {
       console.log(checkbox);
       const checkboxId = checkbox.id;
 
-
       // дістати всю інформацію з картки за запушити її у масив
-
-
 
       if (checkbox.checked) {
         selectedHeartCheckBox.push(checkboxId);
@@ -128,21 +125,7 @@ export async function getAllRecipes() {
         }
       });
     }
-
     // -------------------------------------------------------------------------------------------------------------------------------------
-
-    const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');
-    seeRecipeButtons.forEach(button => {
-      button.addEventListener('click', event => {
-        const buttonElement = event.target.closest('.card-button');
-        const recipeId = buttonElement.getAttribute('data-id');
-
-        console.log('Recipe ID:', recipeId);
-        console.log(results);
-
-        getRecipe(recipeId);
-      });
-    });
   } catch (error) {
     console.log(error);
   }
