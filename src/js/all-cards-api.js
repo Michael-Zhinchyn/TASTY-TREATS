@@ -18,7 +18,7 @@ const heartIconRed = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height=
 </svg>`;
 
 // Функція, що генерує HTML-блок з іконкою серця
-function generateHeartBlock(id) {
+export function generateHeartBlock(id) {
   return `
     <div class="heart-block">
   <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" aria-label="card-checkbox-${id}" />
@@ -42,7 +42,7 @@ function generateStars(rating) {
 }
 
 // Функція, що генерує HTML-код для карточки рецепту
-function generateRecipeCard(recipe) {
+export function generateRecipeCard(recipe) {
   return `
     <li class="card-item">
       <div class="card-block">
@@ -68,7 +68,7 @@ function generateRecipeCard(recipe) {
 }
 
 // Функція, що отримує рецепти з API та додає їх на сторінку
-async function getAllRecipes() {
+export async function getAllRecipes() {
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
@@ -86,6 +86,7 @@ async function getAllRecipes() {
     // Функція для обробки зміни стану чекбоксів
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо
+      console.log(checkbox);
       const checkboxId = checkbox.id;
 
       if (checkbox.checked) {
@@ -122,7 +123,7 @@ async function getAllRecipes() {
         }
       });
     }
-
+    
     // -------------------------------------------------------------------------------------------------------------------------------------
 
     const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');
