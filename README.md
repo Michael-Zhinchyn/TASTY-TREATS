@@ -1,8 +1,7 @@
-<!-- # <span style="color:#9BB537">_TASTY</span> TREATS'_
+# <span style="color:#9BB537">_TASTY</span> TREATS'_
 
 <span style="font-size:20px; font-weight:600;">Customize Your Meal with
 Ingredient Options and Step-by-Step Video Guides.</span>
-
 <a href='https://michael-zhinchyn.github.io/TASTY-TREATS/'>Visit Site</a>
 
 ---
@@ -11,9 +10,16 @@ Ingredient Options and Step-by-Step Video Guides.</span>
     <h3 style='margin-right:500px;'>Magic Made by:</h3>
     <img src="./src/img/readme-img/not-broken-team-on-transparent-background.png" alt="Logo" width="200" />
 </div>
-
-### Group #13
-
+Group #13
+<p>
+   <strong>:sparkles: Team Lead: Yuriy Yarish</strong>
+</p>
+<p>
+   <strong>:sparkles: Scrum Master: Anna Zakharchuk</strong>
+   <span><a href="https://github.com/AnnaHort">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
+        </a></span>
+</p>
 <div style="display: flex; justify-content: center;">
     <table  style="margin-bottom:70px">
     <tr>
@@ -25,11 +31,11 @@ Ingredient Options and Step-by-Step Video Guides.</span>
         </a>
         </td>
         <td align="center" style="border:none;">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 2</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Illia Krylov</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername2">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/Illia12august">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
         <td align="center" style="border:none">
@@ -42,73 +48,61 @@ Ingredient Options and Step-by-Step Video Guides.</span>
     </tr>
     <tr>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 1</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Alina Akulina</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername1">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/bgirlalma">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 2</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Vlad Semenets</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername2">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/VladislavSemenets">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 3</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Mariana Dovhaliuk</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername3">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/mariana9uk">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
     </tr>
     <tr>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 1</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Maksim Gulay</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername1">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/MaksimGulay">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 2</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Viacheslav Shyrokov</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername2">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/Wiltor69">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px">⭐</span>
-        <span style="font-size:1.5em; margin-left:10px">NAME 1</span>
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Andriy Bolotov</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
-        <a href="https://github.com/yourusername1">
-            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="30" height="30" style="vertical-align: middle;">
+        <a href="https://github.com/andrhwl">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
     </tr>
     </table>
 </div>
-
-<p align="center">
-   <strong>✨ Team Lead: Yuriy Yarish</strong>
-</p>
-
-<p align="center">
-   <strong>✨ Scrum Master: Anna Zakharchuk</strong>
-</p>
-
 ---
-
 <h2 style="margin-top:80px">Tools and Technologies Used</h2>
-
 <h4>Programming and Markup Languages:</h4>
-
 <table align="center" style="margin-bottom:40px">
   <tr>
     <td align="center" style="border:none">
@@ -131,9 +125,7 @@ Ingredient Options and Step-by-Step Video Guides.</span>
     </td>
   </tr>
 </table>
-
-#### Development Tools:
-
+Development Tools:
 <table align="center" style="margin-bottom:40px">
   <tr>
     <td align="center" style="border:none">
@@ -154,11 +146,15 @@ Ingredient Options and Step-by-Step Video Guides.</span>
           <span style="font-size:1.17em; margin-left:10px">VS Code</span>
       </a>
     </td>
+    <td align="center" style="border:none">
+      <a href="https://code.visualstudio.com/">
+          <img src="./src/img/readme-img/postman.svg" alt="VS Code Logo" width="50" height="50" style="vertical-align: middle;">
+          <span style="font-size:1.17em; margin-left:10px">Postman</span>
+      </a>
+    </td>
   </tr>
 </table>
-
-#### Libraries and Frameworks:
-
+Libraries and Frameworks:
 <table align="center" style="margin-bottom:40px">
   <tr>
     <td align="center" style="border:none">
@@ -174,12 +170,6 @@ Ingredient Options and Step-by-Step Video Guides.</span>
       </a>
     </td>
     <td align="center" style="border:none">
-      <a href="https://ui.toast.com/tui-pagination/">
-          <img src="./src/img/readme-img/tui.jpg" alt="TUI Pagination Logo" width="90" style="vertical-align: middle;">
-          <span style="font-size:1.17em; margin-left:10px">TUI Pagination</span>
-      </a>
-    </td>
-    <td align="center" style="border:none">
       <a href="https://axios-http.com/">
           <img src="https://axios-http.com/assets/logo.svg" alt="Axios Logo" width="80" height="30" style="vertical-align: middle;">
           <span style="font-size:1.17em; margin-left:10px">Axios</span>
@@ -187,9 +177,7 @@ Ingredient Options and Step-by-Step Video Guides.</span>
     </td>
   </tr>
 </table>
-
-#### Version Control Systems:
-
+Version Control Systems:
 <table align="center" style="margin-bottom:40px">
   <tr>
     <td align="center" style="border:none">
@@ -206,9 +194,7 @@ Ingredient Options and Step-by-Step Video Guides.</span>
     </td>
   </tr>
 </table>
-
-###### Design and Project Management Tools:
-
+Design and Project Management Tools:
 <table align="center">
   <tr>
     <td align="center" style="border:none">
@@ -224,4 +210,4 @@ Ingredient Options and Step-by-Step Video Guides.</span>
       </a>
     </td>
   </tr>
-</table> -->
+</table>

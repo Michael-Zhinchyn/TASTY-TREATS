@@ -18,15 +18,15 @@ const heartIconRed = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height=
 </svg>`;
 
 // Функція, що генерує HTML-блок з іконкою серця
-function generateHeartBlock(id) {
+export function generateHeartBlock(id) {
   return `
     <div class="heart-block">
-      <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" />
-      <label for="card-checkbox-${id}" class="card-checkbox-label">
-        <span class="unchecked-heart">${heartIconGrey}</span>
-        <span class="checked-heart">${heartIconRed}</span>
-      </label>
-    </div>`;
+  <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" aria-label="card-checkbox-${id}" />
+  <label for="card-checkbox-${id}" class="card-checkbox-label">
+    <span class="unchecked-heart">${heartIconGrey}</span>
+    <span class="checked-heart">${heartIconRed}</span>
+  </label>
+</div>`;
 }
 
 // Решта коду тут ...
@@ -42,7 +42,7 @@ function generateStars(rating) {
 }
 
 // Функція, що генерує HTML-код для карточки рецепту
-function generateRecipeCard(recipe) {
+export function generateRecipeCard(recipe) {
   return `
     <li class="card-item">
       <div class="card-block">
@@ -56,7 +56,7 @@ function generateRecipeCard(recipe) {
         </div>
         <div class="card-bottom">
           <div class="card-rating-block">
-            <p class="card-rating">${recipe.rating}</p>
+            <p class="card-rating">${recipe.rating.toFixed(1)}</p>
             <div class="eating-stars">${generateStars(recipe.rating)}</div>
           </div>
           <button class="card-button" data-id="${
@@ -68,7 +68,7 @@ function generateRecipeCard(recipe) {
 }
 
 // Функція, що отримує рецепти з API та додає їх на сторінку
-async function getAllRecipes() {
+export async function getAllRecipes() {
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
@@ -86,6 +86,7 @@ async function getAllRecipes() {
     // Функція для обробки зміни стану чекбоксів
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо
+      console.log(checkbox);
       const checkboxId = checkbox.id;
 
       if (checkbox.checked) {
@@ -111,7 +112,6 @@ async function getAllRecipes() {
     // Перевіряємо, чи є збережені дані в локальному сховищі
     const storedData = localStorage.getItem('inFavorite');
     if (storedData) {
-
       // Розпарсуємо дані з локального сховища назад у масив
       selectedHeartCheckBox = JSON.parse(storedData);
 
@@ -123,7 +123,7 @@ async function getAllRecipes() {
         }
       });
     }
-
+    
     // -------------------------------------------------------------------------------------------------------------------------------------
 
     const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');

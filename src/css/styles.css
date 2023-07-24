@@ -8,9 +8,12 @@
 @import url('./add-rating.css');
 @import url('./starability-slot.css');
 /* @import url('./loader.css'); */
-@import url('./scroll-up.css');
-@import url('./all-cards.css');
-@import url('./swiper.css');
+
+/* @import url('./scroll-up.css'); */
+@import url('./all-cards.css'); 
+@import url('./swiper.css'); 
+@import url('./pagination-bar.css');
+
 
 @font-face {
   font-family: 'Inter';
