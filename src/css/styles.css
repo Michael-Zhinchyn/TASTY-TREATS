@@ -3,18 +3,15 @@
 @import url('./hero.css');
 @import url('./recipe-modal.css');
 @import url('./favorites.css');
-/* @import url('./create-order.css'); */
 @import url('./filters.css');
 @import url('./create-order.css');
-/* @import url('./recipe-modal.css'); */
-/* @import url('./favorites.css'); */
 @import url('./add-rating.css');
 @import url('./starability-slot.css');
-
 /* @import url('./loader.css'); */
 /* @import url('./scroll-up.css'); */
-@import url('./card-templ.css'); 
+@import url('./all-cards.css'); 
 @import url('./swiper.css'); 
+@import url('./pagination-bar.css');
 
 @font-face {
   font-family: 'Inter';
