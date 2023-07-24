@@ -128,7 +128,7 @@ export async function getAllRecipes() {
         }
       });
     }
-    
+
     // -------------------------------------------------------------------------------------------------------------------------------------
 
     const seeRecipeButtons = recipesContainer.querySelectorAll('.card-button');
