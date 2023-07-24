@@ -5,6 +5,7 @@ const blockFilterCardSet = document.querySelector('.filter-card'); // блок �
 
 const localStorageData = localStorage.getItem('inFavorite');
 
+
 const viewFavoriteCard = async () => {
   try {
     if (localStorageData) {
