@@ -36,3 +36,4 @@ const updateDashoffset = () => {
     scrollUpSvgPath.style.strokeDashoffset = dashoffset;
 
 }
+
