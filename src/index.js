@@ -6,5 +6,5 @@ import './js/all-categories';
 import './js/swiper';
 import './js/swiper-api';
 import './js/all-cards-api';
-// import './js/search';
+import './js/search';
 import './js/favorites'
