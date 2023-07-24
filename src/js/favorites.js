@@ -22,6 +22,16 @@ const viewFavoriteCard = async () => {
         blockFilterCardSet.innerHTML = newFavoriteCards;
       });
 
+
+
+      generateHeartBlock(id);
+      generateStars(rating);
+      generateRecipeCard(recipe);
+      getAllRecipes()
+
+
+      
+    
       if (favoritesArray.length === 0) {
         blockForEmpty.style.display = 'flex';
         blockFilterCardSet.style.display = 'none';

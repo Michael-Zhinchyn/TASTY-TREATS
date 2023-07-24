@@ -18,7 +18,7 @@ const heartIconRed = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height=
 </svg>`;
 
 // Функція, що генерує HTML-блок з іконкою серця
-function generateHeartBlock(id) {
+export function generateHeartBlock(id) {
   return `
     <div class="heart-block">
       <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" />
