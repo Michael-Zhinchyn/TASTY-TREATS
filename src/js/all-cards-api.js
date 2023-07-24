@@ -87,7 +87,6 @@ export async function getAllRecipes() {
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо <input>
       console.log(checkbox);
-      const favoriteImgEl = document.querySelector('.')
       const checkboxId = checkbox.id;
 
 
