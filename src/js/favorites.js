@@ -24,24 +24,7 @@ async function addFavoriteRecipe(id) {
       const messageBlock = document.querySelector('.block-for-empty');
       messageBlock.style.display = 'none';
       favoritesContainer.innerHTML += recipeCard;
-
-      // -----------------------------------------------------------------------------
-      // // Зміна стилів для Favorite для планшетки
-      // const allLiEl = favoritesContainer.querySelectorAll('li');
-      // console.log(allLiEl);
-      // allLiEl.forEach(liEl => {
-      //   liEl.style.width = '224px';
-      //   liEl.style.height = '224px';
-      // })
-
-      // const cardImgsEl = document.querySelectorAll('.card-image');
-      // console.log(cardImgsEl);
-      // cardImgsEl.forEach(cardImg => {
-
-      //   cardImg.style.setProperty('width', '224px', 'important');
-      //   cardImg.style.setProperty('height', '224px', 'important');
-      // })
-
+// --------------------------------------------------------------------------------------------------------------------------------------
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
 
@@ -100,8 +83,7 @@ async function addFavoriteRecipe(id) {
           });
         }
       });
-
-      // -----------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------
     }
   } catch (error) {
     console.log(error);
@@ -117,79 +99,3 @@ function loadFavoriteRecipes() {
 }
 
 loadFavoriteRecipes();
-
-// import axios from 'axios';
-// // Якщо функції `generateHeartBlock` та `generateStars` визначені в іншому файлі:
-// import { generateHeartBlock, generateStars } from './all-cards-api';
-
-// let storedData = localStorage.getItem('inFavorite');
-// let actualIDs = [];
-// if (storedData) {
-//   let fullIDs = JSON.parse(storedData);
-//   actualIDs = fullIDs.map(id => id.replace('card-checkbox-', ''));
-//   console.log(actualIDs);
-// }
-
-// const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
-
-// const favoritesContainer = document.querySelector('.favorite-card-list');
-
-// async function addFavoriteRecipe(id) {
-//   try {
-//     const response = await axios.get(`${API_URL}/${id}`);
-//     const recipe = response.data;
-
-//     console.log(recipe);
-
-//     const recipeCard = generateFavoriteRecipeCard(recipe);
-
-//     if (favoritesContainer) {
-//       const messageBlock = document.querySelector('.block-for-empty');
-//       messageBlock.style.display = 'none';
-//       favoritesContainer.innerHTML += recipeCard;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// // Тут ми створюємо нову функцію, що генерує HTML для карточки рецепту в розділі "Улюблені"
-// function generateFavoriteRecipeCard(recipe) {
-//   // Перевіряємо, чи є рецепт в списку улюблених
-//   const isFavorite = actualIDs.includes(recipe._id) ? 'checked' : '';
-
-//   // модифікований HTML-код карточки
-//   return `
-//     <li class="favorite-card-item card-item">
-//       <div class="card-block">
-//         <img class="card-image" src="${recipe.preview}" alt="${
-//     recipe.title
-//   }" width="335px">
-//         ${generateHeartBlock(recipe._id)}
-//         <div class="card-content">
-//           <h3 class="card-heading">${recipe.title}</h3>
-//           <p class="card-description">${recipe.description}</p>
-//         </div>
-//         <div class="card-bottom">
-//           <div class="card-rating-block">
-//             <p class="card-rating">${recipe.rating}</p>
-//             <div class="eating-stars">${generateStars(recipe.rating)}</div>
-//           </div>
-//           <button class="card-button" data-id="${
-//             recipe._id
-//           }">See recipe</button>
-//         </div>
-//       </div>
-//       <input type="checkbox" id="card-checkbox-${recipe._id}" ${isFavorite}>
-//     </li>`;
-// }
-
-// function loadFavoriteRecipes() {
-//   if (actualIDs) {
-//     actualIDs.forEach(id => {
-//       addFavoriteRecipe(id);
-//     });
-//   }
-// }
-
-// loadFavoriteRecipes();
