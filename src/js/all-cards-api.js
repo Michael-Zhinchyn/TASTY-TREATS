@@ -368,7 +368,7 @@ console.log(pageNumb)
     previousPageButton.addEventListener("click", loadPrevPage)
 // getAllRecipes();
 // getAllRecipesWithOptions()
-=======
+
 function renderRecipes(recipes) {
   const recipeCards = recipes.map(generateRecipeCard).join('');
   recipesContainer.innerHTML = recipeCards;

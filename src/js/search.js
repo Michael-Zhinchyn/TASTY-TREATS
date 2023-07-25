@@ -1,21 +1,18 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
 import _ from 'lodash';
-import { generateRecipeCard, generateHeartBlock } from './all-cards-api';
+import { generateRecipeCard } from './all-cards-api';
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const searchInput = document.querySelector('#id-input-search');
 const recipeList = document.querySelector('.filter-card-set');
 // full url function
-function fullUrl(title, selectTime, selectArea, selectIngredients) {
+function fullUrl(title) {
   const additionUrl = `?page=1&title=${title}&limit=6`;
   return BASE_URL + additionUrl;
 }
 // axios fetch url
 async function fetchRecipes(
-  keyword,
-  selectTime,
-  selectArea,
-  selectIngredients
+  keyword
 ) {
   try {
     const response = await axios.get(fullUrl(keyword));
@@ -30,15 +27,9 @@ async function fetchRecipes(
 // Функція для відображення рецептів з урахуванням обраних фільтрів
 const recipesRender = async () => {
   const keyword = searchInput.value.trim().toLowerCase();
-  const selectTime = timeSelect.value;
-  const selectArea = areaSelect.value;
-  const selectIngredients = ingredientsSelect.value;
 
   const allRecipe = await fetchRecipes(
-    keyword,
-    selectTime,
-    selectArea,
-    selectIngredients
+    keyword
   );
 
   return allRecipe;
@@ -115,16 +106,16 @@ searchInput.addEventListener(
 );
 
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
-timeSelect.addEventListener('change', async () => {
-  await getAllRecipes();
-});
+// timeSelect.addEventListener('change', async () => {
+//   await getAllRecipes();
+// });
 
-areaSelect.addEventListener('change', async () => {
-  await getAllRecipes();
-});
+// areaSelect.addEventListener('change', async () => {
+//   await getAllRecipes();
+// });
 
-ingredientsSelect.addEventListener('change', async () => {
-  await getAllRecipes();
-});
+// ingredientsSelect.addEventListener('change', async () => {
+//   await getAllRecipes();
+// });
 
 // Виклик функції для відображення рецептів при завантаженні сторінки
