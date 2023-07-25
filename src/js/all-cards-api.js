@@ -84,9 +84,8 @@ export async function getAllRecipes() {
     let selectedHeartCheckBox = [];
 
     // Функція для обробки зміни стану чекбоксів
-    function handleCheckboxChange(event) {
+     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо <input>
-      console.log(checkbox);
       const checkboxId = checkbox.id;
 
       // дістати всю інформацію з картки за запушити її у масив
@@ -100,7 +99,7 @@ export async function getAllRecipes() {
           selectedHeartCheckBox.splice(index, 1);
         }
       }
-      console.log(selectedHeartCheckBox); // правильно виводиться масив з даними
+
 
       const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
       localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
