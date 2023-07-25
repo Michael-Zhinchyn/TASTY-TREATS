@@ -10,3 +10,4 @@ import './js/all-cards-api';
 // import './js/search';
 import './js/favorites';
 import './js/scroll-up';
+// import './js/pagination';
