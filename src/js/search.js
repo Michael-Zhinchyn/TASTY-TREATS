@@ -94,6 +94,7 @@ async function getAllRecipes() {
 }
 
 // Обробник події для поля пошуку з використанням Debounce
+
 if (searchInput) {
   searchInput.addEventListener(
     'input',
@@ -101,6 +102,12 @@ if (searchInput) {
       await getAllRecipes();
     }, 300)
   );
+
+  searchInput.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter') {
+      evt.preventDefault();
+    }
+  });
 }
 
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
