@@ -170,7 +170,9 @@ export async function getAllRecipesWithOptions() {
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
     const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -361,13 +363,13 @@ const loadPrevPage = async () => {
   }
 };
 // ---------------------------------------------------------------------------------------------------------------------------------------
-nextPagePagBtn.addEventListener('click', loadNextPage);
-backToFirstPage.addEventListener('click', backToFirst);
-pageOneBtn.addEventListener('click', loadfirstPage);
-pageTwoBtn.addEventListener('click', loadPageTwo);
-pageThreeBtn.addEventListener('click', loadPageThree);
-lastPageBtn.addEventListener('click', loadLastPage);
-previousPageButton.addEventListener('click', loadPrevPage);
+// nextPagePagBtn.addEventListener('click', loadNextPage);
+// backToFirstPage.addEventListener('click', backToFirst);
+// pageOneBtn.addEventListener('click', loadfirstPage);
+// pageTwoBtn.addEventListener('click', loadPageTwo);
+// pageThreeBtn.addEventListener('click', loadPageThree);
+// lastPageBtn.addEventListener('click', loadLastPage);
+// previousPageButton.addEventListener('click', loadPrevPage);
 // getAllRecipes();
 // getAllRecipesWithOptions()
 
