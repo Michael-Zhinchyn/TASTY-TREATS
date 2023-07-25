@@ -19,7 +19,7 @@ const heartIconRed = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height=
 export const recipesContainer = document.querySelector('.filter-card-set');
 
 // Функція, що генерує HTML-блок з іконкою серця
-export function generateHeartBlock(id) {
+function generateHeartBlock(id) {
   return `
     <div class="heart-block">
       <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" aria-label="card-checkbox-${id}" />
@@ -41,7 +41,7 @@ function generateStars(rating) {
 }
 
 // Функція, що генерує HTML-код для карточки рецепту
-export function generateRecipeCard(recipe) {
+function generateRecipeCard(recipe) {
   return `
     <li class="card-item">
       <div class="card-block">
@@ -63,7 +63,7 @@ export function generateRecipeCard(recipe) {
 }
 
 // Функція, що отримує рецепти з API та додає їх на сторінку
-export async function getAllRecipes() {
+async function getAllRecipes() {
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
@@ -78,10 +78,12 @@ export async function getAllRecipes() {
     let selectedHeartCheckBox = [];
 
     // Функція для обробки зміни стану чекбоксів
+
      function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо <input>
 
       // console.log(checkbox);
+
 
       const checkboxId = checkbox.id;
 
@@ -123,10 +125,12 @@ export async function getAllRecipes() {
         }
       });
     }
+
   } catch (error) {
     console.log(error);
   }
 };
+
 
 export async function getRecipesByCategory(category) {
   const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}`;
