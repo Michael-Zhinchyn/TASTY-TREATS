@@ -49,6 +49,7 @@ searchInput.addEventListener("input", _.debounce(async () => {
   await searchRecipes();
 }, 300));
 
+
 // Обработчик события клавиши "Escape" и "Enter"
 searchInput.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' || event.key === 'Enter') {
@@ -59,3 +60,4 @@ searchInput.addEventListener('keydown', (event) => {
     searchRecipes();
   }
 });
+
