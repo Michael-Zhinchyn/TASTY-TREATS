@@ -19,6 +19,7 @@ export async function getPopularRecip() {
 getPopularRecip();
 
 function createMarkUp(data) {
+  
   return data
     .map(({ preview, title, description, _id }) => {
       const MAX_LENGTH = 80;
