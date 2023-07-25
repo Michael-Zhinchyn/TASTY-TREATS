@@ -13,11 +13,12 @@ export async function getCategories() {
     if (categoriesList) {
       categoriesList.innerHTML = markUp;
       addClickListenersToCategories();
-      getAllRecipes(); // Відображаємо всі рецепти при завантаженні сторінки
     }
   } catch (error) {
     console.error(error);
   }
+  // Відображаємо всі рецепти після того, як вже відобразили всі категорії
+  getAllRecipes();
 }
 
 function addClickListenersToCategories() {
