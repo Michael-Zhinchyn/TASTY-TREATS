@@ -6,12 +6,7 @@ import './js/all-categories';
 import './js/swiper';
 import './js/swiper-api';
 import './js/all-cards-api';
-
-import './js/search';
-import './js/favorites'
-
-// import './js/filters'
 // import './js/search';
 import './js/favorites';
+// import './js/filters'
 import './js/scroll-up';
-
