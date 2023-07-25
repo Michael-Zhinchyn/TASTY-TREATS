@@ -38,6 +38,10 @@ if (recipesContainer) {
   recipesContainer.addEventListener('click', handleContainerClick);
 }
 
+if (favoritesContainer) {
+  favoritesContainer.addEventListener('click', handleFavoritesContainerClick);
+}
+
 if (modalRecipe) {
   modalRecipe.addEventListener('click', event => event.stopPropagation());
 }
@@ -78,10 +82,22 @@ function handleListClick(event) {
 
 function handleContainerClick(event) {
   const buttonElement = event.target.closest('.card-button');
-  if (!buttonElement) return; // Return early if click isn't on a button
+  if (!buttonElement) return;
+  event.stopPropagation();
+  document.body.style.overflow = 'hidden';
+  recipeBackdrop.style.display = 'block';
+  const recipeId = buttonElement.getAttribute('data-id');
+  if (recipeId) {
+    targetId = recipeId;
+  }
 
-  event.stopPropagation(); // Stop the event from propagating up the DOM tree
+  getRecipe();
+}
 
+function handleFavoritesContainerClick(event) {
+  const buttonElement = event.target.closest('.card-button');
+  if (!buttonElement) return;
+  event.stopPropagation();
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
 
@@ -89,7 +105,6 @@ function handleContainerClick(event) {
   if (recipeId) {
     targetId = recipeId;
   }
-
   getRecipe();
 }
 
@@ -109,7 +124,7 @@ function changeColorOfStars() {
 export async function getRecipe() {
   try {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
-    console.log(response);
+
     const markUp = recipeMarkup(response.data);
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
