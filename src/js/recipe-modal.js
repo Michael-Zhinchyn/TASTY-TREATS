@@ -1,6 +1,8 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { popularRecipList } from './popular-recipes';
+import { recipesContainer } from './all-cards-api';
+
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
@@ -14,8 +16,10 @@ const form = document.querySelector('.add-rating-form');
 const starChoosed = document.querySelector('.js-rating-choosed');
 const starField = document.querySelector('.starability-slot');
 const addRatingEmail = document.querySelector('.add-rating-email');
+
 const BASE_RECIPE_URL =
   'https://tasty-treats-backend.p.goit.global/api/recipes/';
+
 let targetId = null;
 let stars = null;
 let giveRatingBtn = null;
@@ -28,6 +32,11 @@ let giveRatingBtn = null;
 if (popularRecipList) {
   popularRecipList.addEventListener('click', handleListClick);
 }
+
+if (recipesContainer) {
+  recipesContainer.addEventListener('click', handleContainerClick);
+}
+
 if (modalRecipe) {
   modalRecipe.addEventListener('click', event => event.stopPropagation());
 }
@@ -58,13 +67,31 @@ function handleListClick(event) {
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
   let targetEl = event.target;
-  let listItem = targetEl.closest('li');
+  let listItem = targetEl.closest('li.recip-item');
   if (listItem) {
     let itemId = listItem.id;
     targetId = itemId;
   }
   getRecipe();
 }
+
+function handleContainerClick(event) {
+  const buttonElement = event.target.closest('.card-button');
+  if (!buttonElement) return; // Return early if click isn't on a button
+
+  event.stopPropagation(); // Stop the event from propagating up the DOM tree
+
+  document.body.style.overflow = 'hidden';
+  recipeBackdrop.style.display = 'block';
+
+  const recipeId = buttonElement.getAttribute('data-id');
+  if (recipeId) {
+    targetId = recipeId;
+  }
+
+  getRecipe();
+}
+
 // Функція для зміни кольору іконок
 function changeColorOfStars() {
   let icons = document.querySelectorAll('.icon-star');
@@ -81,6 +108,7 @@ function changeColorOfStars() {
 export async function getRecipe() {
   try {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
+    console.log(response);
     const markUp = recipeMarkup(response.data);
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
