@@ -1,52 +1,74 @@
-// import Notiflix from 'notiflix';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
+import axios from 'axios';
+import _ from 'lodash';
+const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes&perPage=48'
+const searchInput = document.querySelector('#id-input-search');
+const timeSelect = document.querySelector('#select-time');
+const areaSelect = document.querySelector('#select-area');
+const ingredientsSelect = document.querySelector('#select-Ingredients');
+const recipeList = document.querySelector('.filter-card-set');
 
-// const searchInput = document.querySelector('#id-input-search');
-// const searchIcon = document.querySelector('.search-icon');
-// const recipesData = []
+async function fetchRecipes() {
+  try {
+    const response = await axios.get(`${API_URL}`);
+    const data = response.data;
+    console.log(response)
+    return data;
+  } catch (error) {
+    console.error("Нажаль по даному запиту рецепт не знайденний");
+    return [];
+  }
+}
 
-// // import { createCard } from './make_card';
+// Функція для відображення рецептів з урахуванням обраних фільтрів
+const recipesRender = async () => {
+  const keyword = searchInput.value.trim().toLowerCase();
+  const selectTime = timeSelect.value;
+  const selectArea = areaSelect.value;
+  const selectIngredients = ingredientsSelect.value;
 
-// function showRecipeCards() {
-//     const recipeCardsContainer = document.querySelector('.filter-card-set');
-//     recipeCardsContainer.innerHTML = createCard(recipesData);
-// };
+  const allRecipe = await fetchRecipes();
 
-// // Функция для поиска карточек по заданному тексту
-// function searchRecipeCards(searchText) {
+  const filtered = allRecipe.filter((recipe) => {
+    const isKeywordMatch = recipe.title.toLowerCase().includes(keyword);
+    const isTimeMatch = selectTime === "" || recipe.time <= parseInt(selectTime);
+    const isAreaMatch = selectArea === "" || recipe.area === selectArea;
+    const isIngredientsMatch = selectIngredients === "" || recipe.ingredients.includes(selectIngredients);
+    return isKeywordMatch && isTimeMatch && isAreaMatch && isIngredientsMatch;
+  });
 
-//     const filterCards = recipesData.filter(recipe => {
-//         const title = recipe.title.toLowerCase();
-//         const description = recipe.description.toLowerCase();
-//         searchText = searchText.toLowerCase();
+  recipeList.innerHTML = "";
 
-//         return title.includes(searchText) 
-//      description.includes(searchText);
-//     });
+  if (filtered.length > 0) {
+    // Відображення рецептів, якщо є результати пошуку
+    filtered.forEach((recipe) => {
+      const recipeItem = document.createElement("div");
+      recipeItem.textContent = recipe.title;
+      recipeList.appendChild(recipeItem);
+    });
+  } else {
+    // Виведення сповіщення про відсутність результатів пошуку
+    Notiflix.Report.failure("No recipes found matching the selected filters!");
+  }
+};
 
+// Обробник події для поля пошуку з використанням Debounce
+searchInput.addEventListener("input", _.debounce(async () => {
+  await recipesRender();
+}, 300));
 
-// // Если карточка не найдена, очищается инпут и выводиться оповещение
-//     if(filterCards.length > 0) {
-//         recipeCardsContainer.innerHTML = createCard(filterCards);
-//     }else{
-//         recipeCardsContainer.innerHTML = '';
-//         Notiflix.Notify.warning('No recipes found!')
-//     }
-// }
+// Обробники подій для селекторів часу, країни походження та інгредієнтів
+timeSelect.addEventListener("change", async () => {
+  await recipesRender();
+});
 
-// // Показываем все карточки рецептов при загрузке страницы
-// showRecipeCards();
+areaSelect.addEventListener("change", async () => {
+  await recipesRender();
+});
 
-// // Поиск по клику на клавишу "Enter" или "Escape"
-// searchInput.addEventListener('keypress', e => {
-//     if (e.key === 'Enter') {
-//         const searchText = e.target.value;
-//         searchRecipeCards(searchText);
-//     }
-// });
+ingredientsSelect.addEventListener("change", async () => {
+  await recipesRender();
+});
 
-// // Поиск по клику на иконку поиска
-// searchIcon.addEventListener('click', () => {
-//     const searchText = searchInput.value;
-//     searchRecipeCards(searchText);
-// });
+// Виклик функції для відображення рецептів при завантаженні сторінки
+recipesRender();
