@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { getRecipesByCategory, getAllRecipes, recipesContainer } from './all-cards-api.js';
+import {
+  getRecipesByCategory,
+  getAllRecipes,
+  recipesContainer,
+} from './all-cards-api.js';
 
 const categoriesList = document.querySelector('.categories-list');
 const allCategoriesButton = document.getElementById('all-categories-button');
@@ -73,7 +77,9 @@ function resetAllCategoriesButton() {
 }
 
 // Отримуємо посилання на всі фільтри окрім "All categories"
-const otherFilters = document.querySelectorAll('.category-item:not(#all-categories-button)');
+const otherFilters = document.querySelectorAll(
+  '.category-item:not(#all-categories-button)'
+);
 
 // Обробник події для інших фільтрів
 otherFilters.forEach(filter => {
@@ -99,14 +105,16 @@ otherFilters.forEach(filter => {
 });
 
 // Отримуємо посилання на кнопку "All categories" і додаємо обробник події для активного стану при ховері
-allCategoriesButton.addEventListener('mouseover', () => {
-  allCategoriesButton.classList.add('active-category');
-});
+if (allCategoriesButton) {
+  allCategoriesButton.addEventListener('mouseover', () => {
+    allCategoriesButton.classList.add('active-category');
+  });
 
-allCategoriesButton.addEventListener('mouseout', () => {
-  if (!allCategoriesButton.classList.contains('active-category')) {
-    allCategoriesButton.classList.remove('active-category');
-  }
-});
+  allCategoriesButton.addEventListener('mouseout', () => {
+    if (!allCategoriesButton.classList.contains('active-category')) {
+      allCategoriesButton.classList.remove('active-category');
+    }
+  });
+}
 
 getCategories();
