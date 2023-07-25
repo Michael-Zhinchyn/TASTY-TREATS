@@ -1,9 +1,11 @@
 .card-item {
 
+
     list-style: none;
     max-width: 335px;
     height: 335px;
     
+
   list-style: none;
   width: 335px;
   height: 335px;
@@ -18,11 +20,9 @@
 
 .card-block::after {
   content: '';
-  background: linear-gradient(
-    1deg,
-    rgba(5, 5, 5, 0.6) 0%,
-    rgba(5, 5, 5, 0) 100%
-  );
+  background: linear-gradient(1deg,
+      rgba(5, 5, 5, 0.6) 0%,
+      rgba(5, 5, 5, 0) 100%);
   position: absolute;
   top: 0;
   left: 0;
@@ -66,12 +66,12 @@
 }
 
 .card-checkbox-label .unchecked-heart,
-.card-checkbox:checked ~ .card-checkbox-label .checked-heart {
+.card-checkbox:checked~.card-checkbox-label .checked-heart {
   display: inline;
 }
 
 .card-checkbox-label .checked-heart,
-.card-checkbox:checked ~ .card-checkbox-label .unchecked-heart {
+.card-checkbox:checked~.card-checkbox-label .unchecked-heart {
   display: none;
 }
 
@@ -135,6 +135,11 @@
   line-height: normal;
 }
 
+.card-button:hover {
+  color: var(--brand-black);
+  transition: var(--basic-transition);
+}
+
 .icon-star {
   fill: rgba(248, 248, 248, 0.1);
 }
@@ -147,45 +152,55 @@
   line-height: 1.29;
   margin-right: 4px;
 }
+
 @media screen and (min-width: 768px) {
   .card-item {
     width: 240px;
     height: 264px;
   }
+
   .card-block::after {
     width: 240px;
   }
+
   .card-image {
     min-width: 240px;
     height: 264px;
   }
+
   .card-content {
     width: 208px;
   }
+
   .card-bottom {
     width: 208px;
   }
+
   .icon-star {
     width: 16px;
     height: 16px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .card-item {
     width: 250px;
     height: 287px;
   }
-  
+
   .card-block::after {
     width: 250px;
   }
+
   .card-image {
     width: 250px;
     height: 287px;
   }
+
   .card-content {
     width: 218px;
   }
+
   .card-bottom {
     width: 218px;
   }
