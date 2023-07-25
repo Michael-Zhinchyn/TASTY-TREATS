@@ -364,6 +364,6 @@ console.log(pageNumb)
     pageTwoBtn.addEventListener("click", loadPageTwo)
     pageThreeBtn.addEventListener("click", loadPageThree)
     lastPageBtn.addEventListener("click", loadLastPage)
-    previousPageButton.addEventListener("click,", loadPrevPage)
+    previousPageButton.addEventListener("click", loadPrevPage)
 // getAllRecipes();
 // getAllRecipesWithOptions()
