@@ -76,6 +76,7 @@
 
 .category-item {
   margin-bottom: 18px;
+
 }
 
 .category-name {
@@ -92,6 +93,7 @@
 .category-name:hover {
   color: var(--brand-green);
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 /* END OF "ALL CATEGORIES" */
