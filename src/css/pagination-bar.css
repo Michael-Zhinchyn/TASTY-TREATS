@@ -65,6 +65,13 @@
     line-height: 1.23;
 }
 
+.pag-btn-white:hover {
+    background-color: var(--brand-green);
+    border: none;
+    transition: var(--basic-transition);
+}
+
+
 .dark-mode .pag-btn-white,
 .dark-mode .pag-btn-white-tablet {
     background-color: transparent;
@@ -75,6 +82,12 @@
 
 .pag-btn-white-tablet {
     display: none;
+}
+
+.pag-btn-white-tablet:hover {
+    background-color: var(--brand-green);
+    border: none;
+    transition: var(--basic-transition);
 }
 
 .pag-btn-left-icon {

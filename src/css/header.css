@@ -235,6 +235,17 @@
         margin-left: 24px;
     }
 
+    .logo-first-color {
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: -0.72px;
+    }
+
+    .logo-second-color {
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: -0.72px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
