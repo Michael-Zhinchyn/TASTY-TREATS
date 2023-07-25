@@ -42,7 +42,7 @@ function generateStars(rating) {
 }
 
 // Функція, що генерує HTML-код для карточки рецепту
- function generateRecipeCard(recipe) {
+function generateRecipeCard(recipe) {
   return `
     <li class="card-item">
       <div class="card-block">
