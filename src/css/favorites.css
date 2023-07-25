@@ -42,6 +42,13 @@
     line-height: 1.29;
 }
 
+.favorite-card-list {
+    display: flex;
+flex-wrap: wrap;
+gap: 24px;
+}
+
+
 @media screen and (min-width: 768px) {
     .container {
         max-width: 768px;
@@ -62,5 +69,8 @@
         width: 481px;
         font-style: 16px;
         line-height: 1.5;
+    }
+    .favorite-card-list {
+        gap: 16px;
     }
 }
