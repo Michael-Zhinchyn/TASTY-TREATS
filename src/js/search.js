@@ -11,9 +11,7 @@ function fullUrl(title) {
   return BASE_URL + additionUrl;
 }
 // axios fetch url
-async function fetchRecipes(
-  keyword
-) {
+async function fetchRecipes(keyword) {
   try {
     const response = await axios.get(fullUrl(keyword));
     const data = response.data;
@@ -28,9 +26,7 @@ async function fetchRecipes(
 const recipesRender = async () => {
   const keyword = searchInput.value.trim().toLowerCase();
 
-  const allRecipe = await fetchRecipes(
-    keyword
-  );
+  const allRecipe = await fetchRecipes(keyword);
 
   return allRecipe;
 };
@@ -98,17 +94,22 @@ async function getAllRecipes() {
 }
 
 // Обробник події для поля пошуку з використанням Debounce
-searchInput.addEventListener(
-  'input',
-  _.debounce(async () => {
-    await getAllRecipes();
-  }, 300)
-);
-searchInput.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Enter') {
-    evt.preventDefault()
-  }
-})
+
+if (searchInput) {
+  searchInput.addEventListener(
+    'input',
+    _.debounce(async () => {
+      await getAllRecipes();
+    }, 300)
+  );
+
+  searchInput.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter') {
+      evt.preventDefault();
+    }
+  });
+}
+
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
 // timeSelect.addEventListener('change', async () => {
 //   await getAllRecipes();
