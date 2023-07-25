@@ -36,10 +36,26 @@
   transition: var(--basic-transition);
 }
 
+.category-item.active .category-name,
+.category-item.active-category .category-name {
+  color: var(--brand-green);
+}
+
 .filter-all-categories-button:hover {
   background-color: var(--brand-green);
   color: var(--brand-white);
   border: 1px solid transparent;
+}
+
+.filter-all-categories-button:active,
+.filter-all-categories-button.active-category {
+  background-color: var(--brand-green);
+  color: var(--brand-white);
+  border: 1px solid transparent;
+}
+
+.active-category{
+   color:  var(--brand-green);
 }
 
 .dark-mode .filter-all-categories-button {
