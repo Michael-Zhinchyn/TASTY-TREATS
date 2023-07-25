@@ -12,7 +12,7 @@ if (storedData) {
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 
-const favoritesContainer = document.querySelector('.favorite-card-list');
+export const favoritesContainer = document.querySelector('.favorite-card-list');
 
 async function addFavoriteRecipe(id) {
   try {
@@ -29,36 +29,36 @@ async function addFavoriteRecipe(id) {
       favoritesContainer.innerHTML += recipeCard;
 
       // -----------------------------------------------------------------------------
-// // Зміна стилів для Favorite для планшетки
-// const allLiEl = favoritesContainer.querySelectorAll('li');
-// console.log(allLiEl);
-// allLiEl.forEach(liEl => {
-//   liEl.style.width = '224px';
-//   liEl.style.height = '224px';
-// })
+      // // Зміна стилів для Favorite для планшетки
+      // const allLiEl = favoritesContainer.querySelectorAll('li');
+      // console.log(allLiEl);
+      // allLiEl.forEach(liEl => {
+      //   liEl.style.width = '224px';
+      //   liEl.style.height = '224px';
+      // })
 
-// const cardImgsEl = document.querySelectorAll('.card-image');
-// console.log(cardImgsEl);
-// cardImgsEl.forEach(cardImg => {
-  
-//   cardImg.style.setProperty('width', '224px', 'important');
-//   cardImg.style.setProperty('height', '224px', 'important');
-// })
+      // const cardImgsEl = document.querySelectorAll('.card-image');
+      // console.log(cardImgsEl);
+      // cardImgsEl.forEach(cardImg => {
+
+      //   cardImg.style.setProperty('width', '224px', 'important');
+      //   cardImg.style.setProperty('height', '224px', 'important');
+      // })
 
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
-      
+
       heartCheckBoxEl.forEach(heart => {
         heart.checked = true;
-      
+
         // Функція для обробки зміни стану чекбоксів
         function handleCheckboxChange(event) {
           const checkbox = event.target; // елемент на який клікаємо <input>
           const checkboxId = checkbox.id;
-      
+
           // Отримання батьківського елемента `.card-block`
           const cardBlock = checkbox.closest('.card-block');
-      
+
           if (checkbox.checked) {
             selectedHeartCheckBox.push(checkboxId);
           } else {
@@ -68,39 +68,43 @@ async function addFavoriteRecipe(id) {
               selectedHeartCheckBox.splice(index, 1);
               const cardItemEl = cardBlock.closest('.card-item');
               cardItemEl.remove();
-              if (favoritesContainer && favoritesContainer.children.length === 0) {
+              if (
+                favoritesContainer &&
+                favoritesContainer.children.length === 0
+              ) {
                 favoritesContainer.remove();
                 messageBlock.style.display = 'flex';
               }
             }
           }
-      
-          const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
+
+          const heartCheckBoxElLocalStorage = JSON.stringify(
+            selectedHeartCheckBox
+          );
           localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
         }
-      
+
         heart.addEventListener('change', handleCheckboxChange);
-      
+
         // Перевіряємо, чи є збережені дані в локальному сховищі
         const storedData = localStorage.getItem('inFavorite');
         if (storedData) {
           // Розпарсуємо дані з локального сховища назад у масив
           selectedHeartCheckBox = JSON.parse(storedData);
-      
+
           // Відновлюємо стан чекбоксів на основі збережених значень
           heartCheckBoxEl.forEach(checkbox => {
             const checkboxId = checkbox.id;
             if (selectedHeartCheckBox.includes(checkboxId)) {
               checkbox.checked = true;
             } else {
-
               messageBlock.style.display = 'flex';
             }
           });
         }
       });
-      
-// -----------------------------------------------------------------------------
+
+      // -----------------------------------------------------------------------------
     }
   } catch (error) {
     console.log(error);
@@ -116,17 +120,6 @@ function loadFavoriteRecipes() {
 }
 
 loadFavoriteRecipes();
-
-
-
-
-
-
-
-
-
-
-
 
 // import axios from 'axios';
 // // Якщо функції `generateHeartBlock` та `generateStars` визначені в іншому файлі:
