@@ -7,7 +7,6 @@ let actualIDs = [];
 if (storedData) {
   let fullIDs = JSON.parse(storedData);
   actualIDs = fullIDs.map(id => id.replace('card-checkbox-', ''));
-  console.log(actualIDs);
 }
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
@@ -18,8 +17,6 @@ async function addFavoriteRecipe(id) {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
     const recipe = response.data;
-
-    console.log(recipe);
 
     const recipeCard = generateRecipeCard(recipe);
 
