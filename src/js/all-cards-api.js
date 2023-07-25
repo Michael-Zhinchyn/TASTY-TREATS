@@ -22,15 +22,13 @@ export const recipesContainer = document.querySelector('.filter-card-set');
 export function generateHeartBlock(id) {
   return `
     <div class="heart-block">
-  <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" aria-label="card-checkbox-${id}" />
-  <label for="card-checkbox-${id}" class="card-checkbox-label">
-    <span class="unchecked-heart">${heartIconGrey}</span>
-    <span class="checked-heart">${heartIconRed}</span>
-  </label>
-</div>`;
+      <input type="checkbox" class="card-checkbox" id="card-checkbox-${id}" aria-label="card-checkbox-${id}" />
+      <label for="card-checkbox-${id}" class="card-checkbox-label">
+        <span class="unchecked-heart">${heartIconGrey}</span>
+        <span class="checked-heart">${heartIconRed}</span>
+      </label>
+    </div>`;
 }
-
-// Решта коду тут ...
 
 // Функція, що генерує HTML-код зірок на основі рейтингу рецепту
 function generateStars(rating) {
@@ -47,9 +45,7 @@ export function generateRecipeCard(recipe) {
   return `
     <li class="card-item">
       <div class="card-block">
-        <img class="card-image" src="${recipe.preview}" alt="${
-    recipe.title
-  }" width="335px">
+        <img class="card-image" src="${recipe.preview}" alt="${recipe.title}" width="335px">
         ${generateHeartBlock(recipe._id)}
         <div class="card-content">
           <h3 class="card-heading">${recipe.title}</h3>
@@ -60,9 +56,7 @@ export function generateRecipeCard(recipe) {
             <p class="card-rating">${recipe.rating}</p>
             <div class="eating-stars">${generateStars(recipe.rating)}</div>
           </div>
-          <button class="card-button" data-id="${
-            recipe._id
-          }">See recipe</button>
+          <button class="card-button" data-id="${recipe._id}">See recipe</button>
         </div>
       </div>
     </li>`;
@@ -86,7 +80,7 @@ export async function getAllRecipes() {
     // Функція для обробки зміни стану чекбоксів
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо <input>
-      console.log(checkbox);
+      // console.log(checkbox);
       const checkboxId = checkbox.id;
 
       // дістати всю інформацію з картки за запушити її у масив
@@ -100,7 +94,7 @@ export async function getAllRecipes() {
           selectedHeartCheckBox.splice(index, 1);
         }
       }
-      console.log(selectedHeartCheckBox); // правильно виводиться масив з даними
+      // console.log(selectedHeartCheckBox); // правильно виводиться масив з даними
 
       const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
       localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
@@ -128,6 +122,20 @@ export async function getAllRecipes() {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-getAllRecipes();
+export async function getRecipesByCategory(category) {
+  const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}`;
+  try {
+    const response = await axios.get(API_URL);
+    const { results } = response.data;
+    renderRecipes(results);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+function renderRecipes(recipes) {
+  const recipeCards = recipes.map(generateRecipeCard).join('');
+  recipesContainer.innerHTML = recipeCards;
+}
