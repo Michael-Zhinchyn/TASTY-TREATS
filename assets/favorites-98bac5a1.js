@@ -33,7 +33,7 @@ Notiflix needs to be appended to the "<`+A+'>" element, but you called it before
         </div>
         <div class="card-bottom">
           <div class="card-rating-block">
-            <p class="card-rating">${r.rating}</p>
+            <p class="card-rating">${r.rating.toFixed(1)}</p>
             <div class="eating-stars">${Ev(r.rating)}</div>
           </div>
           <button class="card-button" data-id="${r._id}">See recipe</button>
