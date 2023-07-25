@@ -73,7 +73,6 @@ export async function getAllRecipes() {
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
-
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
     recipesContainer.innerHTML = recipeCards;
