@@ -58,14 +58,17 @@ searchInput.addEventListener("input", _.debounce(async () => {
 
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
 timeSelect.addEventListener("change", async () => {
+   
   await recipesRender();
 });
 
 areaSelect.addEventListener("change", async () => {
+  
   await recipesRender();
 });
 
 ingredientsSelect.addEventListener("change", async () => {
+  
   await recipesRender();
 });
 
