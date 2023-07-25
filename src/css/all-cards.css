@@ -146,6 +146,8 @@
   line-height: 1.29;
   margin-right: 4px;
 }
+
+
 @media screen and (min-width: 768px) {
   .card-item {
     width: 240px;
