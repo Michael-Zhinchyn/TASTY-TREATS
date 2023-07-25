@@ -139,3 +139,4 @@ function renderRecipes(recipes) {
   const recipeCards = recipes.map(generateRecipeCard).join('');
   recipesContainer.innerHTML = recipeCards;
 }
+
