@@ -4,9 +4,6 @@ import _ from 'lodash';
 import { generateRecipeCard, generateHeartBlock } from './all-cards-api';
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const searchInput = document.querySelector('#id-input-search');
-const timeSelect = document.querySelector('#select-time');
-const areaSelect = document.querySelector('#select-area');
-const ingredientsSelect = document.querySelector('#select-Ingredients');
 const recipeList = document.querySelector('.filter-card-set');
 // full url function
 function fullUrl(title, selectTime, selectArea, selectIngredients) {

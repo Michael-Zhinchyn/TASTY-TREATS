@@ -1,47 +1,59 @@
 .scroll-up {
-    position: fixed;
-    right: 50px;
-    bottom: 50px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    color: var(--brand-green);
-    cursor: pointer;
-    visibility: hidden;
-    border-radius: 50px;
-    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.337);
-    opacity: 0;
-    transition: 0.2s;
-    transform: translateY(25px);
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  color: var(--brand-green);
+  cursor: pointer;
+  visibility: hidden;
+  border-radius: 50px;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.337);
+  opacity: 0;
+  transition: 0.2s;
+  transform: translateY(25px);
 }
 
 .scroll-up::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-size: 30px;
-    content: '↑';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  content: '↑';
 }
 
 .scroll-up:hover {
-    color: #ccff00;
+  color: var(--brand-black);
 }
 
 .scroll-up--active {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .scroll-up--path {
-    box-sizing: border-box;
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.593);
-    stroke-width: 1px;
-    transition: 0.2s;
+  box-sizing: border-box;
+  fill: var(--brand-green);
+  stroke: rgba(255, 255, 255, 0.593);
+  stroke-width: 0;
+  transition: 0.2s;
+}
+
+.dark-mode .scroll-up {
+  color: var(--brand-white);
+}
+
+.dark-mode .scroll-up--path {
+  fill: var(--brand-white);
+}
+
+.dark-mode .scroll-up:hover {
+  color: var(--brand-green);
 }

@@ -10,3 +10,4 @@ import './js/search';
 import './js/favorites';
 // import './js/filters'
 import './js/scroll-up';
+import './js/pagination';
