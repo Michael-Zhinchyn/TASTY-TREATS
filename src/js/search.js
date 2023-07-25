@@ -104,7 +104,11 @@ searchInput.addEventListener(
     await getAllRecipes();
   }, 300)
 );
-
+searchInput.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    evt.preventDefault()
+  }
+})
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
 // timeSelect.addEventListener('change', async () => {
 //   await getAllRecipes();
