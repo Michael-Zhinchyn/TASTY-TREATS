@@ -74,7 +74,9 @@ export async function getAllRecipes() {
 
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------
     const heartCheckBoxEl = document.querySelectorAll('.card-checkbox'); // масив усіх інпутів чекбоксів
