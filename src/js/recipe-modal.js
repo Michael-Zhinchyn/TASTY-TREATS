@@ -2,13 +2,14 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import { popularRecipList } from './popular-recipes';
 import { recipesContainer } from './all-cards-api';
+import { favoritesContainer } from './favorites';
 
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
 const modalRecipeBlock = document.getElementById('full-recipe');
 const modalRecipe = document.querySelector('.recipe-modal');
-const starIconGrey = `<svg class="icon-star" width="18" height="18" viewBox="0 0 14 13"><path d="M6.049.927c.3-.921 1.603-.921 1.902 0l.845 2.6a1 1 0 0 0 .951.692h2.735c.969 0 1.371 1.24.588 1.809l-2.213 1.607a1 1 0 0 0-.363 1.118l.845 2.601c.3.921-.755 1.688-1.539 1.118l-2.212-1.607a1 1 0 0 0-1.176 0L4.2 12.472c-.784.57-1.838-.197-1.539-1.118l.845-2.6a1 1 0 0 0-.363-1.119L.93 6.028c-.783-.57-.38-1.81.588-1.81h2.735a1 1 0 0 0 .95-.69l.846-2.6Z"/></svg>`;
+const starIconGrey = `<svg class="icon-star-modal" width="18" height="18" viewBox="0 0 14 13"><path d="M6.049.927c.3-.921 1.603-.921 1.902 0l.845 2.6a1 1 0 0 0 .951.692h2.735c.969 0 1.371 1.24.588 1.809l-2.213 1.607a1 1 0 0 0-.363 1.118l.845 2.601c.3.921-.755 1.688-1.539 1.118l-2.212-1.607a1 1 0 0 0-1.176 0L4.2 12.472c-.784.57-1.838-.197-1.539-1.118l.845-2.6a1 1 0 0 0-.363-1.119L.93 6.028c-.783-.57-.38-1.81.588-1.81h2.735a1 1 0 0 0 .95-.69l.846-2.6Z"/></svg>`;
 const backdrop = document.querySelector('.add-rating-backdrop');
 const modal = document.querySelector('.add-rating-modal');
 const closeModalBtn = document.getElementById('add-rating-close-btn');
@@ -94,7 +95,7 @@ function handleContainerClick(event) {
 
 // Функція для зміни кольору іконок
 function changeColorOfStars() {
-  let icons = document.querySelectorAll('.icon-star');
+  let icons = document.querySelectorAll('.icon-star-modal');
   for (let i = 0; i < icons.length; i += 1) {
     if (i < stars) {
       icons[i].style.fill = '#FFA500';
