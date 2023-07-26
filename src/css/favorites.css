@@ -53,9 +53,7 @@ gap: 24px;
     gap: 12px;
     margin-top: 40px;
     overflow-x: auto;
-    /* змінено з scroll на auto */
     -webkit-overflow-scrolling: touch;
-    /* Додано */
 }
 
 .fav-category-fltr-btn {
@@ -72,7 +70,7 @@ gap: 24px;
 }
 
 .fav-category-block::-webkit-scrollbar {
-    /* ваші стилі для скролбара тут */
+   opacity: 0;
 }
 
 .fav-category-btn {
