@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let comments = commentsInput.value;
 
     if (!(nameInput.checkValidity() && phoneInput.checkValidity() && emailInput.checkValidity())) {
-      return; // Don't proceed with the submission if the inputs are not valid
+      return; 
     }
 
     const newUser = {
