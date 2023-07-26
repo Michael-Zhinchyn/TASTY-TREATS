@@ -67,10 +67,22 @@ export function generateRecipeCard(recipe) {
     </li>`;
 }
 
-// Функція, що отримує рецепти з API та додає їх на сторінку
+// Функція, що отримує рецепти з API та додає їх на сторінку з пагінацією
+let cardsPerPage;
+let pageNumb = 1;
 export async function getAllRecipes() {
+
+  if (window.innerWidth < 768) {
+    cardsPerPage = 6;
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+    cardsPerPage = 8;
+  } else {
+    cardsPerPage = 9;
+  }
+
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(`${API_URL}`, {
+      params: { limit: cardsPerPage, page: pageNumb}});
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
@@ -86,7 +98,7 @@ export async function getAllRecipes() {
 }
 
 export async function getRecipesByCategory(category) {
-  const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}`;
+  const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`;
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
@@ -147,37 +159,37 @@ export async function getRecipesByCategory(category) {
 }
 
 /////Pagination///////////
-let categor;
-let cardsPerPage;
-let pageNumb = 1;
-export async function getAllRecipesWithOptions() {
-  categor = 'Chicken';
+// let categor;
+// let cardsPerPage;
+// let pageNumb = 1;
+// export async function getAllRecipesWithOptions() {
+//   categor = 'Chicken';
 
-  if (window.innerWidth < 768) {
-    cardsPerPage = 6;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
-    cardsPerPage = 8;
-  } else {
-    cardsPerPage = 9;
-  }
+//   if (window.innerWidth < 768) {
+//     cardsPerPage = 6;
+//   } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+//     cardsPerPage = 8;
+//   } else {
+//     cardsPerPage = 9;
+//   }
 
-  try {
-    const response = await axios.get(`${API_URL}`, {
-      params: { limit: cardsPerPage, page: pageNumb, category: categor },
-    });
-    const { results } = response.data;
+//   try {
+//     const response = await axios.get(`${API_URL}`, {
+//       params: { limit: cardsPerPage, page: pageNumb, category: categor },
+//     });
+//     const { results } = response.data;
 
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-getAllRecipesWithOptions();
+//     // Створюємо карточки рецептів та додаємо їх на сторінку
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     const recipesContainer = document.querySelector('.filter-card-set');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// getAllRecipesWithOptions();
 //////Кнопки-перемикачі сторінок/////
 const backToFirstPage = document.querySelector('#pag-btn-start');
 const pageOneBtn = document.querySelector('#pag-btn-1');
@@ -266,9 +278,7 @@ const loadPageTwo = async () => {
 
   console.log(pageNumb);
   try {
-    const response = await axios.get(`${API_URL}`, {
-      params: { limit: cardsPerPage, page: pageNumb },
-    });
+    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
     console.log(response.data);
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
@@ -363,13 +373,13 @@ const loadPrevPage = async () => {
   }
 };
 // ---------------------------------------------------------------------------------------------------------------------------------------
-// nextPagePagBtn.addEventListener('click', loadNextPage);
-// backToFirstPage.addEventListener('click', backToFirst);
-// pageOneBtn.addEventListener('click', loadfirstPage);
-// pageTwoBtn.addEventListener('click', loadPageTwo);
-// pageThreeBtn.addEventListener('click', loadPageThree);
-// lastPageBtn.addEventListener('click', loadLastPage);
-// previousPageButton.addEventListener('click', loadPrevPage);
+nextPagePagBtn.addEventListener('click', loadNextPage);
+backToFirstPage.addEventListener('click', backToFirst);
+pageOneBtn.addEventListener('click', loadfirstPage);
+pageTwoBtn.addEventListener('click', loadPageTwo);
+pageThreeBtn.addEventListener('click', loadPageThree);
+lastPageBtn.addEventListener('click', loadLastPage);
+previousPageButton.addEventListener('click', loadPrevPage);
 // getAllRecipes();
 // getAllRecipesWithOptions()
 
