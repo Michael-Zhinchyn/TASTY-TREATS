@@ -11,10 +11,6 @@
     clip: rect(0 0 0 0);
 }
 
-.favorites-section {
-    padding-top: 49px;
-}
-
 
 
 .block-for-empty {
@@ -38,15 +34,13 @@
 
 .favorite-card-list {
     display: flex;
-flex-wrap: wrap;
-gap: 24px;
+    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .fav-category-block {
     display: flex;
     gap: 12px;
-    margin-top: 40px;
-    margin-bottom: 14px;
     overflow-x: auto;
 }
 
@@ -65,12 +59,13 @@ gap: 24px;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 1.29; 
+    line-height: 1.29;
 }
 
 .dark-mode .fav-category-fltr-btn {
     border: 1px solid rgba(255, 255, 255, 0.20);
-    color: rgba(255, 255, 255, 0.30);;
+    color: rgba(255, 255, 255, 0.30);
+    ;
 }
 
 
@@ -79,19 +74,19 @@ gap: 24px;
 }
 
 .fav-category-block::-webkit-scrollbar {
-   opacity: 0;
+    opacity: 0;
 }
 
 .fav-category-block::-webkit-scrollbar {
-    width: 10px;  
+    width: 10px;
 }
 
 .fav-category-block::-webkit-scrollbar-track {
-    background: transparent;  
+    background: transparent;
 }
 
 .fav-category-block::-webkit-scrollbar-thumb {
-    background: transparent;  
+    background: transparent;
 }
 
 
@@ -118,6 +113,10 @@ gap: 24px;
     color: rgba(255, 255, 255, 0.30);
 }
 
+.pagination-container {
+    display: none;
+}
+
 
 
 @media screen and (min-width: 768px) {
@@ -138,39 +137,34 @@ gap: 24px;
         font-style: 16px;
         line-height: 1.5;
     }
+
     .favorite-card-list {
         gap: 16px;
     }
 
-   .fav-category-block {
-    margin-bottom: 22px;
-   }
+    .fav-category-block {
 
-   .fav-category-fltr-btn {
-    width: 145px;
-    height: 48px;
-   }
 
-   .fav-category-btn {
-    height: 48px;
-   }
+        padding-top: 64px;
+        padding-bottom: 32px;
+
+    }
+
+    .fav-category-fltr-btn {
+        width: 145px;
+        height: 48px;
+    }
+
+
+    .fav-category-btn {
+        height: 48px;
+    }
 
 }
 
-@media screen and (min-width: 1200px) {
-    .container {
-      max-width: 1200px;
-      padding-left: 100px;
-      padding-right: 100px;
-    }
-
-
-    .fav-category-block {
-        margin-top: 64px;
-        margin-bottom: 32px;
-    }
+@media screen and (min-width: 1280px) {
 
     .fav-category-block::-webkit-scrollbar {
         display: none;
-     }
-  }
+    }
+}

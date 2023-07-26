@@ -4,7 +4,6 @@ import {
   getAllRecipes,
   recipesContainer,
 } from './all-cards-api.js';
-import { addToFavorite } from './add-to-favorites.js';
 
 const categoriesList = document.querySelector('.categories-list');
 const allCategoriesButton = document.getElementById('all-categories-button');
