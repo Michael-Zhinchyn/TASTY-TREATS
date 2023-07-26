@@ -134,8 +134,9 @@
 
     .message-for-empty {
         width: 481px;
-        font-style: 16px;
+        font-size: 16px;
         line-height: 1.5;
+        padding-bottom: 319px;
     }
 
     .favorite-card-list {
@@ -166,5 +167,9 @@
 
     .fav-category-block::-webkit-scrollbar {
         display: none;
+    }
+
+    .message-for-empty {
+        padding-bottom: 64px;
     }
 }

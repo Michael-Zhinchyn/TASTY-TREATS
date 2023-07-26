@@ -111,6 +111,10 @@
   fill: var(--clear-white);
 }
 
+.dark-mode .add-rating-close-icon:hover {
+  fill: var(--brand-green);
+}
+
 .dark-mode .add-rating-email {
   color: var(--clear-white);
 }
