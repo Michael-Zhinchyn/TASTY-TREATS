@@ -245,14 +245,12 @@ function onClose() {
 
   const mail = addRatingEmail.value;
   const data = {
-    rating: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
-    email: mail
+    rate: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: `${mail}`
   };
-
  try{
-  
   await axios.patch(
-    `${BASE_RECIPE_URL}/recipes/${id}/${options}`,
+    `${BASE_RECIPE_URL}${targetId}/rating`,
     data
   );
   
@@ -266,8 +264,8 @@ function onClose() {
     }, 500);
   }, 1500);
 
- }catch{
-   console.error('Error!');
+ }catch (err){
+   console.log(err);
     Notiflix.Notify.failure('An error occurred while submitting the rating');
  }
 }
