@@ -516,16 +516,18 @@
 
 /* reset styles */
 .reset-filter {
-
-    /* display: flex;
+    margin-left: auto;
+    display: flex;
     justify-content: end;
     gap: 4px;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     color: rgba(5, 5, 5, 0.5);
-    margin-bottom: 20px; */
-    display: none;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    /* display: none; */
 
 }
 

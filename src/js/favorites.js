@@ -34,15 +34,20 @@ async function addFavoriteRecipe(id) {
 
     if (favoritesContainer) {
       const messageBlock = document.querySelector('.block-for-empty');
+      const paginationBlock = document.querySelector('.pagination-container');
 
       messageBlock.style.display = 'none';
       resetCategoryBtn.style.display = 'flex';
       favoritesContainer.innerHTML += recipeCard;
+      paginationBlock.style.display = 'block';
 
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
 
-      heartCheckBoxEl.forEach((heart) => {
+
+
+      // робота з чекбоксами
+      heartCheckBoxEl.forEach(heart => {
         if (heart) {
           heart.checked = true;
 
@@ -76,6 +81,7 @@ async function addFavoriteRecipe(id) {
                 if (!favoritesContainer.querySelector('.card-item')) {
                   favoritesContainer.remove();
                   messageBlock.style.display = 'flex';
+                  paginationBlock.remove();
                 }
               }
             }

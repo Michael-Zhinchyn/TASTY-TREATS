@@ -8,25 +8,36 @@
             <h2 class="order-form-heading">Order now</h2>
             <div class="input-block">
                 <label for="name" class="order-form-label">Name</label>
-                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-z - ]+" />
-            </div>
 
+                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-zА-Яа-яІіЇїЄєҐґ -]+"
+                    placeholder="Введіть ваше ім'я" />
+                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-z - ]+" placeholder="John Doe" />
+
+            </div>
+        
             <div class="input-block">
                 <label for="phone" class="order-form-label">Phone number</label>
-                <input id="phone" class="order-form-input" type ="tel" required pattern="[\+]\d{12}" />
-            </div>
 
+                <input id="phone" class="order-form-input" type="tel" required pattern="[\+]\d{12}"
+                    placeholder="(+380) Введіть номер телефону" />
+                <input id="phone" class="order-form-input" type ="tel" required pattern="[\+]\d{12}" placeholder="+380123456789" />
+            </div>
+        
             <div class="input-block">
                 <label for="email" class="order-form-label">Email</label>
-                <input id="email" class="order-form-input" type="email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}" />
-            </div>
 
+                <input id="email" class="order-form-input" type="email" required
+                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}" placeholder="Введіть вашу електронну пошту" />
+                <input id="email" class="order-form-input" type="email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}" placeholder="email@example.com" />
+            </div>
+        
             <div class="input-block">
                 <label for="comments" class="order-form-label">Comment</label>
-                <textarea id="comments" class="order-form-textarea"></textarea>
+                <textarea id="comments" class="order-form-textarea" placeholder="Enter your comment here..."></textarea>
             </div>
-
+        
             <button type="submit" class="order-form-send-btn">Send</button>
         </form>
+    
     </div>
 </div>
