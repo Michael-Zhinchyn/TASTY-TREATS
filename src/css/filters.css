@@ -7,7 +7,6 @@
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
 }
 
 .selector-flex-container {
@@ -189,20 +188,10 @@
   }
 
   .filter-left-side {
-    width: 176px;
+    width: 174px;
     box-sizing: border-box;
   }
 
-  .filter-left-side * {
-    box-sizing: border-box;
-  }
-
-  .filter-all-categories {
-    width: 176px;
-    box-sizing: border-box;
-    margin-top: 24px;
-    margin-bottom: 64px;
-  }
 
   .filter-all-categories-button {
     width: 100%;
@@ -210,7 +199,7 @@
   }
 
   .filter-categories-block {
-    min-width: 176px;
+    min-width: 174px;
     height: 416px;
     overflow: overlay;
   }
@@ -438,17 +427,8 @@
     padding-top: 80px;
   }
 
-  .filter-left-side {
-    width: 176px;
-    box-sizing: border-box;
-  }
-
-  .filter-left-side * {
-    box-sizing: border-box;
-  }
-
   .filter-all-categories {
-    width: 176px;
+    width: 174px;
     box-sizing: border-box;
     margin-top: 24px;
     margin-bottom: 64px;
@@ -483,10 +463,6 @@
     line-height: 1.25;
   }
 
-  .popular-recipes-block {
-    width: 166px;
-  }
-
   .popular-recipes-list .recip-item:nth-child(n + 3) {
     display: flex;
   }
@@ -499,11 +475,6 @@
     cursor: pointer;
   }
 
-  .recip-img {
-    width: 48px;
-    height: 48px;
-    border-radius: 15%;
-  }
 
   .recip-short-descr {
     font-size: 10px;
@@ -543,6 +514,7 @@
 
   .right-side {
     width: 100%;
+    margin-left: 32px;
   }
 
   .selector-flex-container {
@@ -581,9 +553,24 @@
 @media screen and (min-width: 1280px) {
   .right-side {
     width: 782px;
+    margin-left: 63px;
   }
 
-  .flex-container {
-    gap: 64px;
+  .filter-categories-block {
+    min-width: 235px;
+  }
+
+  .filter-left-side {
+    width: 235px;
+  }
+
+  .popular-recipes-block {
+    width: 235px;
+  }
+
+  .recip-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 15%;
   }
 }
