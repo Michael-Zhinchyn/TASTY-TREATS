@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import { popularRecipList } from './popular-recipes';
 import { recipesContainer } from './all-cards-api';
 import { favoritesContainer } from './favorites';
+import { addToFavorite } from './add-to-favorites';
 
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
@@ -127,10 +128,43 @@ function changeColorOfStars() {
 export async function getRecipe() {
   try {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
-
+    // console.log(response);
     const markUp = recipeMarkup(response.data);
+   
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
+
+// ------------------------------------------------------------------------------------------------------------------------------
+const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+console.log(addToFavoriteBtn);
+
+const localData = localStorage.getItem('inFavorite');
+// console.log(localData);
+let localDataParse = JSON.parse(localData) || []; // Ініціалізуємо як пустий масив, якщо даних немає
+console.log(localDataParse);
+
+const recipeId = response.data._id;
+
+const recipeIdForLocalStorage = 'card-checkbox-'+recipeId;
+console.log(recipeIdForLocalStorage);
+
+
+
+const handleClickAddToFavoriteBtn = () => {
+
+  if (!localDataParse.includes(recipeIdForLocalStorage)) {
+    localDataParse.push(recipeIdForLocalStorage);
+    console.log(localDataParse);
+    localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+   }
+
+};
+
+addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+// ------------------------------------------------------------------------------------------------------------------------------
+
+
+
     changeColorOfStars();
     giveRatingBtn = document.getElementById('give-rating');
     if (giveRatingBtn) {
