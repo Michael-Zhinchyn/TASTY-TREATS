@@ -219,6 +219,13 @@ function starRatingChanger() {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
+
+  const mail = addRatingEmail.value;
+  const data = {
+    rating: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: mail
+  };
+
   if (selectedRadioButton !== null) {
     starChoosed.textContent = `${selectedRadioButton.value}.0`;
   } else {
@@ -229,16 +236,27 @@ function onClose() {
   form.reset();
   backdrop.style.display = 'none';
 }
-function submitRating(e) {
+ async function submitRating(e) {
+  e.preventDefault();
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
+  
+
   const mail = addRatingEmail.value;
-  // надсилання на бек
-    axios.patch(
-      `${BASE_URL}/recipes/${id}/${options}`
-    );
-  e.preventDefault();
+  const data = {
+    rating: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: mail
+  };
+
+ try{
+  
+  await axios.patch(
+    `${BASE_RECIPE_URL}/recipes/${id}/${options}`,
+    data
+  );
+  
+
   Notiflix.Loading.pulse('Sending...');
   setTimeout(() => {
     Notiflix.Loading.remove();
@@ -247,4 +265,9 @@ function submitRating(e) {
       Notiflix.Notify.success(' Thank you for your response ');
     }, 500);
   }, 1500);
+
+ }catch{
+   console.error('Error!');
+    Notiflix.Notify.failure('An error occurred while submitting the rating');
+ }
 }
