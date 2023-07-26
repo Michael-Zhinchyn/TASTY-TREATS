@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {addToFavorite} from './add-to-favorites';
+import { filter } from 'lodash';
 
 // URL нашого API
 export const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
@@ -99,6 +100,7 @@ export async function getAllRecipes() {
 
 export async function getRecipesByCategory(category) {
   const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`;
+  
   try {
     const response = await axios.get(API_URL);
     const { results } = response.data;
@@ -153,6 +155,7 @@ export async function getRecipesByCategory(category) {
         }
       });
     }
+   
   } catch (error) {
     console.log(error);
   }
@@ -193,7 +196,7 @@ export async function getRecipesByCategory(category) {
 //////Кнопки-перемикачі сторінок/////
 const backToFirstPage = document.querySelector('#pag-btn-start');
 const pageOneBtn = document.querySelector('#pag-btn-1');
-const pageTwoBtn = document.querySelector('#pag-btn-2');
+export const pageTwoBtn = document.querySelector('#pag-btn-2');
 const pageThreeBtn = document.querySelector('#pag-btn-3');
 const lastPageBtn = document.querySelector('#pag-btn-last');
 const nextPagePagBtn = document.querySelector('#pag-btn-next');
@@ -205,17 +208,13 @@ const previousPageButton = document.querySelector('#pag-btn-prev');
 // console.log(buttonNumered)
 
 ////Функція яка повертає на першу сторінку рецептів/////
-const backToFirst = async () => {
+// let categoryActive = categoriesList.childNodes
+// console.log(categoryActive)
+export const backToFirst = async () => {
   pageNumb = 1;
   console.log(pageNumb);
   try {
-    const response = await axios.get(`${API_URL}`, {
-      params: {
-        limit: cardsPerPage,
-        page: pageNumb,
-        // category: `${category}`
-      },
-    });
+    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
     pageOneBtn.textContent = 1;
     pageTwoBtn.textContent = 2;
     pageThreeBtn.textContent = 3;
@@ -267,13 +266,20 @@ const loadfirstPage = async () => {
     const recipeCards = results.map(generateRecipeCard).join('');
     const recipesContainer = document.querySelector('.filter-card-set');
     recipesContainer.innerHTML = recipeCards;
+   
   } catch (error) {
     console.log(error);
   }
 };
 
 ////Функція яка включає 2 сторінку рецептів/////
-const loadPageTwo = async () => {
+
+
+  export async function loadPageTwo(){
+    let categoryActive = document.querySelector(".category-item.active")
+    console.log(categoryActive)
+let category=categoryActive.firstElementChild.textContent
+console.log(category)
   pageNumb = pageTwoBtn.textContent;
 
   console.log(pageNumb);
