@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/TASTY-TREATS/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TASTY TREATS'</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/TASTY-TREATS/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TASTY TREATS'</title>
 
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <script type="module" crossorigin src="/TASTY-TREATS/assets/favorites-28d1b8ca.js"></script>
   <link rel="stylesheet" href="/TASTY-TREATS/assets/favorites-84b79f97.css">
 </head>
 
 <body id="favorites-page">
-    <!-- HEADER FOR MOBILE -->
+  <!-- HEADER FOR MOBILE -->
 <header class="header">
     <div class="block-for-mobile container">
         <nav class="nav">
@@ -158,92 +158,93 @@
 </div>
 <!-- END  OF  MOBILE  MENU  MODAL -->
 
-    <main>
-        <section class="favorites-section">
-            <div class="container">
-                <div class="favorites">
-                    <h1 class="visually-hidden">Favorites</h1>
-                    <picture class="favorites-hero-picture">
-                        <source srcset="/TASTY-TREATS/assets/mobile@1x-f31f6ed4.png 1x, /TASTY-TREATS/assets/mobile@1x-f31f6ed4.png 2x" media="(max-width: 767px)" />
-                        <source srcset="/TASTY-TREATS/assets/tablet@1x-7b0b15a6.png 1x, /TASTY-TREATS/assets/tablet@1x-7b0b15a6.png 2x"
-                            media="(max-width: 1199px)" />
-                        <source srcset="/TASTY-TREATS/assets/desctop@1x-8124e596.png 1x, /TASTY-TREATS/assets/desctop@1x-8124e596.png 2x"
-                            media="(min-width: 1200px)" />
-                        <img src="./img/favorites/desktop@1x.png" alt="bowl with food" width="1200" />
-                    </picture>
-                    <div class="fav-category-block">
-                        <button class="fav-category-fltr-btn" type="button">All categories</button>
-                        <div class="fav-category-div" id="category-filter-div"></div>
-                    </div>
+  <main>
+    <section class="favorites-section">
+      <div class="container">
+        <div class="favorites">
+          <h1 class="visually-hidden">Favorites</h1>
+          <picture class="favorites-hero-picture">
+            <source srcset="/TASTY-TREATS/assets/mobile@1x-f31f6ed4.png 1x, /TASTY-TREATS/assets/mobile@1x-f31f6ed4.png 2x" media="(max-width: 767px)" />
+            <source srcset="/TASTY-TREATS/assets/tablet@1x-7b0b15a6.png 1x, /TASTY-TREATS/assets/tablet@1x-7b0b15a6.png 2x"
+              media="(max-width: 1199px)" />
+            <source srcset="/TASTY-TREATS/assets/desctop@1x-8124e596.png 1x, /TASTY-TREATS/assets/desctop@1x-8124e596.png 2x"
+              media="(min-width: 1200px)" />
+            <img src="./img/favorites/desktop@1x.png" alt="bowl with food" width="1200" />
+          </picture>
+          <div class="fav-category-block">
+            <button class="fav-category-fltr-btn" type="button">All categories</button>
+            <div class="fav-category-div" id="category-filter-div"></div>
+          </div>
 
-                </div>
-                <div class="block-for-empty">
-                    <img class="head-icon" src="/TASTY-TREATS/assets/favorites-icon-1272fce9.svg" alt="head-icon">
-                    <p class="message-for-empty">It appears that you haven't added any recipes to your favorites
-                        yet. To
-                        get
-                        started,
-                        you can add recipes that you like
-                        to your favorites for easier access in the future.</p>
-                </div>
-                <div class="filter-card">
-                    <ul class="favorite-card-list"></ul>
-                </div>
-                <div class="pagination-container">
-     <div class="pagination-bar">
-                    <div class="pag-btn-block">
-                      <button id="pag-btn-start" class="gag-btn-black" type="button" aria-label="first page">
-                        <span class="icon-wrap">
-                          <svg class="pag-btn-left-icon" width="20" height="20">
-                            <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
-                          </svg>
-                        </span>
-                        <span class="icon-wrap overlap">
-                          <svg class="pag-btn-left-icon" width="20" height="20">
-                            <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
-                          </svg>
-                        </span>
-                      </button>
-                      <button id="pag-btn-prev" class="gag-btn-black" type="button" aria-label="previous page">
-                        <svg class="pag-btn-left-icon" width="20" height="20">
-                          <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
-                        </svg>
-                      </button>
-                    </div>
-                    <div class="pag-btn-block">
-                      <button id="pag-btn-1" class="pag-btn-white pag-btn-number" type="button" aria-label="page 1">1</button>
-                      <button id="pag-btn-2" class="pag-btn-white pag-btn-number" type="button" aria-label="page 2">2</button>
-                      <button id="pag-btn-3" class="pag-btn-white-tablet pag-btn-number" type="button" aria-label="page 3">3</button>
-                      <button class="pag-btn-white" aria-label="more pages">...</button>
-                    </div>
-                    <div class="pag-btn-block">
-                      <button id="pag-btn-next" class="pag-btn-green" type="button" aria-label="next page">
-                        <svg class="pag-btn-right-icon-next" width="20" height="20">
-                          <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
-                        </svg>
-                      </button>
-                      <button id="pag-btn-last" class="pag-btn-green" type="button" aria-label="last page">
-                        <span class="icon-container">
-                          <span class="icon-wrap-right">
-                            <svg class="pag-btn-right-icon" width="20" height="20">
-                              <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
-                            </svg>
-                          </span>
-                          <span class="icon-wrap-right overlap-right">
-                            <svg class="pag-btn-right-icon" width="20" height="20">
-                              <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
-                            </svg>
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
+        </div>
+        <div class="block-for-empty">
+          <img class="head-icon" src="/TASTY-TREATS/assets/favorites-icon-1272fce9.svg" alt="head-icon">
+          <p class="message-for-empty">It appears that you haven't added any recipes to your favorites
+            yet. To
+            get
+            started,
+            you can add recipes that you like
+            to your favorites for easier access in the future.</p>
+        </div>
+        <div class="filter-card">
+          <ul class="favorite-card-list"></ul>
+        </div>
+        <div class="pagination-container">
+          <div class="pagination-bar">
+            <div class="pag-btn-block">
+              <button id="pag-btn-start" class="gag-btn-black" type="button" aria-label="first page">
+                <span class="icon-wrap">
+                  <svg class="pag-btn-left-icon" width="20" height="20">
+                    <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
+                  </svg>
+                </span>
+                <span class="icon-wrap overlap">
+                  <svg class="pag-btn-left-icon" width="20" height="20">
+                    <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
+                  </svg>
+                </span>
+              </button>
+              <button id="pag-btn-prev" class="gag-btn-black" type="button" aria-label="previous page">
+                <svg class="pag-btn-left-icon" width="20" height="20">
+                  <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
+                </svg>
+              </button>
             </div>
-        </section>
-    </main>
+            <div class="pag-btn-block">
+              <button id="pag-btn-1" class="pag-btn-white pag-btn-number" type="button" aria-label="page 1">1</button>
+              <button id="pag-btn-2" class="pag-btn-white pag-btn-number" type="button" aria-label="page 2">2</button>
+              <button id="pag-btn-3" class="pag-btn-white-tablet pag-btn-number" type="button"
+                aria-label="page 3">3</button>
+              <button class="pag-btn-white" aria-label="more pages">...</button>
+            </div>
+            <div class="pag-btn-block">
+              <button id="pag-btn-next" class="pag-btn-green" type="button" aria-label="next page">
+                <svg class="pag-btn-right-icon-next" width="20" height="20">
+                  <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
+                </svg>
+              </button>
+              <button id="pag-btn-last" class="pag-btn-green" type="button" aria-label="last page">
+                <span class="icon-container">
+                  <span class="icon-wrap-right">
+                    <svg class="pag-btn-right-icon" width="20" height="20">
+                      <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
+                    </svg>
+                  </span>
+                  <span class="icon-wrap-right overlap-right">
+                    <svg class="pag-btn-right-icon" width="20" height="20">
+                      <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-arrow"></use>
+                    </svg>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="order-form-backdrop" id="backdrop">
+  <div class="order-form-backdrop" id="backdrop">
     <div class="order-modal" id="modal">
         <svg id="order-form-close-btn" class="order-form-close-icon" width="20" height="20">
             <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-close-x"></use>
@@ -253,37 +254,40 @@
             <h2 class="order-form-heading">Order now</h2>
             <div class="input-block">
                 <label for="name" class="order-form-label">Name</label>
-                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-z - ]+" placeholder="John Doe" />
+                <input id="name" class="order-form-input" type="text" required pattern="[A-Za-z - ]+"
+                    placeholder="John Doe" />
             </div>
-        
+
             <div class="input-block">
                 <label for="phone" class="order-form-label">Phone number</label>
-                <input id="phone" class="order-form-input" type ="tel" required pattern="[\+]\d{12}" placeholder="+380123456789" />
+                <input id="phone" class="order-form-input" type="tel" required pattern="[\+]\d{12}"
+                    placeholder="+380123456789" />
             </div>
-        
+
             <div class="input-block">
                 <label for="email" class="order-form-label">Email</label>
-                <input id="email" class="order-form-input" type="email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}" placeholder="email@example.com" />
+                <input id="email" class="order-form-input" type="email" required
+                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,3}" placeholder="email@example.com" />
             </div>
-        
+
             <div class="input-block">
                 <label for="comments" class="order-form-label">Comment</label>
                 <textarea id="comments" class="order-form-textarea" placeholder="Enter your comment here..."></textarea>
             </div>
-        
+
             <button type="submit" class="order-form-send-btn">Send</button>
         </form>
-    
+
     </div>
 </div>
-    <div class="scroll-up">
+  <div class="scroll-up">
     <svg viewBox="0 0 32 32" class="scroll-up--svg">
         <path class="scroll-up--path" d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16c-8.837 0-16 7.163-16 16v0c0 8.837 7.163 16 16 
             16v0zM16 2c7.732 0 14 6.268 14 14s-6.268 14-14 14c-7.732 0-14-6.268-14-14v0c0-7.732 6.268-14 14-14v0z">
         </path>
     </svg>
 </div>
-    <div class="recipe-backdrop" id="recipe-backdrop">
+  <div class="recipe-backdrop" id="recipe-backdrop">
     <div class="recipe-modal" id="recipe-modal">
         <svg class="recipe-close-icon" id="recipe-close-btn" width="20" height="20">
             <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-close-x"></use>
@@ -291,7 +295,7 @@
         <div id="full-recipe" class="full-recipe"></div>
     </div>
 </div>
-    <div class="add-rating-backdrop">
+  <div class="add-rating-backdrop">
   <div class="add-rating-modal">
     <svg id="add-rating-close-btn" class="add-rating-close-icon" width="20" height="20">
       <use href="/TASTY-TREATS/assets/sprite-32873850.svg#icon-close-x"></use>
@@ -325,10 +329,8 @@
   </div>
 </div>
 
-    <!-- <script src="./js/header.js"></script> -->
-    <!-- <script src="./js/order-modal.js"></script> -->
-    <!-- <script src="./js/recipe-modal.js"></script> -->
-    
+
+  
 </body>
 
 </html>
