@@ -46,6 +46,7 @@
   border: 1px solid transparent;
 }
 
+
 .filter-all-categories-button:active,
 .filter-all-categories-button.active-category {
   background-color: var(--brand-green);
