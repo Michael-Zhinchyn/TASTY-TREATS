@@ -4,7 +4,7 @@ import { remove } from 'lodash';
 
 let storedData = localStorage.getItem('inFavorite');
 let actualIDs = [];
-let addedCategories = []; 
+let addedCategories = [];
 if (storedData) {
   let fullIDs = JSON.parse(storedData);
   actualIDs = fullIDs.map(id => id.replace('card-checkbox-', ''));
@@ -12,7 +12,7 @@ if (storedData) {
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const categoryBlock = document.getElementById('category-filter-div');
-const resetCategoryBtn = document.querySelector('.fav-category-fltr-btn')
+const resetCategoryBtn = document.querySelector('.fav-category-fltr-btn');
 export const favoritesContainer = document.querySelector('.favorite-card-list');
 
 async function addFavoriteRecipe(id) {
@@ -33,14 +33,17 @@ async function addFavoriteRecipe(id) {
 
     if (favoritesContainer) {
       const messageBlock = document.querySelector('.block-for-empty');
+      const paginationBlock = document.querySelector('.pagination-container');
 
       messageBlock.style.display = 'none';
-      resetCategoryBtn.style.display = 'flex'
+      resetCategoryBtn.style.display = 'flex';
       favoritesContainer.innerHTML += recipeCard;
+      paginationBlock.style.display = 'block';
 
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
 
+      // робота з чекбоксами
       heartCheckBoxEl.forEach(heart => {
         if (heart) {
           heart.checked = true;
@@ -68,6 +71,7 @@ async function addFavoriteRecipe(id) {
                 ) {
                   favoritesContainer.remove();
                   messageBlock.style.display = 'flex';
+                  paginationBlock.remove();
                 }
               }
             }
@@ -98,7 +102,6 @@ async function addFavoriteRecipe(id) {
           }
         }
       });
-
     }
   } catch (error) {
     console.log(error);

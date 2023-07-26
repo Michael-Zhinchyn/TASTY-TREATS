@@ -117,6 +117,9 @@ gap: 24px;
     background: transparent;
     color: rgba(255, 255, 255, 0.30);
 }
+.pagination-container {
+    display: none;
+}
 
 
 
