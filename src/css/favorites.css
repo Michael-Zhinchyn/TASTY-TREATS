@@ -48,6 +48,56 @@ flex-wrap: wrap;
 gap: 24px;
 }
 
+.fav-category-block {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    overflow-x: auto;
+    /* змінено з scroll на auto */
+    -webkit-overflow-scrolling: touch;
+    /* Додано */
+}
+
+.fav-category-fltr-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 132px;
+    height: 46px;
+    white-space: nowrap;
+}
+
+.fav-category-div {
+    display: flex;
+}
+
+.fav-category-block::-webkit-scrollbar {
+    /* ваші стилі для скролбара тут */
+}
+
+.fav-category-btn {
+    display: flex;
+    padding: 14px 18px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    border-radius: 15px;
+    border: 1px solid var(--brand-green);
+    background: #9BB537;
+    color: #F8F8F8;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+    white-space: nowrap;
+}
+
+.dark-mode .fav-category-btn {
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.30);
+}
+
+
 
 @media screen and (min-width: 768px) {
     .container {
@@ -72,5 +122,9 @@ gap: 24px;
     }
     .favorite-card-list {
         gap: 16px;
+    }
+
+    .fav-category-fltr-btn {
+        display: block;
     }
 }
