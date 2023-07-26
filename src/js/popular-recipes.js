@@ -10,6 +10,8 @@ export async function getPopularRecip() {
     const markUp = createMarkUp(response.data);
     if (popularRecipList) {
       popularRecipList.innerHTML = markUp;
+      // тут малюється лішки з айдішками 
+      
     }
   } catch (error) {
     console.error(error);
