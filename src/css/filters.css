@@ -173,6 +173,14 @@
   line-height: 1.33;
 }
 
+.recip-short-descr {
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .dark-mode .recip-short-descr {
   color: rgba(255, 255, 255, 1);
 }
@@ -257,6 +265,18 @@
 
   .recip-short-descr {
     font-size: 10px;
+  }
+
+  .recip-short-descr {
+    -webkit-line-clamp: 3;
+  }
+
+  .recip-heading {
+    display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
   }
 }
 
