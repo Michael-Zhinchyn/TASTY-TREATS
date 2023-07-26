@@ -71,6 +71,7 @@ if (closeModalBtn) {
 function handleListClick(event) {
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
+  modalRecipe.style.display = 'block'
   let targetEl = event.target;
   let listItem = targetEl.closest('li.recip-item');
   if (listItem) {
@@ -86,6 +87,7 @@ function handleContainerClick(event) {
   event.stopPropagation();
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
+  modalRecipe.style.display = 'block'
   const recipeId = buttonElement.getAttribute('data-id');
   if (recipeId) {
     targetId = recipeId;
@@ -100,6 +102,7 @@ function handleFavoritesContainerClick(event) {
   event.stopPropagation();
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
+  modalRecipe.style.display = 'block'
 
   const recipeId = buttonElement.getAttribute('data-id');
   if (recipeId) {
