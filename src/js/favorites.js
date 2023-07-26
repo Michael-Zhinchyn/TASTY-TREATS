@@ -89,6 +89,7 @@ async function addFavoriteRecipe(id) {
           });
         }
       });
+
     }
   } catch (error) {
     console.log(error);
@@ -102,6 +103,7 @@ function loadFavoriteRecipes() {
     });
   }
 }
+
 
 function generateCategoryMarkup(category) {
   return `<button type="button" class="fav-category-btn">${category}</button>`;
