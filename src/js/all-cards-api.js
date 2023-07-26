@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {addToFavorite} from './add-to-favorites';
+import { addToFavorite } from './add-to-favorites';
 
 // URL нашого API
 export const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 
 // SVG-коди зірок та сердець
-const starIconGrey = `<svg class="icon-star" width="18" height="18" viewBox="0 0 14 13"><path d="M6.049.927c.3-.921 1.603-.921 1.902 0l.845 2.6a1 1 0 0 0 .951.692h2.735c.969 0 1.371 1.24.588 1.809l-2.213 1.607a1 1 0 0 0-.363 1.118l.845 2.601c.3.921-.755 1.688-1.539 1.118l-2.212-1.607a1 1 0 0 0-1.176 0L4.2 12.472c-.784.57-1.838-.197-1.539-1.118l.845-2.6a1 1 0 0 0-.363-1.119L.93 6.028c-.783-.57-.38-1.81.588-1.81h2.735a1 1 0 0 0 .95-.69l.846-2.6Z"/></svg>`;
-const starIconOrange = `<svg class="icon-star" width="18" height="18" viewBox="0 0 14 13"><path fill="orange" d="M6.049.927c.3-.921 1.603-.921 1.902 0l.845 2.6a1 1 0 0 0 .951.692h2.735c.969 0 1.371 1.24.588 1.809l-2.213 1.607a1 1 0 0 0-.363 1.118l.845 2.601c.3.921-.755 1.688-1.539 1.118l-2.212-1.607a1 1 0 0 0-1.176 0L4.2 12.472c-.784.57-1.838-.197-1.539-1.118l.845-2.6a1 1 0 0 0-.363-1.119L.93 6.028c-.783-.57-.38-1.81.588-1.81h2.735a1 1 0 0 0 .95-.69l.846-2.6Z"/></svg>`;
+const starIconGrey = `<svg class="icon-star"  viewBox="0 0 14 13"><path d="M6.049.927c.3-.921 1.603-.921 1.902 0l.845 2.6a1 1 0 0 0 .951.692h2.735c.969 0 1.371 1.24.588 1.809l-2.213 1.607a1 1 0 0 0-.363 1.118l.845 2.601c.3.921-.755 1.688-1.539 1.118l-2.212-1.607a1 1 0 0 0-1.176 0L4.2 12.472c-.784.57-1.838-.197-1.539-1.118l.845-2.6a1 1 0 0 0-.363-1.119L.93 6.028c-.783-.57-.38-1.81.588-1.81h2.735a1 1 0 0 0 .95-.69l.846-2.6Z"/></svg>`;
+const starIconOrange = `<svg class="icon-star" viewBox="0 0 14 13"><path fill="orange" d="M6.049.927c.3-.921 1.603-.921 1.902 0l.845 2.6a1 1 0 0 0 .951.692h2.735c.969 0 1.371 1.24.588 1.809l-2.213 1.607a1 1 0 0 0-.363 1.118l.845 2.601c.3.921-.755 1.688-1.539 1.118l-2.212-1.607a1 1 0 0 0-1.176 0L4.2 12.472c-.784.57-1.838-.197-1.539-1.118l.845-2.6a1 1 0 0 0-.363-1.119L.93 6.028c-.783-.57-.38-1.81.588-1.81h2.735a1 1 0 0 0 .95-.69l.846-2.6Z"/></svg>`;
 
 // SVG-коди сердець
 const heartIconGrey = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -71,7 +71,6 @@ export function generateRecipeCard(recipe) {
 let cardsPerPage;
 let pageNumb = 1;
 export async function getAllRecipes() {
-
   if (window.innerWidth < 768) {
     cardsPerPage = 6;
   } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
@@ -82,7 +81,8 @@ export async function getAllRecipes() {
 
   try {
     const response = await axios.get(`${API_URL}`, {
-      params: { limit: cardsPerPage, page: pageNumb}});
+      params: { limit: cardsPerPage, page: pageNumb },
+    });
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
@@ -90,8 +90,7 @@ export async function getAllRecipes() {
       recipesContainer.innerHTML = recipeCards;
     }
 
-    addToFavorite()
-
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
@@ -278,7 +277,9 @@ const loadPageTwo = async () => {
 
   console.log(pageNumb);
   try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+    const response = await axios.get(
+      `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`
+    );
     console.log(response.data);
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку

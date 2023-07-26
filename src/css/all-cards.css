@@ -1,10 +1,7 @@
 .card-item {
-
-
-    list-style: none;
-    max-width: 335px;
-    height: 335px;
-    
+  list-style: none;
+  max-width: 335px;
+  height: 335px;
 
   list-style: none;
   width: 335px;
@@ -20,9 +17,11 @@
 
 .card-block::after {
   content: '';
-  background: linear-gradient(1deg,
-      rgba(5, 5, 5, 0.6) 0%,
-      rgba(5, 5, 5, 0) 100%);
+  background: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 0%,
+    rgba(5, 5, 5, 0) 100%
+  );
   position: absolute;
   top: 0;
   left: 0;
@@ -66,12 +65,12 @@
 }
 
 .card-checkbox-label .unchecked-heart,
-.card-checkbox:checked~.card-checkbox-label .checked-heart {
+.card-checkbox:checked ~ .card-checkbox-label .checked-heart {
   display: inline;
 }
 
 .card-checkbox-label .checked-heart,
-.card-checkbox:checked~.card-checkbox-label .unchecked-heart {
+.card-checkbox:checked ~ .card-checkbox-label .unchecked-heart {
   display: none;
 }
 
@@ -142,6 +141,8 @@
 
 .icon-star {
   fill: rgba(248, 248, 248, 0.1);
+  width: 18px;
+  height: 18px;
 }
 
 .card-rating {
@@ -152,7 +153,6 @@
   line-height: 1.29;
   margin-right: 4px;
 }
-
 
 @media screen and (min-width: 768px) {
   .card-item {
