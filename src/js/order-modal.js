@@ -127,9 +127,8 @@ function handleInputValidation(inputElement) {
     catch(err){
       console.log(err);
       Notiflix.Notify.failure('Your order was not sent')
-    };
+    }
   }
-}
 
 // Функція для перевірки, чи всі поля вводу заповнені
 function areAllFieldsFilled() {
