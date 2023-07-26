@@ -82,15 +82,18 @@ Group #13
         </a>
         </td>
         <td align="center" style="border:none">
-        <span style="font-size:1.17em; margin-left: 20px"></span>
-        <span style="font-size:1.5em; margin-left:10px"></span>
-        <span style="font-size:1.17em; margin-left:10px"></span>
-        </td>
-        <td align="center" style="border:none">
         <span style="font-size:1.17em; margin-left: 20px">:star:</span>
         <span style="font-size:1.5em; margin-left:10px">Viacheslav Shyrokov</span>
         <span style="font-size:1.17em; margin-left:10px">developer</span>
         <a href="https://github.com/Wiltor69">
+            <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
+        </a>
+        </td>
+        <td align="center" style="border:none">
+        <span style="font-size:1.17em; margin-left: 20px">:star:</span>
+        <span style="font-size:1.5em; margin-left:10px">Andriy Bolotov</span>
+        <span style="font-size:1.17em; margin-left:10px">developer</span>
+        <a href="https://github.com/andrhwl">
             <img src="./src/img/readme-img/github-mark-dark.svg" alt="GitHub Logo" width="25" height="25" style="vertical-align: middle;">
         </a>
         </td>
