@@ -136,26 +136,34 @@ export async function getRecipe() {
 
 // ------------------------------------------------------------------------------------------------------------------------------
 const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
-console.log(addToFavoriteBtn);
 
 const localData = localStorage.getItem('inFavorite');
-// console.log(localData);
+
 let localDataParse = JSON.parse(localData) || []; // Ініціалізуємо як пустий масив, якщо даних немає
-console.log(localDataParse);
 
 const recipeId = response.data._id;
 
 const recipeIdForLocalStorage = 'card-checkbox-'+recipeId;
-console.log(recipeIdForLocalStorage);
 
-
+if (localDataParse.includes(recipeIdForLocalStorage)) {
+  addToFavoriteBtn.textContent = 'Remove';
+}
 
 const handleClickAddToFavoriteBtn = () => {
 
   if (!localDataParse.includes(recipeIdForLocalStorage)) {
     localDataParse.push(recipeIdForLocalStorage);
-    console.log(localDataParse);
+
     localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    addToFavoriteBtn.textContent = 'Remove';
+   }
+   else {
+    const index = localDataParse.indexOf(recipeIdForLocalStorage);
+    if (index !== -1) {
+      localDataParse.splice(index, 1);
+      localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    }
+    addToFavoriteBtn.textContent = 'Add to favorite';
    }
 
 };
