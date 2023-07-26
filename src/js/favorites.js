@@ -10,7 +10,7 @@ if (storedData) {
 }
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
-
+const categoryBlock = document.getElementById('category-filter-div');
 export const favoritesContainer = document.querySelector('.favorite-card-list');
 
 async function addFavoriteRecipe(id) {
@@ -18,13 +18,19 @@ async function addFavoriteRecipe(id) {
     const response = await axios.get(`${API_URL}/${id}`);
     const recipe = response.data;
 
+    const category = recipe.category;
+    const categoryMarkup = generateCategoryMarkup(category);
+    if (categoryBlock) {
+      categoryBlock.innerHTML += categoryMarkup;
+    }
+
     const recipeCard = generateRecipeCard(recipe);
 
     if (favoritesContainer) {
       const messageBlock = document.querySelector('.block-for-empty');
       messageBlock.style.display = 'none';
       favoritesContainer.innerHTML += recipeCard;
-// --------------------------------------------------------------------------------------------------------------------------------------
+
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
 
@@ -83,7 +89,7 @@ async function addFavoriteRecipe(id) {
           });
         }
       });
-// --------------------------------------------------------------------------------------------------------------------------------------
+
     }
   } catch (error) {
     console.log(error);
@@ -96,6 +102,11 @@ function loadFavoriteRecipes() {
       addFavoriteRecipe(id);
     });
   }
+}
+
+
+function generateCategoryMarkup(category) {
+  return `<button type="button" class="fav-category-btn">${category}</button>`;
 }
 
 loadFavoriteRecipes();
