@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import { popularRecipList } from './popular-recipes';
 import { recipesContainer } from './all-cards-api';
 import { favoritesContainer } from './favorites';
+import { addToFavorite } from './add-to-favorites';
 
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
@@ -127,10 +128,51 @@ function changeColorOfStars() {
 export async function getRecipe() {
   try {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
-
+    // console.log(response);
     const markUp = recipeMarkup(response.data);
+   
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
+
+// ------------------------------------------------------------------------------------------------------------------------------
+const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+
+const localData = localStorage.getItem('inFavorite');
+
+let localDataParse = JSON.parse(localData) || []; // Ініціалізуємо як пустий масив, якщо даних немає
+
+const recipeId = response.data._id;
+
+const recipeIdForLocalStorage = 'card-checkbox-'+recipeId;
+
+if (localDataParse.includes(recipeIdForLocalStorage)) {
+  addToFavoriteBtn.textContent = 'Remove';
+}
+
+const handleClickAddToFavoriteBtn = () => {
+
+  if (!localDataParse.includes(recipeIdForLocalStorage)) {
+    localDataParse.push(recipeIdForLocalStorage);
+
+    localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    addToFavoriteBtn.textContent = 'Remove';
+   }
+   else {
+    const index = localDataParse.indexOf(recipeIdForLocalStorage);
+    if (index !== -1) {
+      localDataParse.splice(index, 1);
+      localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    }
+    addToFavoriteBtn.textContent = 'Add to favorite';
+   }
+
+};
+
+addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+// ------------------------------------------------------------------------------------------------------------------------------
+
+
+
     changeColorOfStars();
     giveRatingBtn = document.getElementById('give-rating');
     if (giveRatingBtn) {
@@ -219,7 +261,14 @@ function starRatingChanger() {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
-  if (selectedRadioButton.value) {
+
+  const mail = addRatingEmail.value;
+  const data = {
+    rating: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: mail
+  };
+
+  if (selectedRadioButton !== null) {
     starChoosed.textContent = `${selectedRadioButton.value}.0`;
   } else {
     starChoosed.textContent = '0.0';
@@ -229,16 +278,27 @@ function onClose() {
   form.reset();
   backdrop.style.display = 'none';
 }
-function submitRating(e) {
+ async function submitRating(e) {
+  e.preventDefault();
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
+  
+
   const mail = addRatingEmail.value;
-  // надсилання на бек
-  //   axios.post(
-  //     `${BASE_URL}/recipes/${id}/${options}`
-  //   );
-  e.preventDefault();
+  const data = {
+    rating: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: mail
+  };
+
+ try{
+  
+  await axios.patch(
+    `${BASE_RECIPE_URL}/recipes/${id}/${options}`,
+    data
+  );
+  
+
   Notiflix.Loading.pulse('Sending...');
   setTimeout(() => {
     Notiflix.Loading.remove();
@@ -247,4 +307,9 @@ function submitRating(e) {
       Notiflix.Notify.success(' Thank you for your response ');
     }, 500);
   }, 1500);
+
+ }catch{
+   console.error('Error!');
+    Notiflix.Notify.failure('An error occurred while submitting the rating');
+ }
 }

@@ -108,7 +108,6 @@
 @media screen and (min-width: 1280px) {
     .hero-section {
         padding-left: 100px;
-        /* padding-right: 100px; */
         max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
