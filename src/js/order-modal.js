@@ -9,13 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalBackdrop = document.getElementById('backdrop');
   const modal = document.getElementById('modal');
   const form = document.querySelector('.order-form');
-
-  const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
   const nameInput = document.getElementById('name');
   const phoneInput = document.getElementById('phone');
   const emailInput = document.getElementById('email');
   const commentsInput = document.getElementById('comments');
-
+  const BASE_URL =  "https://tasty-treats-backend.p.goit.global/api"
 
   if (modalBackdrop) modalBackdrop.style.display = 'none';
 
@@ -63,16 +61,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (form) form.addEventListener('submit', onSubmit);
 
-  const createUser = async newUser => {
+  const createUser = async (newUser) => {
     try {
       const response = await axios.post(`${BASE_URL}/orders/add`, newUser);
       return response.data;
     } catch (err) {
       console.log(err);
     }
-
-  };
- 
+  }
 
   async function onSubmit(evt){
     evt.preventDefault();
@@ -90,89 +86,25 @@ document.addEventListener('DOMContentLoaded', function () {
       name: `${name}`,
       phone: `${phone}`,
       email: `${email}`,
-      comment: `${comments}`,
-    };
+      comment: `${comments}`
+    }
 
     Notiflix.Loading.pulse('Sending...');
-
-
     try{
       const response = await createUser(newUser)
       console.log(response)
-
       setTimeout(() => {
         Notiflix.Loading.remove();
         modalClose();
+
         setTimeout(() => {
           Notiflix.Notify.success('Your order successfully sent');
         }, 500);
       }, 1500);
-
-    } catch (err) {
-      console.log(err);
-      Notiflix.Notify.failure('Your order was not sent');
-    }
-  }
-});
-
-// Функція для обробки валідації та кольорів рамок
-function handleInputValidation(inputElement) {
-  if (inputElement.checkValidity()) {
-    inputElement.style.borderColor = '#9BB537';
-  } else {
-    inputElement.style.borderColor = 'red';
-
     }
     catch(err){
       console.log(err);
       Notiflix.Notify.failure('Your order was not sent')
-    }
+    };
   }
-
-// Функція для перевірки, чи всі поля вводу заповнені
-function areAllFieldsFilled() {
-  const formInputs = document.querySelectorAll('.order-form-input');
-  let allFilled = true;
-
-  formInputs.forEach(input => {
-    if (!input.value.trim()) {
-      allFilled = false;
-      input.style.borderColor = 'red';
-    }
-  });
-
-  return allFilled;
-}
-
-// Прикладаємо обробник події "input" для перевірки валідації під час введення
-document.getElementById('name').addEventListener('input', function () {
-  handleInputValidation(this);
 });
-
-document.getElementById('phone').addEventListener('input', function () {
-  handleInputValidation(this);
-});
-
-document.getElementById('email').addEventListener('input', function () {
-  handleInputValidation(this);
-});
-
-// Прикладаємо обробник події "submit" для перевірки на пусті поля перед надсиланням форми
-document
-  .querySelector('.order-form')
-  .addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    // Перевіряємо, чи всі поля вводу заповнені
-    const allFieldsFilled = areAllFieldsFilled();
-
-    // Якщо всі поля заповнені, надсилаємо форму
-    if (allFieldsFilled) {
-      // Тут додаємо код для відправки форми на сервер
-      // ...
-      console.log('Form submitted successfully!');
-    } else {
-      // Якщо є порожні поля, виводимо повідомлення або робимо що-небудь інше
-      console.log('Please fill in all the fields before submitting.');
-    }
-  });
