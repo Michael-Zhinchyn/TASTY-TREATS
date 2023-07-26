@@ -1,7 +1,7 @@
 .scroll-up {
   position: fixed;
-  right: 50px;
-  bottom: 50px;
+  right: 20px;
+  bottom: 15px;
   z-index: 1000;
   width: 50px;
   height: 50px;
@@ -56,4 +56,18 @@
 
 .dark-mode .scroll-up:hover {
   color: var(--brand-green);
+}
+
+@media screen and (min-width: 768px) {
+  .scroll-up {
+    right: 32px;
+    bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .scroll-up {
+    right: 100px;
+    bottom: 32px;
+  }
 }

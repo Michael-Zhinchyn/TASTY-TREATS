@@ -73,7 +73,7 @@ let pageNumb = 1;
 export async function getAllRecipes() {
   if (window.innerWidth < 768) {
     cardsPerPage = 6;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
     cardsPerPage = 8;
   } else {
     cardsPerPage = 9;
