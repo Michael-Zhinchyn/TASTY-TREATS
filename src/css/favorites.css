@@ -15,13 +15,7 @@
     padding-top: 49px;
 }
 
-.favorites {
-    margin-bottom: 40px;
-}
 
-/* .favorites-hero-picture {} */
-
-/* .added-card-set {} */
 
 .block-for-empty {
     display: flex;
@@ -52,34 +46,66 @@ gap: 24px;
     display: flex;
     gap: 12px;
     margin-top: 40px;
+    margin-bottom: 14px;
     overflow-x: auto;
 }
 
 .fav-category-fltr-btn {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 132px;
     height: 46px;
+    padding: 14px 18px;
+    justify-content: center;
+    align-items: center;
     white-space: nowrap;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    color: rgba(5, 5, 5, 0.30);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.29; 
 }
+
+.dark-mode .fav-category-fltr-btn {
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: rgba(255, 255, 255, 0.30);;
+}
+
 
 .fav-category-div {
     display: flex;
 }
 
+.fav-category-block::-webkit-scrollbar {
+   opacity: 0;
+}
+
+.fav-category-block::-webkit-scrollbar {
+    width: 10px;  
+}
+
+.fav-category-block::-webkit-scrollbar-track {
+    background: transparent;  
+}
+
+.fav-category-block::-webkit-scrollbar-thumb {
+    background: transparent;  
+}
 
 
 .fav-category-btn {
+    height: 46px;
     display: flex;
     padding: 14px 18px;
     justify-content: center;
     align-items: center;
     margin-right: 12px;
     border-radius: 15px;
-    border: 1px solid var(--brand-green);
-    background: #9BB537;
-    color: #F8F8F8;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    background: transparent;
+    color: rgba(5, 5, 5, 0.30);
     font-size: 14px;
     font-weight: 500;
     line-height: 1.29;
@@ -101,9 +127,6 @@ gap: 24px;
         padding-right: 32px;
     }
 
-    .favorites {
-        margin-bottom: 64px;
-    }
 
     .head-icon {
         margin-bottom: 32px;
@@ -119,7 +142,35 @@ gap: 24px;
         gap: 16px;
     }
 
-    .fav-category-fltr-btn {
-        display: block;
-    }
+   .fav-category-block {
+    margin-bottom: 22px;
+   }
+
+   .fav-category-fltr-btn {
+    width: 145px;
+    height: 48px;
+   }
+
+   .fav-category-btn {
+    height: 48px;
+   }
+
 }
+
+@media screen and (min-width: 1200px) {
+    .container {
+      max-width: 1200px;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+
+
+    .fav-category-block {
+        margin-top: 64px;
+        margin-bottom: 32px;
+    }
+
+    .fav-category-block::-webkit-scrollbar {
+        display: none;
+     }
+  }
