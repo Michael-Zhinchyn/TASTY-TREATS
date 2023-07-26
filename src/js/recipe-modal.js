@@ -298,6 +298,10 @@ async function submitRating(e) {
     }, 1500);
   } catch (error) {
     console.error(error);
-    Notiflix.Notify.failure('An error occurred while submitting the rating');
+    Notiflix.Report.info(
+      'Ooops, failed request',
+      'Enter email in format test@gmail.com',
+      'Ok'
+    );
   }
 }
