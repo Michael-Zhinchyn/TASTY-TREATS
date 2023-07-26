@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const phoneInput = document.getElementById('phone');
   const emailInput = document.getElementById('email');
   const commentsInput = document.getElementById('comments');
-  const BASE_URL =  "https://tasty-treats-backend.p.goit.global/api"
 
 
   if (modalBackdrop) modalBackdrop.style.display = 'none';
