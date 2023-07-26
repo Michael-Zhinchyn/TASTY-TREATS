@@ -480,11 +480,6 @@
     cursor: pointer;
   }
 
-  .recip-img {
-    width: 48px;
-    height: 48px;
-    border-radius: 15%;
-  }
 
   .recip-short-descr {
     font-size: 10px;
@@ -574,7 +569,13 @@
     width: 235px;
   }
 
-  /* .popular-recipes-block {
+  .popular-recipes-block {
     width: 235px;
-  } */
+  }
+
+  .recip-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 15%;
+  }
 }
