@@ -219,7 +219,7 @@ function starRatingChanger() {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
-  if (selectedRadioButton.value) {
+  if (selectedRadioButton !== null) {
     starChoosed.textContent = `${selectedRadioButton.value}.0`;
   } else {
     starChoosed.textContent = '0.0';
@@ -235,9 +235,9 @@ function submitRating(e) {
   );
   const mail = addRatingEmail.value;
   // надсилання на бек
-  //   axios.post(
-  //     `${BASE_URL}/recipes/${id}/${options}`
-  //   );
+    axios.patch(
+      `${BASE_URL}/recipes/${id}/${options}`
+    );
   e.preventDefault();
   Notiflix.Loading.pulse('Sending...');
   setTimeout(() => {
