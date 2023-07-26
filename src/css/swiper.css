@@ -211,12 +211,8 @@ body {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
 
-  .container {
-
-    max-width: 1280px;
-  }
 
   .swiper-container {
     margin-top: 0px;
@@ -225,11 +221,6 @@ body {
 }
 
 @media screen and (min-width: 1280px) {
-
-  .container {
-
-    max-width: 1280px;
-  }
 
   .swiper-container {
     margin-top: 0px;
