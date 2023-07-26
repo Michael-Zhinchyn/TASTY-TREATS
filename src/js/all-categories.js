@@ -4,6 +4,7 @@ import {
   getAllRecipes,
   recipesContainer,
 } from './all-cards-api.js';
+import { addToFavorite } from './add-to-favorites.js';
 
 const categoriesList = document.querySelector('.categories-list');
 const allCategoriesButton = document.getElementById('all-categories-button');
@@ -16,13 +17,16 @@ export async function getCategories() {
     const markUp = createMarkUp(response.data);
     if (categoriesList) {
       categoriesList.innerHTML = markUp;
+
       addClickListenersToCategories();
+
       allCategoriesButton.classList.add('active-category'); // Додаємо клас active-category для кнопки "All categories" при завантаженні сторінки
     }
   } catch (error) {
     console.error(error);
   }
   getAllRecipes(); // Відображаємо всі рецепти після того, як вже відобразили всі категорії
+
 }
 
 function addClickListenersToCategories() {
