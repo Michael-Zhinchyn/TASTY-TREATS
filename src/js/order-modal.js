@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
+
 document.addEventListener('DOMContentLoaded', function () {
-  // Весь ваш код JS тут
   const modalOpenBtn = document.getElementById('hero-order-btn');
   const modalCloseBtn = document.getElementById('order-form-close-btn');
   const headerCartIcon = document.getElementById('header-cart-icon');
@@ -9,7 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalBackdrop = document.getElementById('backdrop');
   const modal = document.getElementById('modal');
   const form = document.querySelector('.order-form');
+
   const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
+  const nameInput = document.getElementById('name');
+  const phoneInput = document.getElementById('phone');
+  const emailInput = document.getElementById('email');
+  const commentsInput = document.getElementById('comments');
+  const BASE_URL =  "https://tasty-treats-backend.p.goit.global/api"
+
 
   if (modalBackdrop) modalBackdrop.style.display = 'none';
 
@@ -20,11 +27,25 @@ document.addEventListener('DOMContentLoaded', function () {
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', modalClose);
   if (modalBackdrop) modalBackdrop.addEventListener('click', modalClose);
   if (modal) modal.addEventListener('click', event => event.stopPropagation());
+  
+  nameInput.addEventListener('input', validateInput);
+  phoneInput.addEventListener('input', validateInput);
+  emailInput.addEventListener('input', validateInput);
+  commentsInput.addEventListener('input', validateInput);
+
   document.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
       modalClose();
     }
   });
+
+  function validateInput(event) {
+    const inputElement = event.target;
+    const isValid = inputElement.checkValidity();
+
+    inputElement.classList.remove('input-valid', 'input-invalid');
+    inputElement.classList.add(isValid ? 'input-valid' : 'input-invalid');
+  }
 
   function modalOpen() {
     if (modalBackdrop) {
@@ -50,14 +71,21 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
       console.log(err);
     }
+
   };
-  async function onSubmit(evt) {
+ 
+
+  async function onSubmit(evt){
     evt.preventDefault();
 
-    let name = document.getElementById('name').value;
-    let phone = document.getElementById('phone').value;
-    let email = document.getElementById('email').value;
-    let comments = document.getElementById('comments').value;
+    let name = nameInput.value;
+    let phone = phoneInput.value;
+    let email = emailInput.value;
+    let comments = commentsInput.value;
+
+    if (!(nameInput.checkValidity() && phoneInput.checkValidity() && emailInput.checkValidity())) {
+      return; 
+    }
 
     const newUser = {
       name: `${name}`,
@@ -67,17 +95,20 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     Notiflix.Loading.pulse('Sending...');
-    try {
-      const response = await createUser(newUser);
-      console.log(response);
+
+
+    try{
+      const response = await createUser(newUser)
+      console.log(response)
+
       setTimeout(() => {
         Notiflix.Loading.remove();
         modalClose();
-
         setTimeout(() => {
           Notiflix.Notify.success('Your order successfully sent');
         }, 500);
       }, 1500);
+
     } catch (err) {
       console.log(err);
       Notiflix.Notify.failure('Your order was not sent');
@@ -91,6 +122,12 @@ function handleInputValidation(inputElement) {
     inputElement.style.borderColor = '#9BB537';
   } else {
     inputElement.style.borderColor = 'red';
+
+    }
+    catch(err){
+      console.log(err);
+      Notiflix.Notify.failure('Your order was not sent')
+    };
   }
 }
 
