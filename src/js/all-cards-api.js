@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios, { all } from 'axios';
 import {addToFavorite} from './add-to-favorites';
 import { filter } from 'lodash';
+
 
 // URL нашого API
 export const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
@@ -202,6 +203,8 @@ const lastPageBtn = document.querySelector('#pag-btn-last');
 const nextPagePagBtn = document.querySelector('#pag-btn-next');
 const buttonNumered = document.querySelectorAll('.pag-btn-number');
 const previousPageButton = document.querySelector('#pag-btn-prev');
+const allCategoriesButton = document.getElementById('all-categories-button');
+
 // buttonNumered.forEach((button, index) => {
 //   console.log(`Індекс ${index}, значення ${button.textContent}`);
 // })
@@ -276,12 +279,16 @@ const loadfirstPage = async () => {
 
 
   export async function loadPageTwo(){
-    let categoryActive = document.querySelector(".category-item.active")
-    console.log(categoryActive)
-let category=categoryActive.firstElementChild.textContent
-console.log(category)
-  pageNumb = pageTwoBtn.textContent;
+let category="";   
+let categoryActive = document.querySelectorAll(".category-item")
+categoryActive.forEach(categoryListItem=>{
+  if (categoryListItem.classList.contains("active")) {
+   category=categoryListItem.firstElementChild.textContent;
+    console.log(category)  
+        }    
+})
 
+    pageNumb = pageTwoBtn.textContent; 
   console.log(pageNumb);
   try {
     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
