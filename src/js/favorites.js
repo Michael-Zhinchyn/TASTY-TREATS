@@ -42,58 +42,60 @@ async function addFavoriteRecipe(id) {
       let selectedHeartCheckBox = [];
 
       heartCheckBoxEl.forEach(heart => {
-        heart.checked = true;
+        if (heart) {
+          heart.checked = true;
 
-        // Функція для обробки зміни стану чекбоксів
-        function handleCheckboxChange(event) {
-          const checkbox = event.target; // елемент на який клікаємо <input>
-          const checkboxId = checkbox.id;
+          // Функція для обробки зміни стану чекбоксів
+          function handleCheckboxChange(event) {
+            const checkbox = event.target; // елемент на який клікаємо <input>
+            const checkboxId = checkbox.id;
 
-          // Отримання батьківського елемента `.card-block`
-          const cardBlock = checkbox.closest('.card-block');
+            // Отримання батьківського елемента `.card-block`
+            const cardBlock = checkbox.closest('.card-block');
 
-          if (checkbox.checked) {
-            selectedHeartCheckBox.push(checkboxId);
-          } else {
-            // Перевіряємо, чи елемент міститься у списку вибраних перед тим, як його видалити
-            const index = selectedHeartCheckBox.indexOf(checkboxId);
-            if (index !== -1) {
-              selectedHeartCheckBox.splice(index, 1);
-              const cardItemEl = cardBlock.closest('.card-item');
-              cardItemEl.remove();
-              if (
-                favoritesContainer &&
-                favoritesContainer.children.length === 0
-              ) {
-                favoritesContainer.remove();
-                messageBlock.style.display = 'flex';
+            if (checkbox.checked) {
+              selectedHeartCheckBox.push(checkboxId);
+            } else {
+              // Перевіряємо, чи елемент міститься у списку вибраних перед тим, як його видалити
+              const index = selectedHeartCheckBox.indexOf(checkboxId);
+              if (index !== -1) {
+                selectedHeartCheckBox.splice(index, 1);
+                const cardItemEl = cardBlock.closest('.card-item');
+                cardItemEl.remove();
+                if (
+                  favoritesContainer &&
+                  favoritesContainer.children.length === 0
+                ) {
+                  favoritesContainer.remove();
+                  messageBlock.style.display = 'flex';
+                }
               }
             }
+
+            const heartCheckBoxElLocalStorage = JSON.stringify(
+              selectedHeartCheckBox
+            );
+            localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
           }
 
-          const heartCheckBoxElLocalStorage = JSON.stringify(
-            selectedHeartCheckBox
-          );
-          localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
-        }
+          heart.addEventListener('change', handleCheckboxChange);
 
-        heart.addEventListener('change', handleCheckboxChange);
+          // Перевіряємо, чи є збережені дані в локальному сховищі
+          const storedData = localStorage.getItem('inFavorite');
+          if (storedData) {
+            // Розпарсуємо дані з локального сховища назад у масив
+            selectedHeartCheckBox = JSON.parse(storedData);
 
-        // Перевіряємо, чи є збережені дані в локальному сховищі
-        const storedData = localStorage.getItem('inFavorite');
-        if (storedData) {
-          // Розпарсуємо дані з локального сховища назад у масив
-          selectedHeartCheckBox = JSON.parse(storedData);
-
-          // Відновлюємо стан чекбоксів на основі збережених значень
-          heartCheckBoxEl.forEach(checkbox => {
-            const checkboxId = checkbox.id;
-            if (selectedHeartCheckBox.includes(checkboxId)) {
-              checkbox.checked = true;
-            } else {
-              messageBlock.style.display = 'flex';
-            }
-          });
+            // Відновлюємо стан чекбоксів на основі збережених значень
+            heartCheckBoxEl.forEach(checkbox => {
+              const checkboxId = checkbox.id;
+              if (selectedHeartCheckBox.includes(checkboxId)) {
+                checkbox.checked = true;
+              } else {
+                messageBlock.style.display = 'flex';
+              }
+            });
+          }
         }
       });
 
