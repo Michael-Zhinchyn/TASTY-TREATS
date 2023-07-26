@@ -51,7 +51,7 @@ gap: 24px;
 }
 
 .fav-category-fltr-btn {
-    display: flex;
+    display: none;
     width: 132px;
     height: 46px;
     padding: 14px 18px;
