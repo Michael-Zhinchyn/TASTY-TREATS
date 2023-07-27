@@ -428,13 +428,14 @@ pageNumb=1}
 };
 ////Функція яка повертає на останню сторінку рецептів/////
 const loadLastPage = async () => {
-  // if (window.innerWidth < 768) {
-  //   cardsPerPage = 6;
-  // } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
-  //   cardsPerPage = 8;
-  // } else {
-  //   cardsPerPage = 9;
-  // }
+  if (window.innerWidth < 768) {
+    pageNumb=48
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+    pageNumb=36
+  } else {
+    pageNumb=32
+  }
+
   let category="";   
   let categoryActive = document.querySelectorAll(".category-item")
   categoryActive.forEach(categoryListItem=>{
