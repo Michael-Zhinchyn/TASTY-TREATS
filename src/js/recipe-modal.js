@@ -273,6 +273,7 @@ function onClose() {
   form.reset();
   backdrop.style.display = 'none';
 }
+
 async function submitRating(e) {
   e.preventDefault();
   const selectedRadioButton = starField.querySelector(
@@ -305,8 +306,8 @@ async function submitRating(e) {
     if (error.response) {
       switch (error.response.status) {
         case 400:
-          Notiflix.Report.info(
-            'Bad Request',
+          Notiflix.Report.warning(
+            'Ooops, failed request',
             'Enter email in format test@gmail.com',
             'Ok'
           );
@@ -314,7 +315,7 @@ async function submitRating(e) {
         case 409:
           Notiflix.Report.info(
             'Conflict',
-            'This rating already exists, Please try again later',
+            'This rating already exists, try again later',
             'Ok'
           );
           break;
