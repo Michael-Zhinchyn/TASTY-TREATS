@@ -351,7 +351,7 @@ const loadNextPage = async () => {
       console.log(category)  
           }    
   })
-  pageNumb = pageThreeBtn.textContent;
+  pageNumb++
   try {
     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
     console.log(response.data);
@@ -370,10 +370,11 @@ const loadNextPage = async () => {
 ////Функція яка повертає на попередню сторінку рецептів/////
 async function loadPrevPage(){
   if (pageNumb!=1||pageOneBtn.textContent!="1") {
-    pageNumb = pageTwoBtn.textContent
+    
     buttonNumered.forEach(button => {
       button.textContent--;
     })
+    pageNumb--
        }
 else{previousPageButton.removeEventListener('click', loadPrevPage)
 pageNumb=1}
