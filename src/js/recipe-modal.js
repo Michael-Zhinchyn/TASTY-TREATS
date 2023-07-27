@@ -132,60 +132,61 @@ function changeColorOfStars() {
 export async function getRecipe() {
   try {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
+    console.log(response);
     // console.log(response);
     const markUp = recipeMarkup(response.data);
 
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
 
-// ------------------------------------------------------------------------------------------------------------------------------
-const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
-const allCheckbox = document.querySelectorAll('.card-checkbox');
+    // ------------------------------------------------------------------------------------------------------------------------------
+    const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+    const allCheckbox = document.querySelectorAll('.card-checkbox');
 
-const localData = localStorage.getItem('inFavorite');
-let localDataParse = JSON.parse(localData) || [];
+    const localData = localStorage.getItem('inFavorite');
+    let localDataParse = JSON.parse(localData) || [];
 
-const recipeId = response.data._id;
-const recipeIdForLocalStorage = 'card-checkbox-' + recipeId;
+    const recipeId = response.data._id;
+    const recipeIdForLocalStorage = 'card-checkbox-' + recipeId;
 
-if (localDataParse.includes(recipeIdForLocalStorage)) {
-  addToFavoriteBtn.textContent = 'Remove';
-}
-
-const handleClickAddToFavoriteBtn = () => {
-  if (!localDataParse.includes(recipeIdForLocalStorage)) {
-    localDataParse.push(recipeIdForLocalStorage);
-    localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
-    addToFavoriteBtn.textContent = 'Remove';
-
-    // Встановлюємо значення checked на true для чекбоксів, які містяться в localDataParse
-    allCheckbox.forEach(checkbox => {
-      const checkboxId = checkbox.id;
-      if (localDataParse.includes(checkboxId)) {
-        checkbox.checked = true;
-      }
-    });
-  } else {
-    const index = localDataParse.indexOf(recipeIdForLocalStorage);
-    if (index !== -1) {
-      localDataParse.splice(index, 1);
-      localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    if (localDataParse.includes(recipeIdForLocalStorage)) {
+      addToFavoriteBtn.textContent = 'Remove';
     }
-    addToFavoriteBtn.textContent = 'Add to favorite';
 
-    // Встановлюємо значення checked на false для чекбоксів, які не містяться в localDataParse
-    allCheckbox.forEach(checkbox => {
-      const checkboxId = checkbox.id;
-      if (!localDataParse.includes(checkboxId)) {
-        checkbox.checked = false;
+    const handleClickAddToFavoriteBtn = () => {
+      if (!localDataParse.includes(recipeIdForLocalStorage)) {
+        localDataParse.push(recipeIdForLocalStorage);
+        localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+        addToFavoriteBtn.textContent = 'Remove';
+
+        // Встановлюємо значення checked на true для чекбоксів, які містяться в localDataParse
+        allCheckbox.forEach(checkbox => {
+          const checkboxId = checkbox.id;
+          if (localDataParse.includes(checkboxId)) {
+            checkbox.checked = true;
+          }
+        });
+      } else {
+        const index = localDataParse.indexOf(recipeIdForLocalStorage);
+        if (index !== -1) {
+          localDataParse.splice(index, 1);
+          localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+        }
+        addToFavoriteBtn.textContent = 'Add to favorite';
+
+        // Встановлюємо значення checked на false для чекбоксів, які не містяться в localDataParse
+        allCheckbox.forEach(checkbox => {
+          const checkboxId = checkbox.id;
+          if (!localDataParse.includes(checkboxId)) {
+            checkbox.checked = false;
+          }
+        });
       }
-    });
-  }
-};
+    };
 
-addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+    addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
 
-// ------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------
 
     changeColorOfStars();
     giveRatingBtn = document.getElementById('give-rating');
@@ -208,6 +209,7 @@ export function recipeMarkup({
   ingredients,
   tags,
   description,
+  instructions,
 }) {
   const ingredientsMarkup = `<div class="recipe-ingredients-block">
   ${ingredients
@@ -238,7 +240,7 @@ export function recipeMarkup({
             </div>
             <div class="recipe-ingredients">${ingredientsMarkup}</div>
             <div class="recipe-tags-block">${tagsMarkup}</div>
-            <p class="recipe-description">${description}</p>
+            <p class="recipe-description">${instructions}</p>
             <div class="recipe-buttons">
               <button class="add-to-favorite-btn" id="add-to-favorite-btn" type="button"> Add to favorite</button>
               <button class="give-rating-btn" id="give-rating" type="button">Give a rating</button>
@@ -259,7 +261,7 @@ export function recipeMarkup({
               </div>
             </div>
             <div class="recipe-ingredients">${ingredientsMarkup}</div>
-            <p class="recipe-description">${description}</p>
+            <p class="recipe-description">${instructions}</p>
             <div class="recipe-buttons">
               <button class="add-to-favorite-btn" id="add-to-favorite-btn" type="button"> Add to favorite</button>
               <button class="give-rating-btn" id="give-rating" type="button">Give a rating</button>
