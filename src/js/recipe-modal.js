@@ -286,7 +286,10 @@ async function submitRating(e) {
   };
 
   try {
-    await axios.patch(`${BASE_RECIPE_URL}${targetId}/rating`, data);
+    const response = await axios.patch(
+      `${BASE_RECIPE_URL}${targetId}/rating`,
+      data
+    );
 
     Notiflix.Loading.pulse('Sending...');
     setTimeout(() => {
@@ -296,12 +299,38 @@ async function submitRating(e) {
         Notiflix.Notify.success(' Thank you for your response ');
       }, 500);
     }, 900);
+    console.log(response);
   } catch (error) {
-    console.error(error);
-    Notiflix.Report.info(
-      'Ooops, failed request',
-      'Enter email in format test@gmail.com',
-      'Ok'
-    );
+    console.log(error);
+    if (error.response) {
+      switch (error.response.status) {
+        case 400:
+          Notiflix.Report.info(
+            'Bad Request',
+            'Enter email in format test@gmail.com',
+            'Ok'
+          );
+          break;
+        case 409:
+          Notiflix.Report.info(
+            'Conflict',
+            'This rating already exists, Please try again later',
+            'Ok'
+          );
+          break;
+        default:
+          Notiflix.Report.info(
+            'Ooops, failed request',
+            'Enter email in format test@gmail.com',
+            'Ok'
+          );
+      }
+    } else {
+      Notiflix.Report.info(
+        'Unknown error',
+        'Something went wrong, please try again later',
+        'Ok'
+      );
+    }
   }
 }
