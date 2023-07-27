@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1400);
       } else {
         Notiflix.Loading.remove();
-        Notiflix.Report.info(
+        Notiflix.Report.warning(
           'Ooops, failed request',
           'Enter email in format test@gmail.com',
           'Ok'

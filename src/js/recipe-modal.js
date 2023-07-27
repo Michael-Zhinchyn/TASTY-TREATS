@@ -313,11 +313,13 @@ async function submitRating(e) {
           );
           break;
         case 409:
-          Notiflix.Report.info(
-            'Conflict',
-            'This rating already exists, try again later',
-            'Ok'
-          );
+          setTimeout(() => {
+            Notiflix.Report.info(
+              'Conflict',
+              'This rating already exists, try again later',
+              'Ok'
+            );
+          }, 500);
           break;
         default:
           Notiflix.Report.info(
