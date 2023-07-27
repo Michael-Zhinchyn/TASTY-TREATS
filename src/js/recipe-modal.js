@@ -168,7 +168,7 @@ export async function getRecipe() {
         });
       } else {
         const index = localDataParse.indexOf(recipeIdForLocalStorage);
-        console.log(index)
+        console.log(index);
         if (index !== -1) {
           localDataParse.splice(index, 1);
           localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
@@ -197,7 +197,7 @@ export async function getRecipe() {
       });
     }
     return giveRatingBtn;
-    } catch (error) {
+  } catch (error) {
     console.error(error);
   }
 }
@@ -327,7 +327,7 @@ async function submitRating(e) {
     if (error.response) {
       switch (error.response.status) {
         case 400:
-          Notiflix.Report.info(
+          Notiflix.Report.warning(
             'Bad Request',
             'Enter email in format test@gmail.com',
             'Ok'
@@ -348,7 +348,7 @@ async function submitRating(e) {
           );
       }
     } else {
-      Notiflix.Report.info(
+      Notiflix.Report.failure(
         'Unknown error',
         'Something went wrong, please try again later',
         'Ok'
