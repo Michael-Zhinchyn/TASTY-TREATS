@@ -17,12 +17,12 @@
 .recipe-modal {
     display: none;
     position: relative;
-    top: 2%;
+    top: 5%;
     box-sizing: border-box;
     padding: 40px 20px;
     background-color: #fff;
     width: 335px;
-    max-height: 100vh;
+    max-height: 90vh;
     overflow-y: auto;
     border-radius: 15px;
     margin: auto;
@@ -141,7 +141,7 @@
 
 .recipe-ingredients {
     overflow: auto;
-    max-height: 140px;
+    max-height: 180px;
 }
 
 
@@ -240,7 +240,7 @@
     font-weight: 400;
     line-height: 1.29;
     overflow: auto;
-    max-height: 90px;
+    max-height: 160px;
 }
 
 
