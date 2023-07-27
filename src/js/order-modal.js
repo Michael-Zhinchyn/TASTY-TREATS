@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const phoneInput = document.getElementById('phone');
   const emailInput = document.getElementById('email');
   const commentsInput = document.getElementById('comments');
-  const BASE_URL =  "https://tasty-treats-backend.p.goit.global/api"
+  const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
 
   if (modalBackdrop) modalBackdrop.style.display = 'none';
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', modalClose);
   if (modalBackdrop) modalBackdrop.addEventListener('click', modalClose);
   if (modal) modal.addEventListener('click', event => event.stopPropagation());
-  
+
   nameInput.addEventListener('input', validateInput);
   phoneInput.addEventListener('input', validateInput);
   emailInput.addEventListener('input', validateInput);
@@ -61,16 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (form) form.addEventListener('submit', onSubmit);
 
-  const createUser = async (newUser) => {
+  const createUser = async newUser => {
     try {
       const response = await axios.post(`${BASE_URL}/orders/add`, newUser);
       return response.data;
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
-  }
+  };
 
-  async function onSubmit(evt){
+  async function onSubmit(evt) {
     evt.preventDefault();
 
     let name = nameInput.value;
@@ -78,33 +78,48 @@ document.addEventListener('DOMContentLoaded', function () {
     let email = emailInput.value;
     let comments = commentsInput.value;
 
-    if (!(nameInput.checkValidity() && phoneInput.checkValidity() && emailInput.checkValidity())) {
-      return; 
+    if (
+      !(
+        nameInput.checkValidity() &&
+        phoneInput.checkValidity() &&
+        emailInput.checkValidity() &&
+        commentsInput.checkVisibility
+      )
+    ) {
+      return;
     }
 
     const newUser = {
       name: `${name}`,
       phone: `${phone}`,
       email: `${email}`,
-      comment: `${comments}`
-    }
+      comment: `${comments}`,
+    };
 
-    Notiflix.Loading.pulse('Sending...');
-    try{
-      const response = await createUser(newUser)
-      console.log(response)
-      setTimeout(() => {
-        Notiflix.Loading.remove();
-        modalClose();
+    try {
+      Notiflix.Loading.pulse('Sending...');
+
+      const response = await createUser(newUser);
+      if (response) {
+        console.log(response);
 
         setTimeout(() => {
-          Notiflix.Notify.success('Your order successfully sent');
-        }, 500);
-      }, 1500);
+          Notiflix.Loading.remove();
+          modalClose();
+          setTimeout(() => {
+            Notiflix.Notify.success('Your order successfully sent');
+          }, 700);
+        }, 1400);
+      } else {
+        Notiflix.Loading.remove();
+        Notiflix.Report.info(
+          'Ooops, failed request',
+          'Enter email in format test@gmail.com',
+          'Ok'
+        );
+      }
+    } catch (err) {
+      console.error(err);
     }
-    catch(err){
-      console.log(err);
-      Notiflix.Notify.failure('Your order was not sent')
-    };
   }
 });
