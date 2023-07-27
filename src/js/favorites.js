@@ -12,6 +12,7 @@ if (storedData) {
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const categoryBlock = document.getElementById('category-filter-div');
+const resetCategoryBtn = document.querySelector('.fav-category-fltr-btn');
 export const favoritesContainer = document.querySelector('.favorite-card-list');
 
 async function addFavoriteRecipe(id) {
@@ -32,16 +33,14 @@ async function addFavoriteRecipe(id) {
 
     if (favoritesContainer) {
       const messageBlock = document.querySelector('.block-for-empty');
-      const paginationBlock = document.querySelector('.pagination-container');
 
       messageBlock.style.display = 'none';
+      resetCategoryBtn.style.display = 'flex';
       favoritesContainer.innerHTML += recipeCard;
-      paginationBlock.style.display = 'block';
 
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
 
-      // робота з чекбоксами
       heartCheckBoxEl.forEach((heart) => {
         if (heart) {
           heart.checked = true;
@@ -49,7 +48,6 @@ async function addFavoriteRecipe(id) {
           function handleCheckboxChange(event) {
             const checkbox = event.target;
             const checkboxId = checkbox.id;
-
             const cardBlock = checkbox.closest('.card-block');
 
             if (checkbox.checked) {
@@ -61,42 +59,28 @@ async function addFavoriteRecipe(id) {
                 const cardItemEl = cardBlock.closest('.card-item');
                 cardItemEl.remove();
 
+                const category = checkboxId.replace('card-checkbox-', '');
                 const categoryToDelete = addedCategories.find(
-                  (categoryItem) =>
-                    !favoritesContainer.querySelector(
-                      `[id^="card-checkbox-${categoryItem}"]`
-                    )
+                  (categoryItem) => !favoritesContainer.querySelector(`[id^="card-checkbox-${categoryItem}"]`)
                 );
 
                 if (categoryToDelete) {
-                  const categoryButton = document.querySelector(
-                    `.fav-category-btn[data-category="${categoryToDelete}"]`
-                  );
+                  const categoryButton = document.querySelector(`.fav-category-btn[data-category="${categoryToDelete}"]`);
                   if (categoryButton) {
-                    // Перевірка, чи немає карток з даною категорією
-                    const cardsWithCategory = favoritesContainer.querySelectorAll(
-                      `[id^="card-checkbox-${categoryToDelete}"]`
-                    );
-                    if (!cardsWithCategory.length) {
-                      categoryButton.remove();
-                    }
+                    categoryButton.remove();
                   }
-                  addedCategories = addedCategories.filter(
-                    (categoryItem) => categoryItem !== categoryToDelete
-                  );
+                  addedCategories = addedCategories.filter((categoryItem) => categoryItem !== categoryToDelete);
                 }
 
                 if (!favoritesContainer.querySelector('.card-item')) {
                   favoritesContainer.remove();
                   messageBlock.style.display = 'flex';
-                  paginationBlock.remove();
                 }
               }
+
+              const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
+              localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
             }
-            const heartCheckBoxElLocalStorage = JSON.stringify(
-              selectedHeartCheckBox
-            );
-            localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
           }
 
           heart.addEventListener('change', handleCheckboxChange);
@@ -122,13 +106,13 @@ async function addFavoriteRecipe(id) {
   }
 }
 
-// Перевірка, чи на сторінці вже є кнопка "All categories" зі стилем display: flex;
-const allCategoriesButton = document.querySelector('.fav-category-fltr-btn');
-if (!allCategoriesButton) {
-  // Якщо кнопки ще немає, то додати її
-  const allCategoriesMarkup = `<button class="fav-category-fltr-btn" type="button" style="display: flex;">All categories</button>`;
-  if (categoryBlock) {
-    categoryBlock.innerHTML += allCategoriesMarkup;
+function updateAllCategoriesButtonVisibility() {
+  const allCategoriesButton = document.getElementById('all-categories-button');
+
+  if (favoritesContainer && favoritesContainer.children.length === 0) {
+    allCategoriesButton.style.display = 'none';
+  } else {
+    allCategoriesButton.style.display = 'block';
   }
 }
 
@@ -138,10 +122,17 @@ function loadFavoriteRecipes() {
       addFavoriteRecipe(id);
     });
   }
+
+  updateAllCategoriesButtonVisibility(); // Викликаємо функцію для оновлення видимості кнопки "All categories"
 }
 
 function generateCategoryMarkup(category) {
   return `<button class="fav-category-btn" type="button" data-category="${category}">${category}</button>`;
 }
 
-loadFavoriteRecipes();
+function initializePage() {
+  loadFavoriteRecipes();
+}
+
+// Викликаємо ініціалізацію сторінки, коли DOM повністю завантажений
+document.addEventListener('DOMContentLoaded', initializePage);
