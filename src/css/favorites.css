@@ -172,4 +172,8 @@
     .message-for-empty {
         padding-bottom: 64px;
     }
+
+    .favorite-card-list {
+        gap: 26px;
+    }
 }
