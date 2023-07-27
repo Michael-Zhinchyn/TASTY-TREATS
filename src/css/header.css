@@ -248,7 +248,7 @@
 
     .switcher {
         margin-left: 16px;
-        /* margin-right: -24px; */
+        margin-right: -24px;
         flex-shrink: 0;
     }
 
