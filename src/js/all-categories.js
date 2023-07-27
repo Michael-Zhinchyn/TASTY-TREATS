@@ -3,6 +3,7 @@ import {
   getRecipesByCategory,
   getAllRecipes,
   recipesContainer,
+  backToFirst
 } from './all-cards-api.js';
 
 const categoriesList = document.querySelector('.categories-list');
@@ -34,6 +35,7 @@ function addClickListenersToCategories() {
     item.addEventListener('click', () => {
       const category = item.dataset.category;
       getRecipesByCategory(category);
+    
 
       // Знімаємо активний клас з усіх категорій
       categoryItems.forEach(categoryItem => {
@@ -47,6 +49,7 @@ function addClickListenersToCategories() {
       // Знімаємо активний клас з кнопки "All categories"
       allCategoriesButton.classList.remove('active-category');
     });
+    item.addEventListener('click',  backToFirst)
   });
 
   // Додаємо обробник події для кнопки "All categories"
@@ -62,6 +65,7 @@ function addClickListenersToCategories() {
 
     getAllRecipes(); // Відображаємо всі рецепти, коли натискаємо на "All categories"
   });
+  allCategoriesButton.addEventListener('click', backToFirst)
 }
 
 function createMarkUp(data) {
@@ -121,3 +125,4 @@ if (allCategoriesButton) {
 }
 
 getCategories();
+allCategoriesButton.addEventListener("click", backToFirst)

@@ -1,4 +1,3 @@
-// favorites.js
 import axios from 'axios';
 import { generateRecipeCard } from './all-cards-api';
 import { remove } from 'lodash';
@@ -8,12 +7,11 @@ let actualIDs = [];
 let addedCategories = [];
 if (storedData) {
   let fullIDs = JSON.parse(storedData);
-  actualIDs = fullIDs.map(id => id.replace('card-checkbox-', ''));
+  actualIDs = fullIDs.map((id) => id.replace('card-checkbox-', ''));
 }
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const categoryBlock = document.getElementById('category-filter-div');
-const resetCategoryBtn = document.querySelector('.fav-category-fltr-btn');
 export const favoritesContainer = document.querySelector('.favorite-card-list');
 
 async function addFavoriteRecipe(id) {
@@ -37,16 +35,14 @@ async function addFavoriteRecipe(id) {
       const paginationBlock = document.querySelector('.pagination-container');
 
       messageBlock.style.display = 'none';
-      resetCategoryBtn.style.display = 'flex';
       favoritesContainer.innerHTML += recipeCard;
       paginationBlock.style.display = 'block';
-
 
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
 
       // робота з чекбоксами
-      heartCheckBoxEl.forEach(heart => {
+      heartCheckBoxEl.forEach((heart) => {
         if (heart) {
           heart.checked = true;
 
@@ -65,9 +61,8 @@ async function addFavoriteRecipe(id) {
                 const cardItemEl = cardBlock.closest('.card-item');
                 cardItemEl.remove();
 
-                // const category = checkboxId.replace('card-checkbox-', '');
                 const categoryToDelete = addedCategories.find(
-                  categoryItem =>
+                  (categoryItem) =>
                     !favoritesContainer.querySelector(
                       `[id^="card-checkbox-${categoryItem}"]`
                     )
@@ -78,10 +73,16 @@ async function addFavoriteRecipe(id) {
                     `.fav-category-btn[data-category="${categoryToDelete}"]`
                   );
                   if (categoryButton) {
-                    categoryButton.remove();
+                    // Перевірка, чи немає карток з даною категорією
+                    const cardsWithCategory = favoritesContainer.querySelectorAll(
+                      `[id^="card-checkbox-${categoryToDelete}"]`
+                    );
+                    if (!cardsWithCategory.length) {
+                      categoryButton.remove();
+                    }
                   }
                   addedCategories = addedCategories.filter(
-                    categoryItem => categoryItem !== categoryToDelete
+                    (categoryItem) => categoryItem !== categoryToDelete
                   );
                 }
 
@@ -104,7 +105,7 @@ async function addFavoriteRecipe(id) {
           if (storedData) {
             selectedHeartCheckBox = JSON.parse(storedData);
 
-            heartCheckBoxEl.forEach(checkbox => {
+            heartCheckBoxEl.forEach((checkbox) => {
               const checkboxId = checkbox.id;
               if (selectedHeartCheckBox.includes(checkboxId)) {
                 checkbox.checked = true;
@@ -121,10 +122,19 @@ async function addFavoriteRecipe(id) {
   }
 }
 
+// Перевірка, чи на сторінці вже є кнопка "All categories" зі стилем display: flex;
+const allCategoriesButton = document.querySelector('.fav-category-fltr-btn');
+if (!allCategoriesButton) {
+  // Якщо кнопки ще немає, то додати її
+  const allCategoriesMarkup = `<button class="fav-category-fltr-btn" type="button" style="display: flex;">All categories</button>`;
+  if (categoryBlock) {
+    categoryBlock.innerHTML += allCategoriesMarkup;
+  }
+}
 
 function loadFavoriteRecipes() {
   if (actualIDs) {
-    actualIDs.forEach(id => {
+    actualIDs.forEach((id) => {
       addFavoriteRecipe(id);
     });
   }

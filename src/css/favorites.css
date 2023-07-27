@@ -11,8 +11,6 @@
     clip: rect(0 0 0 0);
 }
 
-
-
 .block-for-empty {
     display: flex;
     flex-direction: column;
