@@ -125,3 +125,4 @@ if (allCategoriesButton) {
 }
 
 getCategories();
+allCategoriesButton.addEventListener("click", backToFirst)
