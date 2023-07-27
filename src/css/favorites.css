@@ -11,8 +11,6 @@
     clip: rect(0 0 0 0);
 }
 
-
-
 .block-for-empty {
     display: flex;
     flex-direction: column;
@@ -171,5 +169,9 @@
 
     .message-for-empty {
         padding-bottom: 64px;
+    }
+
+    .favorite-card-list {
+        gap: 26px;
     }
 }
