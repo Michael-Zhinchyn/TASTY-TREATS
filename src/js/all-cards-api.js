@@ -104,6 +104,7 @@ export async function getRecipesByCategory(category) {
   const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`;
   
   try {
+ 
     const response = await axios.get(API_URL);
     const { results } = response.data;
     renderRecipes(results);
@@ -228,6 +229,7 @@ export const backToFirst = async () => {
     pageOneBtn.textContent = 1;
     pageTwoBtn.textContent = 2;
     pageThreeBtn.textContent = 3;
+
     console.log(response.data);
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
@@ -350,7 +352,8 @@ async function loadPageThree(){
 ////Функція яка перемикає на наступну сторінку рецептів/////
 const loadNextPage = async () => {
   buttonNumered.forEach(button => {
-    button.textContent++;
+    button.textContent++
+    pageNumb=button.textContent
   });
   let category="";   
   let categoryActive = document.querySelectorAll(".category-item")
@@ -360,10 +363,12 @@ const loadNextPage = async () => {
       console.log(category)  
           }    
   })
-  pageNumb++
+
   try {
     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+    
     console.log(response.data);
+
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
@@ -384,6 +389,7 @@ async function loadPrevPage(){
     
     buttonNumered.forEach(button => {
       button.textContent--;
+     
     })
     pageNumb--
        }
@@ -414,7 +420,7 @@ pageNumb=1}
 };
 ////Функція яка повертає на останню сторінку рецептів/////
 const loadLastPage = async () => {
-pageNumb=pageThreeBtn.textContent
+
   let category="";   
   let categoryActive = document.querySelectorAll(".category-item")
   categoryActive.forEach(categoryListItem=>{
@@ -431,7 +437,7 @@ pageNumb=pageThreeBtn.textContent
 
     const { results } = response.data;
  const allPages= response.data.totalPages
-
+ pageNumb=allPages
  pageThreeBtn.textContent=allPages
  pageTwoBtn.textContent=allPages-1
  pageOneBtn.textContent=allPages-2
