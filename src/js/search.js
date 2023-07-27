@@ -2,6 +2,8 @@ import Notiflix from 'notiflix';
 import axios from 'axios';
 import _ from 'lodash';
 import { generateRecipeCard } from './all-cards-api';
+let cardsPerPage;
+let pageNumb = 1;
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const searchInput = document.querySelector('#id-input-search');
 const timeSelect = document.getElementById('select-time');
@@ -11,12 +13,20 @@ const recipeList = document.querySelector('.filter-card-set');
 const resetFilter = document.querySelector('.reset-filter');
 // full url function
 function fullUrl(title, area, ingredients, time) {
-  const additionUrl = `?&title=${title}&area=${area}&ingredient=${ingredients}&time=${time}`;
+  const additionUrl = `?&title=${title}&area=${area}&ingredient=${ingredients}&time=${time}&limit=${cardsPerPage}&page=${pageNumb}`;
   console.log(BASE_URL + additionUrl);
   return BASE_URL + additionUrl;
 }
 // axios fetch url
 async function fetchRecipes(keyword, area, ingredients, time) {
+  if (window.innerWidth < 768) {
+    cardsPerPage = 6;
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+    cardsPerPage = 8;
+  } else {
+    cardsPerPage = 9;
+  }
+
   try {
     const response = await axios.get(fullUrl(keyword, area, ingredients, time));
     const data = response.data;
