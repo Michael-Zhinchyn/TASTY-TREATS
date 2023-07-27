@@ -13,7 +13,6 @@ if (storedData) {
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const categoryBlock = document.getElementById('category-filter-div');
-const resetCategoryBtn = document.querySelector('.fav-category-fltr-btn');
 export const favoritesContainer = document.querySelector('.favorite-card-list');
 
 async function addFavoriteRecipe(id) {
@@ -37,10 +36,8 @@ async function addFavoriteRecipe(id) {
       const paginationBlock = document.querySelector('.pagination-container');
 
       messageBlock.style.display = 'none';
-      resetCategoryBtn.style.display = 'flex';
       favoritesContainer.innerHTML += recipeCard;
       paginationBlock.style.display = 'block';
-
 
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
@@ -65,7 +62,6 @@ async function addFavoriteRecipe(id) {
                 const cardItemEl = cardBlock.closest('.card-item');
                 cardItemEl.remove();
 
-                // const category = checkboxId.replace('card-checkbox-', '');
                 const categoryToDelete = addedCategories.find(
                   categoryItem =>
                     !favoritesContainer.querySelector(
@@ -121,7 +117,6 @@ async function addFavoriteRecipe(id) {
   }
 }
 
-
 function loadFavoriteRecipes() {
   if (actualIDs) {
     actualIDs.forEach(id => {
@@ -132,6 +127,17 @@ function loadFavoriteRecipes() {
 
 function generateCategoryMarkup(category) {
   return `<button class="fav-category-btn" type="button" data-category="${category}">${category}</button>`;
+}
+
+// Перевірка, чи на сторінці вже є кнопка "All categories" зі стилем display: flex;
+const allCategoriesButton = document.querySelector('.fav-category-fltr-btn');
+if (!allCategoriesButton) {
+  // Якщо кнопки ще немає, то додати її
+  const categoryBlock = document.getElementById('category-filter-div');
+  const allCategoriesMarkup = `<button class="fav-category-fltr-btn" type="button" style="display: flex;">All categories</button>`;
+  if (categoryBlock) {
+    categoryBlock.innerHTML += allCategoriesMarkup;
+  }
 }
 
 loadFavoriteRecipes();
