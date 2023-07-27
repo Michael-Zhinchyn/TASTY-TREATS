@@ -87,6 +87,7 @@ export async function getAllRecipes() {
       params: { limit: cardsPerPage, page: pageNumb },
     });
     const { results } = response.data;
+
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
     if (recipesContainer) {
@@ -103,6 +104,7 @@ export async function getRecipesByCategory(category) {
   const API_URL = `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`;
   
   try {
+ 
     const response = await axios.get(API_URL);
     const { results } = response.data;
     renderRecipes(results);
@@ -227,12 +229,15 @@ export const backToFirst = async () => {
     pageOneBtn.textContent = 1;
     pageTwoBtn.textContent = 2;
     pageThreeBtn.textContent = 3;
+
     console.log(response.data);
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
@@ -279,8 +284,10 @@ const loadfirstPage = async () => {
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
    
   } catch (error) {
     console.log(error);
@@ -308,8 +315,10 @@ const loadfirstPage = async () => {
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
@@ -331,9 +340,11 @@ async function loadPageThree(){
     console.log(response.data);
       const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+     const recipeCards = results.map(generateRecipeCard).join('');
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
@@ -341,7 +352,8 @@ async function loadPageThree(){
 ////Функція яка перемикає на наступну сторінку рецептів/////
 const loadNextPage = async () => {
   buttonNumered.forEach(button => {
-    button.textContent++;
+    button.textContent++
+    pageNumb=button.textContent
   });
   let category="";   
   let categoryActive = document.querySelectorAll(".category-item")
@@ -351,15 +363,19 @@ const loadNextPage = async () => {
       console.log(category)  
           }    
   })
-  pageNumb++
+
   try {
     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+    
     console.log(response.data);
+
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
@@ -373,6 +389,7 @@ async function loadPrevPage(){
     
     buttonNumered.forEach(button => {
       button.textContent--;
+     
     })
     pageNumb--
        }
@@ -393,31 +410,44 @@ pageNumb=1}
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
 };
 ////Функція яка повертає на останню сторінку рецептів/////
 const loadLastPage = async () => {
-  let allPages;
-  console.log(allPages);
-  const pagesAmount = allPages / Number(cardsPerPage);
-  pageNumb = pagesAmount;
-  console.log(pageNumb);
+
+  let category="";   
+  let categoryActive = document.querySelectorAll(".category-item")
+  categoryActive.forEach(categoryListItem=>{
+    if (categoryListItem.classList.contains("active")) {
+     category=categoryListItem.firstElementChild.textContent;
+      console.log(category)  
+          }    
+  })
+ 
   try {
-    const response = await axios.get(`${API_URL}`, {
-      params: { limit: cardsPerPage, page: pageNumb, totalPages: allPages },
-    });
+    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`,
+    );
     console.log(response.data);
 
     const { results } = response.data;
-
+ const allPages= response.data.totalPages
+ pageNumb=allPages
+ pageThreeBtn.textContent=allPages
+ pageTwoBtn.textContent=allPages-1
+ pageOneBtn.textContent=allPages-2
+console.log(allPages);
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
-    const recipesContainer = document.querySelector('.filter-card-set');
-    recipesContainer.innerHTML = recipeCards;
+    if (recipesContainer) {
+      recipesContainer.innerHTML = recipeCards;
+    }
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
