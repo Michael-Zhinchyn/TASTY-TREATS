@@ -8,7 +8,7 @@ let actualIDs = [];
 let addedCategories = [];
 if (storedData) {
   let fullIDs = JSON.parse(storedData);
-  actualIDs = fullIDs.map(id => id.replace('card-checkbox-', ''));
+  actualIDs = fullIDs.map((id) => id.replace('card-checkbox-', ''));
 }
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
@@ -41,9 +41,10 @@ async function addFavoriteRecipe(id) {
       favoritesContainer.innerHTML += recipeCard;
       paginationBlock.style.display = 'block';
 
-
       const heartCheckBoxEl = document.querySelectorAll('.card-checkbox');
       let selectedHeartCheckBox = [];
+
+
 
       // робота з чекбоксами
       heartCheckBoxEl.forEach(heart => {
@@ -53,7 +54,6 @@ async function addFavoriteRecipe(id) {
           function handleCheckboxChange(event) {
             const checkbox = event.target;
             const checkboxId = checkbox.id;
-
             const cardBlock = checkbox.closest('.card-block');
 
             if (checkbox.checked) {
@@ -65,24 +65,17 @@ async function addFavoriteRecipe(id) {
                 const cardItemEl = cardBlock.closest('.card-item');
                 cardItemEl.remove();
 
-                // const category = checkboxId.replace('card-checkbox-', '');
+                const category = checkboxId.replace('card-checkbox-', '');
                 const categoryToDelete = addedCategories.find(
-                  categoryItem =>
-                    !favoritesContainer.querySelector(
-                      `[id^="card-checkbox-${categoryItem}"]`
-                    )
+                  (categoryItem) => !favoritesContainer.querySelector(`[id^="card-checkbox-${categoryItem}"]`)
                 );
 
                 if (categoryToDelete) {
-                  const categoryButton = document.querySelector(
-                    `.fav-category-btn[data-category="${categoryToDelete}"]`
-                  );
+                  const categoryButton = document.querySelector(`.fav-category-btn[data-category="${categoryToDelete}"]`);
                   if (categoryButton) {
                     categoryButton.remove();
                   }
-                  addedCategories = addedCategories.filter(
-                    categoryItem => categoryItem !== categoryToDelete
-                  );
+                  addedCategories = addedCategories.filter((categoryItem) => categoryItem !== categoryToDelete);
                 }
 
                 if (!favoritesContainer.querySelector('.card-item')) {
@@ -92,9 +85,8 @@ async function addFavoriteRecipe(id) {
                 }
               }
             }
-            const heartCheckBoxElLocalStorage = JSON.stringify(
-              selectedHeartCheckBox
-            );
+
+            const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
             localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
           }
 
@@ -104,7 +96,7 @@ async function addFavoriteRecipe(id) {
           if (storedData) {
             selectedHeartCheckBox = JSON.parse(storedData);
 
-            heartCheckBoxEl.forEach(checkbox => {
+            heartCheckBoxEl.forEach((checkbox) => {
               const checkboxId = checkbox.id;
               if (selectedHeartCheckBox.includes(checkboxId)) {
                 checkbox.checked = true;
@@ -121,10 +113,9 @@ async function addFavoriteRecipe(id) {
   }
 }
 
-
 function loadFavoriteRecipes() {
   if (actualIDs) {
-    actualIDs.forEach(id => {
+    actualIDs.forEach((id) => {
       addFavoriteRecipe(id);
     });
   }
