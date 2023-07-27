@@ -278,16 +278,13 @@ async function submitRating(e) {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
-
   const mail = addRatingEmail.value;
   const data = {
     rate: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
     email: mail,
   };
-
   try {
     await axios.patch(`${BASE_RECIPE_URL}${targetId}/rating`, data);
-
     Notiflix.Loading.pulse('Sending...');
     setTimeout(() => {
       Notiflix.Loading.remove();
@@ -295,6 +292,7 @@ async function submitRating(e) {
       setTimeout(() => {
         Notiflix.Notify.success(' Thank you for your response ');
       }, 500);
+    }, 1500);
     }, 900);
   } catch (error) {
     console.error(error);
