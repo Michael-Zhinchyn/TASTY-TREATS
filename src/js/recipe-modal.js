@@ -157,33 +157,34 @@ export async function getRecipe() {
       if (!localDataParse.includes(recipeIdForLocalStorage)) {
         localDataParse.push(recipeIdForLocalStorage);
 
-  //       localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
-  //       addToFavoriteBtn.textContent = 'Remove';
-  //     } else {
-  //       const index = localDataParse.indexOf(recipeIdForLocalStorage);
-  //       if (index !== -1) {
-  //         localDataParse.splice(index, 1);
-  //         localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
-  //       }
-  //       addToFavoriteBtn.textContent = 'Add to favorite';
-  //     }
-  //   };
+        localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+        addToFavoriteBtn.textContent = 'Remove';
+      } else {
+        const index = localDataParse.indexOf(recipeIdForLocalStorage);
+        console.log(index)
+        if (index !== -1) {
+          localDataParse.splice(index, 1);
+          localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+        }
+        addToFavoriteBtn.textContent = 'Add to favorite';
+      }
+    };
 
-  //   addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
-  //   // ------------------------------------------------------------------------------------------------------------------------------
+    addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+    // ------------------------------------------------------------------------------------------------------------------------------
 
-  //   changeColorOfStars();
-  //   giveRatingBtn = document.getElementById('give-rating');
-  //   if (giveRatingBtn) {
-  //     giveRatingBtn.addEventListener('click', function () {
-  //       backdrop.style.display = 'block';
-  //     });
-  //   }
-  //   return giveRatingBtn;
-  //   } catch (error) {
-  //   console.error(error);
-  // }
-// }
+    changeColorOfStars();
+    giveRatingBtn = document.getElementById('give-rating');
+    if (giveRatingBtn) {
+      giveRatingBtn.addEventListener('click', function () {
+        backdrop.style.display = 'block';
+      });
+    }
+    return giveRatingBtn;
+    } catch (error) {
+    console.error(error);
+  }
+}
 // функція створення розмітки
 export function recipeMarkup({
   title,
