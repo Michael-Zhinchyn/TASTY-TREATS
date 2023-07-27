@@ -111,8 +111,6 @@ export async function getRecipesByCategory(category) {
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо <input>
 
-      // console.log(checkbox);
-
       const checkboxId = checkbox.id;
 
       // дістати всю інформацію з картки за запушити її у масив

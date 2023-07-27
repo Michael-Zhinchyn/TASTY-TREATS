@@ -117,21 +117,31 @@ if (searchInput) {
 }
 
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
-timeSelect.addEventListener('change', async () => {
-  await getAllRecipes();
-});
+if (timeSelect) {
+  timeSelect.addEventListener('change', async () => {
+    await getAllRecipes();
+  });
+}
 
-areaSelect.addEventListener('change', async () => {
-  await getAllRecipes();
-});
+if (areaSelect) {
+  areaSelect.addEventListener('change', async () => {
+    await getAllRecipes();
+  });
+}
 
-ingredientSelect.addEventListener('change', async () => {
-  await getAllRecipes();
-});
-resetFilter.addEventListener('click', async () => {
-  resetTheFilter();
-  await getAllRecipes();
-});
+if (ingredientSelect) {
+  ingredientSelect.addEventListener('change', async () => {
+    await getAllRecipes();
+  });
+}
+
+if (resetFilter) {
+  resetFilter.addEventListener('click', async () => {
+    resetTheFilter();
+    await getAllRecipes();
+  });
+}
+
 // reset the filter
 function resetTheFilter() {
   searchInput.value = '';

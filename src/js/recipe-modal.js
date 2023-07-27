@@ -295,7 +295,7 @@ async function submitRating(e) {
       setTimeout(() => {
         Notiflix.Notify.success(' Thank you for your response ');
       }, 500);
-    }, 1500);
+    }, 900);
   } catch (error) {
     console.error(error);
     Notiflix.Report.info(
