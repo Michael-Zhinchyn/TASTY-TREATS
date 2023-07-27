@@ -47,28 +47,32 @@ if (favoritesContainer) {
 if (modalRecipe) {
   modalRecipe.addEventListener('click', event => event.stopPropagation());
 }
+
 [recipeBackdrop, recipeCloseBtn, closeModalBtn].forEach(el => {
   if (el) {
     el.addEventListener('click', closeRecipe);
   }
 });
-// Combine all listeners for 'Escape' keydown into one
+
 document.addEventListener('keydown', evt => {
   if (evt.key === 'Escape') {
     closeRecipe();
     onClose();
   }
 });
+
 if (starField) {
   starField.addEventListener('click', starRatingChanger);
 }
-// Combine all listeners for submitRating into one
+
 if (form) {
   form.addEventListener('submit', submitRating);
 }
+
 if (closeModalBtn) {
   closeModalBtn.addEventListener('click', onClose);
 }
+
 // FUNCTIONS
 function handleListClick(event) {
   document.body.style.overflow = 'hidden';
