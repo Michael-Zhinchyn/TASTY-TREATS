@@ -5,7 +5,6 @@ import { recipesContainer } from './all-cards-api';
 import { favoritesContainer } from './favorites';
 import { addToFavorite } from './add-to-favorites';
 
-
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
@@ -47,28 +46,32 @@ if (favoritesContainer) {
 if (modalRecipe) {
   modalRecipe.addEventListener('click', event => event.stopPropagation());
 }
+
 [recipeBackdrop, recipeCloseBtn, closeModalBtn].forEach(el => {
   if (el) {
     el.addEventListener('click', closeRecipe);
   }
 });
-// Combine all listeners for 'Escape' keydown into one
+
 document.addEventListener('keydown', evt => {
   if (evt.key === 'Escape') {
     closeRecipe();
     onClose();
   }
 });
+
 if (starField) {
   starField.addEventListener('click', starRatingChanger);
 }
-// Combine all listeners for submitRating into one
+
 if (form) {
   form.addEventListener('submit', submitRating);
 }
+
 if (closeModalBtn) {
   closeModalBtn.addEventListener('click', onClose);
 }
+
 // FUNCTIONS
 function handleListClick(event) {
   document.body.style.overflow = 'hidden';
@@ -135,57 +138,24 @@ export async function getRecipe() {
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
 
+    // ------------------------------------------------------------------------------------------------------------------------------
+    const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
 
-// ------------------------------------------------------------------------------------------------------------------------------
-const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
-const allCheckbox = document.querySelectorAll('.card-checkbox');
+    const localData = localStorage.getItem('inFavorite');
 
-const localData = localStorage.getItem('inFavorite');
-let localDataParse = JSON.parse(localData) || [];
+    let localDataParse = JSON.parse(localData) || []; // Ініціалізуємо як пустий масив, якщо даних немає
 
-const recipeId = response.data._id;
-const recipeIdForLocalStorage = 'card-checkbox-' + recipeId;
+    const recipeId = response.data._id;
 
-if (localDataParse.includes(recipeIdForLocalStorage)) {
-  addToFavoriteBtn.textContent = 'Remove';
-}
+    const recipeIdForLocalStorage = 'card-checkbox-' + recipeId;
 
-const handleClickAddToFavoriteBtn = () => {
-  if (!localDataParse.includes(recipeIdForLocalStorage)) {
-    localDataParse.push(recipeIdForLocalStorage);
-    localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
-    addToFavoriteBtn.textContent = 'Remove';
-
-    // Встановлюємо значення checked на true для чекбоксів, які містяться в localDataParse
-    allCheckbox.forEach(checkbox => {
-      const checkboxId = checkbox.id;
-      if (localDataParse.includes(checkboxId)) {
-        checkbox.checked = true;
-      }
-    });
-  } else {
-    const index = localDataParse.indexOf(recipeIdForLocalStorage);
-    if (index !== -1) {
-      localDataParse.splice(index, 1);
-      localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    if (localDataParse.includes(recipeIdForLocalStorage)) {
+      addToFavoriteBtn.textContent = 'Remove';
     }
-    addToFavoriteBtn.textContent = 'Add to favorite';
 
-    // Встановлюємо значення checked на false для чекбоксів, які не містяться в localDataParse
-    allCheckbox.forEach(checkbox => {
-      const checkboxId = checkbox.id;
-      if (!localDataParse.includes(checkboxId)) {
-        checkbox.checked = false;
-      }
-    });
-  }
-};
-
-addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
-
-// ------------------------------------------------------------------------------------------------------------------------------
-
-
+    const handleClickAddToFavoriteBtn = () => {
+      if (!localDataParse.includes(recipeIdForLocalStorage)) {
+        localDataParse.push(recipeIdForLocalStorage);
 
   //       localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
   //       addToFavoriteBtn.textContent = 'Remove';
@@ -307,7 +277,6 @@ function onClose() {
   form.reset();
   backdrop.style.display = 'none';
 }
-
 async function submitRating(e) {
   e.preventDefault();
   const selectedRadioButton = starField.querySelector(
@@ -340,20 +309,18 @@ async function submitRating(e) {
     if (error.response) {
       switch (error.response.status) {
         case 400:
-          Notiflix.Report.warning(
-            'Ooops, failed request',
+          Notiflix.Report.info(
+            'Bad Request',
             'Enter email in format test@gmail.com',
             'Ok'
           );
           break;
         case 409:
-          setTimeout(() => {
-            Notiflix.Report.info(
-              'Conflict',
-              'This rating already exists, try again later',
-              'Ok'
-            );
-          }, 500);
+          Notiflix.Report.info(
+            'Conflict',
+            'This rating already exists, Please try again later',
+            'Ok'
+          );
           break;
         default:
           Notiflix.Report.info(
