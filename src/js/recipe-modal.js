@@ -5,6 +5,7 @@ import { recipesContainer } from './all-cards-api';
 import { favoritesContainer } from './favorites';
 import { addToFavorite } from './add-to-favorites';
 
+
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
@@ -134,24 +135,57 @@ export async function getRecipe() {
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
 
-    // ------------------------------------------------------------------------------------------------------------------------------
-    const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
 
-    const localData = localStorage.getItem('inFavorite');
+// ------------------------------------------------------------------------------------------------------------------------------
+const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+const allCheckbox = document.querySelectorAll('.card-checkbox');
 
-    let localDataParse = JSON.parse(localData) || []; // Ініціалізуємо як пустий масив, якщо даних немає
+const localData = localStorage.getItem('inFavorite');
+let localDataParse = JSON.parse(localData) || [];
 
-    const recipeId = response.data._id;
+const recipeId = response.data._id;
+const recipeIdForLocalStorage = 'card-checkbox-' + recipeId;
 
-    const recipeIdForLocalStorage = 'card-checkbox-' + recipeId;
+if (localDataParse.includes(recipeIdForLocalStorage)) {
+  addToFavoriteBtn.textContent = 'Remove';
+}
 
-    if (localDataParse.includes(recipeIdForLocalStorage)) {
-      addToFavoriteBtn.textContent = 'Remove';
+const handleClickAddToFavoriteBtn = () => {
+  if (!localDataParse.includes(recipeIdForLocalStorage)) {
+    localDataParse.push(recipeIdForLocalStorage);
+    localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+    addToFavoriteBtn.textContent = 'Remove';
+
+    // Встановлюємо значення checked на true для чекбоксів, які містяться в localDataParse
+    allCheckbox.forEach(checkbox => {
+      const checkboxId = checkbox.id;
+      if (localDataParse.includes(checkboxId)) {
+        checkbox.checked = true;
+      }
+    });
+  } else {
+    const index = localDataParse.indexOf(recipeIdForLocalStorage);
+    if (index !== -1) {
+      localDataParse.splice(index, 1);
+      localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
     }
+    addToFavoriteBtn.textContent = 'Add to favorite';
 
-    const handleClickAddToFavoriteBtn = () => {
-      if (!localDataParse.includes(recipeIdForLocalStorage)) {
-        localDataParse.push(recipeIdForLocalStorage);
+    // Встановлюємо значення checked на false для чекбоксів, які не містяться в localDataParse
+    allCheckbox.forEach(checkbox => {
+      const checkboxId = checkbox.id;
+      if (!localDataParse.includes(checkboxId)) {
+        checkbox.checked = false;
+      }
+    });
+  }
+};
+
+addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+
 
         localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
         addToFavoriteBtn.textContent = 'Remove';
