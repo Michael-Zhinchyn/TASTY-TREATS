@@ -90,7 +90,7 @@
 
 .order-form-input:focus {
     outline: none;
-    border: 2px solid var(--brand-green);
+    border: 1px solid var(--brand-green);
 }
 
 .dark-mode .order-form-input {
@@ -152,7 +152,7 @@
 .order-form-send-btn:focus {
     background-color: var(--brand-green);
     color: #F8F8F8;
-    outline: none;
+
 }
 
 .notiflix-notify-success {
@@ -164,6 +164,24 @@
 .notiflix-loading-pulse {
     color: var(--brand-green) !important;
 }
+
+.input-valid {
+    border: 2px solid var(--brand-green);
+}
+
+.dark-mode .input-valid {
+    border: 2px solid var(--brand-green);
+}
+
+.dark-mode .input-invalid {
+    border: 2px solid red;
+
+}
+
+.input-invalid {
+    border: 2px solid red;
+}
+
 
 @media screen and (min-width: 768px) {
     .container {

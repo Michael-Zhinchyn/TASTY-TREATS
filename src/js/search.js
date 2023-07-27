@@ -4,16 +4,21 @@ import _ from 'lodash';
 import { generateRecipeCard } from './all-cards-api';
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const searchInput = document.querySelector('#id-input-search');
+const timeSelect = document.getElementById('select-time');
+const areaSelect = document.getElementById('select-area');
+const ingredientSelect = document.getElementById('select-Ingredients');
 const recipeList = document.querySelector('.filter-card-set');
+const resetFilter = document.querySelector('.reset-filter');
 // full url function
-function fullUrl(title) {
-  const additionUrl = `?page=1&title=${title}&limit=6`;
+function fullUrl(title, area, ingredients, time) {
+  const additionUrl = `?&title=${title}&area=${area}&ingredient=${ingredients}&time=${time}`;
+  console.log(BASE_URL + additionUrl);
   return BASE_URL + additionUrl;
 }
 // axios fetch url
-async function fetchRecipes(keyword) {
+async function fetchRecipes(keyword, area, ingredients, time) {
   try {
-    const response = await axios.get(fullUrl(keyword));
+    const response = await axios.get(fullUrl(keyword, area, ingredients, time));
     const data = response.data;
     return data.results;
   } catch (error) {
@@ -25,9 +30,10 @@ async function fetchRecipes(keyword) {
 // Функція для відображення рецептів з урахуванням обраних фільтрів
 const recipesRender = async () => {
   const keyword = searchInput.value.trim().toLowerCase();
-
-  const allRecipe = await fetchRecipes(keyword);
-
+  const area = areaSelect.value;
+  const ingredients = ingredientSelect.value;
+  const time = timeSelect.value;
+  const allRecipe = await fetchRecipes(keyword, area, ingredients, time);
   return allRecipe;
 };
 async function getAllRecipes() {
@@ -111,16 +117,35 @@ if (searchInput) {
 }
 
 // Обробники подій для селекторів часу, країни походження та інгредієнтів
-// timeSelect.addEventListener('change', async () => {
-//   await getAllRecipes();
-// });
+if (timeSelect) {
+  timeSelect.addEventListener('change', async () => {
+    await getAllRecipes();
+  });
+}
 
-// areaSelect.addEventListener('change', async () => {
-//   await getAllRecipes();
-// });
+if (areaSelect) {
+  areaSelect.addEventListener('change', async () => {
+    await getAllRecipes();
+  });
+}
 
-// ingredientsSelect.addEventListener('change', async () => {
-//   await getAllRecipes();
-// });
+if (ingredientSelect) {
+  ingredientSelect.addEventListener('change', async () => {
+    await getAllRecipes();
+  });
+}
 
-// Виклик функції для відображення рецептів при завантаженні сторінки
+if (resetFilter) {
+  resetFilter.addEventListener('click', async () => {
+    resetTheFilter();
+    await getAllRecipes();
+  });
+}
+
+// reset the filter
+function resetTheFilter() {
+  searchInput.value = '';
+  timeSelect.value = '';
+  areaSelect.value = '';
+  ingredientSelect.value = '';
+}

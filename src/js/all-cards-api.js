@@ -1,3 +1,4 @@
+
 import axios, { all } from 'axios';
 import {addToFavorite} from './add-to-favorites';
 import { filter } from 'lodash';
@@ -73,10 +74,9 @@ export function generateRecipeCard(recipe) {
 let cardsPerPage;
 let pageNumb = 1;
 export async function getAllRecipes() {
-
   if (window.innerWidth < 768) {
     cardsPerPage = 6;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
     cardsPerPage = 8;
   } else {
     cardsPerPage = 9;
@@ -84,7 +84,8 @@ export async function getAllRecipes() {
 
   try {
     const response = await axios.get(`${API_URL}`, {
-      params: { limit: cardsPerPage, page: pageNumb}});
+      params: { limit: cardsPerPage, page: pageNumb },
+    });
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
@@ -92,8 +93,7 @@ export async function getAllRecipes() {
       recipesContainer.innerHTML = recipeCards;
     }
 
-    addToFavorite()
-
+    addToFavorite();
   } catch (error) {
     console.log(error);
   }
@@ -114,8 +114,6 @@ export async function getRecipesByCategory(category) {
 
     function handleCheckboxChange(event) {
       const checkbox = event.target; // елемент на який клікаємо <input>
-
-      // console.log(checkbox);
 
       const checkboxId = checkbox.id;
 
@@ -303,7 +301,9 @@ const loadfirstPage = async () => {
     pageNumb = pageTwoBtn.textContent; 
   console.log(pageNumb);
   try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+    const response = await axios.get(
+      `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`
+    );
     console.log(response.data);
     const { results } = response.data;
     // Створюємо карточки рецептів та додаємо їх на сторінку

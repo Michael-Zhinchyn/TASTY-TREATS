@@ -1,4 +1,4 @@
-const offset = 500;
+const offset = 600;
 const scrollUp = document.querySelector('.scroll-up');
 const scrollUpSvgPath = document.querySelector('.scroll-up--path');
 const pathLength = scrollUpSvgPath.getTotalLength();
