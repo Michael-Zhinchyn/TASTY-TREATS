@@ -76,7 +76,7 @@ let pageNumb = 1;
 export async function getAllRecipes() {
   if (window.innerWidth < 768) {
     cardsPerPage = 6;
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
     cardsPerPage = 8;
   } else {
     cardsPerPage = 9;
@@ -93,7 +93,7 @@ export async function getAllRecipes() {
     if (recipesContainer) {
       recipesContainer.innerHTML = recipeCards;
     }
-
+console.log(cardsPerPage)
     addToFavorite();
   } catch (error) {
     console.log(error);
@@ -368,8 +368,16 @@ const loadNextPage = async () => {
     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
     
     console.log(response.data);
+    // const allPages = response.data.totalPages
 
+    // if (pageNumb=allPages) {
+    //  pageThreeBtn.textContent=allPages
+    //  pageTwoBtn.textContent=allPages-1
+    //  pageOneBtn.textContent=allPages-2
+     
+    // }
     const { results } = response.data;
+    
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
     if (recipesContainer) {
@@ -420,7 +428,13 @@ pageNumb=1}
 };
 ////Функція яка повертає на останню сторінку рецептів/////
 const loadLastPage = async () => {
-
+  // if (window.innerWidth < 768) {
+  //   cardsPerPage = 6;
+  // } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+  //   cardsPerPage = 8;
+  // } else {
+  //   cardsPerPage = 9;
+  // }
   let category="";   
   let categoryActive = document.querySelectorAll(".category-item")
   categoryActive.forEach(categoryListItem=>{
@@ -436,11 +450,17 @@ const loadLastPage = async () => {
     console.log(response.data);
 
     const { results } = response.data;
- const allPages= response.data.totalPages
- pageNumb=allPages
- pageThreeBtn.textContent=allPages
- pageTwoBtn.textContent=allPages-1
- pageOneBtn.textContent=allPages-2
+ const allPages = response.data.totalPages
+if(pageNumb=allPages){
+  nextPagePagBtn.removeEventListener('click', loadNextPage)
+}
+ if (allPages>=3) {
+  pageThreeBtn.textContent=allPages
+  pageTwoBtn.textContent=allPages-1
+  pageOneBtn.textContent=allPages-2
+  
+ }
+ pageNumb = allPages
 console.log(allPages);
     // Створюємо карточки рецептів та додаємо їх на сторінку
     const recipeCards = results.map(generateRecipeCard).join('');
