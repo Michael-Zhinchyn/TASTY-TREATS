@@ -73,7 +73,7 @@ if (closeModalBtn) {
 function handleListClick(event) {
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
-  modalRecipe.style.display = 'block'
+  modalRecipe.style.display = 'block';
   let targetEl = event.target;
   let listItem = targetEl.closest('li.recip-item');
   if (listItem) {
@@ -89,7 +89,7 @@ function handleContainerClick(event) {
   event.stopPropagation();
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
-  modalRecipe.style.display = 'block'
+  modalRecipe.style.display = 'block';
   const recipeId = buttonElement.getAttribute('data-id');
   if (recipeId) {
     targetId = recipeId;
@@ -104,7 +104,7 @@ function handleFavoritesContainerClick(event) {
   event.stopPropagation();
   document.body.style.overflow = 'hidden';
   recipeBackdrop.style.display = 'block';
-  modalRecipe.style.display = 'block'
+  modalRecipe.style.display = 'block';
 
   const recipeId = buttonElement.getAttribute('data-id');
   if (recipeId) {
@@ -131,9 +131,10 @@ export async function getRecipe() {
     const response = await axios.get(`${BASE_RECIPE_URL}${targetId}`);
     // console.log(response);
     const markUp = recipeMarkup(response.data);
-   
+
     stars = response.data.rating;
     modalRecipeBlock.innerHTML = markUp;
+
 
 // ------------------------------------------------------------------------------------------------------------------------------
 const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
@@ -185,6 +186,21 @@ addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
 // ------------------------------------------------------------------------------------------------------------------------------
 
 
+
+        localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+        addToFavoriteBtn.textContent = 'Remove';
+      } else {
+        const index = localDataParse.indexOf(recipeIdForLocalStorage);
+        if (index !== -1) {
+          localDataParse.splice(index, 1);
+          localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
+        }
+        addToFavoriteBtn.textContent = 'Add to favorite';
+      }
+    };
+
+    addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+    // ------------------------------------------------------------------------------------------------------------------------------
 
     changeColorOfStars();
     giveRatingBtn = document.getElementById('give-rating');
@@ -274,7 +290,14 @@ function starRatingChanger() {
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
-  if (selectedRadioButton.value) {
+
+  const mail = addRatingEmail.value;
+  const data = {
+    rating: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: mail,
+  };
+
+  if (selectedRadioButton !== null) {
     starChoosed.textContent = `${selectedRadioButton.value}.0`;
   } else {
     starChoosed.textContent = '0.0';
@@ -284,22 +307,67 @@ function onClose() {
   form.reset();
   backdrop.style.display = 'none';
 }
-function submitRating(e) {
+
+async function submitRating(e) {
+  e.preventDefault();
   const selectedRadioButton = starField.querySelector(
     'input[name="rating"]:checked'
   );
+
   const mail = addRatingEmail.value;
-  // надсилання на бек
-  //   axios.post(
-  //     `${BASE_URL}/recipes/${id}/${options}`
-  //   );
-  e.preventDefault();
-  Notiflix.Loading.pulse('Sending...');
-  setTimeout(() => {
-    Notiflix.Loading.remove();
-    onClose();
+  const data = {
+    rate: selectedRadioButton ? parseFloat(selectedRadioButton.value) : 0,
+    email: mail,
+  };
+
+  try {
+    const response = await axios.patch(
+      `${BASE_RECIPE_URL}${targetId}/rating`,
+      data
+    );
+
+    Notiflix.Loading.pulse('Sending...');
     setTimeout(() => {
-      Notiflix.Notify.success(' Thank you for your response ');
-    }, 500);
-  }, 1500);
+      Notiflix.Loading.remove();
+      onClose();
+      setTimeout(() => {
+        Notiflix.Notify.success(' Thank you for your response ');
+      }, 500);
+    }, 900);
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      switch (error.response.status) {
+        case 400:
+          Notiflix.Report.warning(
+            'Ooops, failed request',
+            'Enter email in format test@gmail.com',
+            'Ok'
+          );
+          break;
+        case 409:
+          setTimeout(() => {
+            Notiflix.Report.info(
+              'Conflict',
+              'This rating already exists, try again later',
+              'Ok'
+            );
+          }, 500);
+          break;
+        default:
+          Notiflix.Report.info(
+            'Ooops, failed request',
+            'Enter email in format test@gmail.com',
+            'Ok'
+          );
+      }
+    } else {
+      Notiflix.Report.info(
+        'Unknown error',
+        'Something went wrong, please try again later',
+        'Ok'
+      );
+    }
+  }
 }

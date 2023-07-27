@@ -152,7 +152,7 @@
 .order-form-send-btn:focus {
     background-color: var(--brand-green);
     color: #F8F8F8;
-    
+
 }
 
 .notiflix-notify-success {
@@ -175,8 +175,9 @@
 
 .dark-mode .input-invalid {
     border: 2px solid red;
-    
+
 }
+
 .input-invalid {
     border: 2px solid red;
 }

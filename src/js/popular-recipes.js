@@ -21,20 +21,13 @@ export async function getPopularRecip() {
 getPopularRecip();
 
 function createMarkUp(data) {
-  
   return data
     .map(({ preview, title, description, _id }) => {
-      const MAX_LENGTH = 80;
-      let trimmedDescription =
-        description.length > MAX_LENGTH
-          ? description.substring(0, MAX_LENGTH - 3) + '...'
-          : description;
-
       return `<li class="recip-item" id="${_id}">
           <img class="recip-img" src="${preview}" alt="${title}" width="64"/>
           <div class="recip-content">
             <h3 class="recip-heading">${title}</h3>
-            <p class="recip-short-descr">${trimmedDescription}</p>
+            <p class="recip-short-descr">${description}</p>
           </div>
         </li>`;
     })
