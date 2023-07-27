@@ -455,7 +455,8 @@ const loadLastPage = async () => {
  pageNumb=allPages;
 //  if(pageNumb=allPages){
 //   nextPagePagBtn.removeEventListener('click', loadNextPage)
-// }else if(pageNumb!=allPages){nextPagePagBtn.removeEventListener('click', loadNextPage)}
+// }
+// nextPagePagBtn.addEventListener('click', loadNextPage)
  if (allPages>=3) {
   pageThreeBtn.textContent=allPages
   pageTwoBtn.textContent=allPages-1
