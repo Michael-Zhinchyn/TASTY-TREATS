@@ -65,6 +65,7 @@ function addClickListenersToCategories() {
 
     getAllRecipes(); // Відображаємо всі рецепти, коли натискаємо на "All categories"
   });
+  allCategoriesButton.addEventListener('click', backToFirst)
 }
 
 function createMarkUp(data) {
