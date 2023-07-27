@@ -122,8 +122,7 @@
 
 /* --------------------------- */
 
-
-*/ .dark-mode .mobile-menu {
+ .dark-mode .mobile-menu {
     background-color: var(--dark-mode-bg);
 }
 
@@ -248,7 +247,7 @@
 
     .switcher {
         margin-left: 16px;
-        margin-right: -24px;
+        margin-right: -22px;
         flex-shrink: 0;
     }
 
