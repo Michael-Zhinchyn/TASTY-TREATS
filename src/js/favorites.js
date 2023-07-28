@@ -22,7 +22,7 @@ async function addFavoriteRecipe(id) {
 
     const category = recipe.category;
     if (!addedCategories.includes(category)) {
-      addedCategories.push(category); // Додаємо нову категорію до нашого масиву
+      addedCategories.push(category);
       const categoryMarkup = generateCategoryMarkup(category);
       if (categoryBlock) {
         categoryBlock.innerHTML += categoryMarkup;
@@ -76,10 +76,13 @@ async function addFavoriteRecipe(id) {
                   favoritesContainer.remove();
                   messageBlock.style.display = 'flex';
                 }
-              }
 
-              const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
-              localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
+                const heartCheckBoxElLocalStorage = JSON.stringify(selectedHeartCheckBox);
+                localStorage.setItem('inFavorite', heartCheckBoxElLocalStorage);
+
+                // Оновлюємо видимість кнопки "All categories" після кожного змінного checkbox
+                updateAllCategoriesButtonVisibility();
+              }
             }
           }
 
@@ -109,10 +112,12 @@ async function addFavoriteRecipe(id) {
 function updateAllCategoriesButtonVisibility() {
   const allCategoriesButton = document.getElementById('all-categories-button');
 
-  if (favoritesContainer && favoritesContainer.children.length === 0) {
-    allCategoriesButton.style.display = 'none';
-  } else {
-    allCategoriesButton.style.display = 'block';
+  if (allCategoriesButton) {
+    if (favoritesContainer && favoritesContainer.children.length === 0) {
+      allCategoriesButton.style.display = 'none';
+    } else {
+      allCategoriesButton.style.display = 'block';
+    }
   }
 }
 
@@ -123,7 +128,8 @@ function loadFavoriteRecipes() {
     });
   }
 
-  updateAllCategoriesButtonVisibility(); // Викликаємо функцію для оновлення видимості кнопки "All categories"
+  // Оновлюємо видимість кнопки "All categories" при завантаженні списку обраних рецептів
+  updateAllCategoriesButtonVisibility();
 }
 
 function generateCategoryMarkup(category) {
@@ -135,4 +141,4 @@ function initializePage() {
 }
 
 // Викликаємо ініціалізацію сторінки, коли DOM повністю завантажений
-document.addEventListener('DOMContentLoaded', initializePage);
+window.addEventListener('load', initializePage);

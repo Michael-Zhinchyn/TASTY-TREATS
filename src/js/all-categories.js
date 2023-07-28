@@ -26,46 +26,50 @@ export async function getCategories() {
     console.error(error);
   }
   getAllRecipes(); // Відображаємо всі рецепти після того, як вже відобразили всі категорії
-
 }
 
 function addClickListenersToCategories() {
-  const categoryItems = categoriesList.querySelectorAll('.category-item');
-  categoryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const category = item.dataset.category;
-      getRecipesByCategory(category);
-    
+  if (categoriesList) {
+    const categoryItems = categoriesList.querySelectorAll('.category-item');
+    categoryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const category = item.dataset.category;
+        getRecipesByCategory(category);
 
-      // Знімаємо активний клас з усіх категорій
-      categoryItems.forEach(categoryItem => {
-        categoryItem.classList.remove('active');
-        categoryItem.classList.remove('active-category');
+        // Знімаємо активний клас з усіх категорій
+        categoryItems.forEach(categoryItem => {
+          categoryItem.classList.remove('active');
+          categoryItem.classList.remove('active-category');
+        });
+
+        // Додаємо активний клас до обраної категорії
+        item.classList.add('active');
+
+        // Знімаємо активний клас з кнопки "All categories"
+        if (allCategoriesButton) {
+          allCategoriesButton.classList.remove('active-category');
+        }
       });
-
-      // Додаємо активний клас до обраної категорії
-      item.classList.add('active');
-
-      // Знімаємо активний клас з кнопки "All categories"
-      allCategoriesButton.classList.remove('active-category');
-    });
-    item.addEventListener('click',  backToFirst)
-  });
-
-  // Додаємо обробник події для кнопки "All categories"
-  allCategoriesButton.addEventListener('click', () => {
-    // Знімаємо активний клас з усіх категорій
-    categoryItems.forEach(categoryItem => {
-      categoryItem.classList.remove('active');
-      categoryItem.classList.remove('active-category');
+      item.addEventListener('click', backToFirst);
     });
 
-    // Додаємо активний клас до кнопки "All categories"
-    allCategoriesButton.classList.add('active-category');
+    // Додаємо обробник події для кнопки "All categories"
+    if (allCategoriesButton) {
+      allCategoriesButton.addEventListener('click', () => {
+        // Знімаємо активний клас з усіх категорій
+        categoryItems.forEach(categoryItem => {
+          categoryItem.classList.remove('active');
+          categoryItem.classList.remove('active-category');
+        });
 
-    getAllRecipes(); // Відображаємо всі рецепти, коли натискаємо на "All categories"
-  });
-  allCategoriesButton.addEventListener('click', backToFirst)
+        // Додаємо активний клас до кнопки "All categories"
+        allCategoriesButton.classList.add('active-category');
+
+        getAllRecipes(); // Відображаємо всі рецепти, коли натискаємо на "All categories"
+      });
+      allCategoriesButton.addEventListener('click', backToFirst);
+    }
+  }
 }
 
 function createMarkUp(data) {
@@ -80,7 +84,9 @@ function createMarkUp(data) {
 
 // Функція, яка відміняє активність кнопки "All categories"
 function resetAllCategoriesButton() {
-  allCategoriesButton.classList.remove('active-category');
+  if (allCategoriesButton) {
+    allCategoriesButton.classList.remove('active-category');
+  }
 }
 
 // Отримуємо посилання на всі фільтри окрім "All categories"
@@ -125,4 +131,6 @@ if (allCategoriesButton) {
 }
 
 getCategories();
-allCategoriesButton.addEventListener("click", backToFirst)
+if (allCategoriesButton) {
+  allCategoriesButton.addEventListener("click", backToFirst);
+}
