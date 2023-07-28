@@ -453,38 +453,49 @@ const loadLastPage = async () => {
   } else {
     pageNumb=32
   }
-
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
- 
-  try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`,
-    );
-    console.log(response.data);
-     const { results } = response.data;
- const allPages = response.data.totalPages
- pageNumb=allPages;
- if (allPages>=3) {
-  pageThreeBtn.textContent=allPages
-  pageTwoBtn.textContent=allPages-1
-  pageOneBtn.textContent=allPages-2
+  try{ await loadPage(pageNumb)
+//      const allPages = response.data.totalPages
+//  pageNumb=allPages;
+//  if (allPages>=3) {
+  pageThreeBtn.textContent=pageNumb
+  pageTwoBtn.textContent=pageNumb-1
+  pageOneBtn.textContent=pageNumb-2
+//    }
+   } catch (error) {
+     console.log(error);
    }
-console.log(allPages);
-    const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
-  } catch (error) {
-    console.log(error);
-  }
-};
+ };
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
+ 
+//   try {
+//     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`,
+//     );
+//     console.log(response.data);
+//      const { results } = response.data;
+//  const allPages = response.data.totalPages
+//  pageNumb=allPages;
+//  if (allPages>=3) {
+//   pageThreeBtn.textContent=allPages
+//   pageTwoBtn.textContent=allPages-1
+//   pageOneBtn.textContent=allPages-2
+//    }
+// console.log(allPages);
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 backToFirstPage.addEventListener('click', backToFirst);
