@@ -186,11 +186,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
 
   .main-filter {
     padding-top: 80px;
@@ -371,7 +366,6 @@
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 10px;
-  margin-top: 15px;
 }
 
 .dark-mode .label-selector {
@@ -487,11 +481,6 @@ option:checked {
 
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
 
   .main-filter {
     padding-top: 80px;

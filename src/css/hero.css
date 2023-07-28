@@ -3,6 +3,7 @@
 }
 
 .hero-section {
+    padding-top: 90px;
     margin-bottom: 80px;
 }
 
@@ -66,9 +67,6 @@
 @media screen and (min-width: 768px) {
     .container {
         min-width: 0;
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
     }
 
     .hero-heading {
@@ -111,7 +109,8 @@
         max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 100px;
+        padding-bottom: 100px;
+        margin-bottom: 0;
     }
 
 
@@ -133,14 +132,12 @@
     }
 
     .hero-left {
-        margin-top: 64px;
+        margin-top: 114px;
     }
 
 
 
     @media screen and (min-width: 1450px) {
-        .hero-left {
-            margin-top: 64px;
-        }
+   
     }
 }

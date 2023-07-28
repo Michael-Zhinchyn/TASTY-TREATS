@@ -14,7 +14,7 @@
 }
 
 
-.recipe-modal {
+/* .recipe-modal {
     display: none;
     position: relative;
     top: 1%;
@@ -26,7 +26,26 @@
     overflow-y: auto;
     border-radius: 15px;
     margin: auto;
+} */
+
+.recipe-modal {
+    display: none;
+    position: fixed;
+    /* top: calc(0px + 1%); */
+    top: 1%;
+    /* bottom: calc(20px + 1%); */
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    padding: 40px 20px;
+    background-color: #fff;
+    width: 335px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    border-radius: 15px;
+    z-index: 10;
 }
+
 
 
 .dark-mode .recipe-modal {
@@ -309,13 +328,9 @@
 
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
 
     .recipe-modal {
+      
         top: 1%;
         padding: 32px;
         width: 531px;
@@ -369,7 +384,7 @@
 
     .recipe-ingredients {
         overflow: auto;
-        max-height: 180px;
+        max-height: 150px;
         margin-bottom: 32px;
     }
 

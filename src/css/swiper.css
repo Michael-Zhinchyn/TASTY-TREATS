@@ -216,13 +216,6 @@ body {
 
   .swiper-container {
     padding-left: 0px;
-  }
-}
-
-
-@media screen and (min-width: 1280px) {
-
-  .swiper-container {
-    padding-left: 0px;
+    max-width: 734px;
   }
 }
