@@ -153,8 +153,12 @@ export async function getRecipe() {
       addToFavoriteBtn.textContent = 'Remove';
     }
 
-    const handleClickAddToFavoriteBtn = () => {
+    // Отримати поточний шлях URL
+    const currentPage = window.location.pathname;
+
+    const handleFavoriteBtnClick = async () => {
       if (!localDataParse.includes(recipeIdForLocalStorage)) {
+        // Код додавання до обраних
         localDataParse.push(recipeIdForLocalStorage);
         localStorage.setItem('inFavorite', JSON.stringify(localDataParse));
         addToFavoriteBtn.textContent = 'Remove';
@@ -166,6 +170,16 @@ export async function getRecipe() {
             checkbox.checked = true;
           }
         });
+
+        // Якщо знаходимось на сторінці "Favorite", додати нову картку в обраних
+        if (currentPage.includes('/favorite')) {
+          const response = await axios.get(
+            `${API_URL}/${recipeIdForLocalStorage}`
+          );
+          const recipe = response.data;
+          const recipeCard = generateRecipeCard(recipe);
+          favoritesContainer.innerHTML += recipeCard;
+        }
       } else {
         const index = localDataParse.indexOf(recipeIdForLocalStorage);
         console.log(index);
@@ -182,10 +196,24 @@ export async function getRecipe() {
             checkbox.checked = false;
           }
         });
+
+        // Якщо знаходимось на сторінці "Favorite", видалити картку з обраних
+        if (currentPage.includes('/favorite')) {
+          const checkboxToRemove = document.getElementById(
+            recipeIdForLocalStorage
+          );
+          if (checkboxToRemove) {
+            checkboxToRemove.checked = false;
+            const cardItemEl = checkboxToRemove.closest('.card-item');
+            if (cardItemEl) {
+              cardItemEl.remove();
+            }
+          }
+        }
       }
     };
 
-    addToFavoriteBtn.addEventListener('click', handleClickAddToFavoriteBtn);
+    addToFavoriteBtn.addEventListener('click', handleFavoriteBtnClick);
 
     // ------------------------------------------------------------------------------------------------------------------------------
 
