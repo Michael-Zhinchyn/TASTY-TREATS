@@ -21,6 +21,38 @@
     border-radius: 15px;
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+}
+
+.fadeOut {
+    animation-name: fadeOut;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+
 .dark-mode .order-modal {
     background-color: var(--brand-black);
 }

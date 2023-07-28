@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const commentsInput = document.getElementById('comments');
   const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
 
-  if (modalBackdrop) modalBackdrop.style.display = 'none';
-
   if (headerCartIcon) headerCartIcon.addEventListener('click', modalOpen);
   if (headerCartIconDesktop)
     headerCartIconDesktop.addEventListener('click', modalOpen);
@@ -47,16 +45,25 @@ document.addEventListener('DOMContentLoaded', function () {
   function modalOpen() {
     if (modalBackdrop) {
       modalBackdrop.style.display = 'block';
+      modalBackdrop.classList.add('fadeIn');
+      modalBackdrop.classList.remove('fadeOut');
+      modal.classList.remove('fadeOut');
+      modal.classList.add('fadeIn');
       document.body.style.overflow = 'hidden';
     }
   }
 
   function modalClose() {
-    if (form) form.reset();
-    if (modalBackdrop) {
+    modalBackdrop.classList.remove('fadeIn');
+    modalBackdrop.classList.add('fadeOut');
+
+    modal.classList.remove('fadeIn');
+    modal.classList.add('fadeOut');
+
+    setTimeout(function () {
       modalBackdrop.style.display = 'none';
       document.body.style.overflow = 'auto';
-    }
+    }, 500);
   }
 
   if (form) form.addEventListener('submit', onSubmit);
