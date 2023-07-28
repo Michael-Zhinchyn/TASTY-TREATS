@@ -33,7 +33,7 @@
     position: fixed;
     /* top: calc(0px + 1%); */
     top: 1%;
-    bottom: calc(20px + 1%);
+    /* bottom: calc(20px + 1%); */
     left: 50%;
     transform: translateX(-50%);
     box-sizing: border-box;
@@ -330,6 +330,7 @@
 @media screen and (min-width: 768px) {
 
     .recipe-modal {
+      
         top: 1%;
         padding: 32px;
         width: 531px;

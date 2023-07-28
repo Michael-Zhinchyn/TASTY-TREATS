@@ -22,9 +22,13 @@
     margin-bottom: 24px;
 }
 
-.favorites-hero-picture {
-    display: none;
+.favorites {
+    padding-top: 50px;
 }
+
+/* .favorites-hero-picture {
+    display: none;
+} */
 
 .message-for-empty {
     text-align: center;
