@@ -4,6 +4,7 @@ import { popularRecipList } from './popular-recipes';
 import { recipesContainer } from './all-cards-api';
 import { favoritesContainer } from './favorites';
 import { addToFavorite } from './add-to-favorites';
+import { generateRecipeCard } from './all-cards-api';
 
 // DOM Elements
 const recipeBackdrop = document.getElementById('recipe-backdrop');
@@ -171,12 +172,17 @@ export async function getRecipe() {
           }
         });
 
-        // Якщо знаходимось на сторінці "Favorite", додати нову картку в обраних
+        // Якщо знаходимось на сторінці "Favorite", додати нову картку в обраних----------------------------------------------------------
         if (currentPage.includes('/favorite')) {
+
+          const favoriteId = recipeIdForLocalStorage.replace('card-checkbox-', '');
+          console.log(favoriteId);
+   
           const response = await axios.get(
-            `${API_URL}/${recipeIdForLocalStorage}`
+            `${BASE_RECIPE_URL}${favoriteId}`
           );
           const recipe = response.data;
+          console.log(recipe);
           const recipeCard = generateRecipeCard(recipe);
           favoritesContainer.innerHTML += recipeCard;
         }
