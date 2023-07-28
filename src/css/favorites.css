@@ -22,8 +22,11 @@
     margin-bottom: 24px;
 }
 
+.favorites-hero-picture {
+    display: none;
+}
+
 .message-for-empty {
-    width: 335px;
     text-align: center;
     font-size: 14px;
     font-weight: 400;
@@ -119,16 +122,18 @@
 
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
 
+    .favorites-section {
+        padding-top: 0px;
+    }
 
     .head-icon {
         margin-bottom: 32px;
         width: 97px;
+    }
+
+    .favorites-hero-picture {
+        display: flex;
     }
 
     .message-for-empty {

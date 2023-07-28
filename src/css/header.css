@@ -9,7 +9,6 @@
 }
 
 .nav {
-    /* min-width: 320px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,7 +121,7 @@
 
 /* --------------------------- */
 
- .dark-mode .mobile-menu {
+.dark-mode .mobile-menu {
     background-color: var(--dark-mode-bg);
 }
 
@@ -194,11 +193,6 @@
 
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
 
     .header {
         padding-bottom: 44px;

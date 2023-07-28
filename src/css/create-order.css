@@ -6,7 +6,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(46, 47, 66, 0.4);
-    transition: opacity 250ms;
+    transition: 300ms ease;
     z-index: 11;
     overflow-y: hidden;
 }
@@ -19,7 +19,6 @@
     background-color: #fff;
     width: 335px;
     border-radius: 15px;
-
 }
 
 .dark-mode .order-modal {
@@ -184,11 +183,6 @@
 
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
 
     .order-modal {
         width: 440px;
