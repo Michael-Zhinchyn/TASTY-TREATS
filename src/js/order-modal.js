@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
       modalBackdrop.style.display = 'none';
       document.body.style.overflow = 'auto';
-    }, 500);
+    }, 250);
   }
 
   if (form) form.addEventListener('submit', onSubmit);

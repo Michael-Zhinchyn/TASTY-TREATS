@@ -20,13 +20,13 @@
 
 .fadeIn {
     animation-name: fadeIn;
-    animation-duration: 300ms;
+    animation-duration: 250ms;
     animation-fill-mode: forwards;
 }
 
 .fadeOut {
     animation-name: fadeOut;
-    animation-duration: 500ms;
+    animation-duration: 250ms;
     animation-fill-mode: forwards;
 }
 

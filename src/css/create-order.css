@@ -49,7 +49,7 @@
 
 .fadeOut {
     animation-name: fadeOut;
-    animation-duration: 500ms;
+    animation-duration: 400ms;
     animation-fill-mode: forwards;
 }
 
