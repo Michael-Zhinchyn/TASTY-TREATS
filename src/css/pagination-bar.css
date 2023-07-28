@@ -71,7 +71,11 @@
     transition: var(--basic-transition);
 }
 
-
+.pag-btn-on-hover {
+    background-color: var(--brand-green);
+    border: none;
+    transition: var(--basic-transition);
+}
 .dark-mode .pag-btn-white,
 .dark-mode .pag-btn-white-tablet {
     background-color: transparent;
