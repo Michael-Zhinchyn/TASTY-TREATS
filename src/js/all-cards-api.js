@@ -162,38 +162,7 @@ export async function getRecipesByCategory(category) {
   }
 }
 
-/////Pagination///////////
-// let categor;
-// let cardsPerPage;
-// let pageNumb = 1;
-// export async function getAllRecipesWithOptions() {
-//   categor = 'Chicken';
 
-//   if (window.innerWidth < 768) {
-//     cardsPerPage = 6;
-//   } else if (window.innerWidth >= 768 && window.innerWidth < 1200) {
-//     cardsPerPage = 8;
-//   } else {
-//     cardsPerPage = 9;
-//   }
-
-//   try {
-//     const response = await axios.get(`${API_URL}`, {
-//       params: { limit: cardsPerPage, page: pageNumb, category: categor },
-//     });
-//     const { results } = response.data;
-
-//     // Створюємо карточки рецептів та додаємо їх на сторінку
-//     const recipeCards = results.map(generateRecipeCard).join('');
-//     const recipesContainer = document.querySelector('.filter-card-set');
-//     if (recipesContainer) {
-//       recipesContainer.innerHTML = recipeCards;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// getAllRecipesWithOptions();
 //////Кнопки-перемикачі сторінок/////
 const backToFirstPage = document.querySelector('#pag-btn-start');
 const pageOneBtn = document.querySelector('#pag-btn-1');
@@ -205,15 +174,9 @@ const buttonNumered = document.querySelectorAll('.pag-btn-number');
 const previousPageButton = document.querySelector('#pag-btn-prev');
 const allCategoriesButton = document.getElementById('all-categories-button');
 
-// buttonNumered.forEach((button, index) => {
-//   console.log(`Індекс ${index}, значення ${button.textContent}`);
-// })
-// console.log(buttonNumered)
 
-////Функція яка повертає на першу сторінку рецептів/////
-// let categoryActive = categoriesList.childNodes
-// console.log(categoryActive)
-export const backToFirst = async () => {
+
+async function loadPage(page) {
   let category="";   
   let categoryActive = document.querySelectorAll(".category-item")
   categoryActive.forEach(categoryListItem=>{
@@ -222,13 +185,10 @@ export const backToFirst = async () => {
       console.log(category)  
           }    
   })
-  pageNumb = 1;
+  pageNumb = page
   console.log(pageNumb);
   try {
     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
-    pageOneBtn.textContent = 1;
-    pageTwoBtn.textContent = 2;
-    pageThreeBtn.textContent = 3;
 
     console.log(response.data);
     const { results } = response.data;
@@ -236,8 +196,20 @@ export const backToFirst = async () => {
     const recipeCards = results.map(generateRecipeCard).join('');
     if (recipesContainer) {
       recipesContainer.innerHTML = recipeCards;
+      addToFavorite();
+      changeButtonColor()
+    }} catch (error) {
+      console.log(error);
     }
-    addToFavorite();
+  }
+ 
+export const backToFirst = async () => {
+  pageNumb = 1
+ try{ await loadPage( pageNumb )
+    pageOneBtn.textContent = 1;
+    pageTwoBtn.textContent = 2;
+    pageThreeBtn.textContent = 3;
+
   } catch (error) {
     console.log(error);
   }
@@ -267,164 +239,211 @@ export const backToFirst = async () => {
 
 ////Функція яка включає першу сторінку рецептів/////
 const loadfirstPage = async () => {
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
-  pageNumb = pageOneBtn.textContent;
-  console.log(pageNumb);
-  try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+  pageNumb = parseInt(pageOneBtn.textContent)
+    try{ await loadPage(pageNumb)
+      
+     } catch (error) {
+       console.log(error);
+     }
+   };
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
+//   pageNumb = pageOneBtn.textContent;
+//   console.log(pageNumb);
+//   try {
+//     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
 
-    console.log(response.data);
-    const { results } = response.data;
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
+//     console.log(response.data);
+//     const { results } = response.data;
+//     // Створюємо карточки рецептів та додаємо їх на сторінку
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
    
-  } catch (error) {
-    console.log(error);
-  }
-};
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 ////Функція яка включає 2 сторінку рецептів/////
 
- export async function loadPageTwo(){
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
-    pageNumb = pageTwoBtn.textContent; 
-  console.log(pageNumb);
-  try {
-    const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`
-    );
-    console.log(response.data);
-    const { results } = response.data;
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
-  } catch (error) {
-    console.log(error);
-  }
-};
+ export async function loadPageTwo()
+  {
+    pageNumb = parseInt(pageTwoBtn.textContent)
+      try{ await loadPage(pageNumb)
+        
+       } catch (error) {
+         console.log(error);
+       }
+     };
+
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
+//     pageNumb = pageTwoBtn.textContent; 
+//   console.log(pageNumb);
+//   try {
+//     const response = await axios.get(
+//       `https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`
+//     );
+//     console.log(response.data);
+//     const { results } = response.data;
+//     // Створюємо карточки рецептів та додаємо їх на сторінку
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 ////Функція яка включає на 3 сторінку рецептів/////
 async function loadPageThree(){
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
-  pageNumb = pageThreeBtn.textContent; 
-  console.log(pageNumb);
-  try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
-    console.log(response.data);
-      const { results } = response.data;
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-     const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
-  } catch (error) {
-    console.log(error);
-  }
-};
+    pageNumb = parseInt(pageThreeBtn.textContent)
+      try{ await loadPage(pageNumb)
+        
+       } catch (error) {
+         console.log(error);
+       }
+     };
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
+//   pageNumb = pageThreeBtn.textContent; 
+//   console.log(pageNumb);
+//   try {
+//     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+//     console.log(response.data);
+//       const { results } = response.data;
+//     // Створюємо карточки рецептів та додаємо їх на сторінку
+//      const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 ////Функція яка перемикає на наступну сторінку рецептів/////
-const loadNextPage = async () => {
+const loadNextPage = async () => 
+{  
   buttonNumered.forEach(button => {
     button.textContent++
-    pageNumb=button.textContent
+    // pageNumb=button.textContent
   });
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
+  const nextPage = pageNumb + 1;
+    try{ await loadPage(nextPage)
+      
+     } catch (error) {
+       console.log(error);
+     }
+   };
+ 
+//   buttonNumered.forEach(button => {
+//     button.textContent++
+//     pageNumb=button.textContent
+//   });
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
 
-  try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+//   try {
+//     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
     
-    console.log(response.data);
-    // const allPages = response.data.totalPages
+//     console.log(response.data);
+//     // const allPages = response.data.totalPages
 
-    // if (pageNumb=allPages) {
-    //  pageThreeBtn.textContent=allPages
-    //  pageTwoBtn.textContent=allPages-1
-    //  pageOneBtn.textContent=allPages-2
+//     // if (pageNumb=allPages) {
+//     //  pageThreeBtn.textContent=allPages
+//     //  pageTwoBtn.textContent=allPages-1
+//     //  pageOneBtn.textContent=allPages-2
      
-    // }
-    const { results } = response.data;
+//     // }
+//     const { results } = response.data;
     
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+//     // Створюємо карточки рецептів та додаємо їх на сторінку
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 
 ////Функція яка повертає на попередню сторінку рецептів/////
-async function loadPrevPage(){
-  if (pageOneBtn.textContent!="1") {
-    
-    buttonNumered.forEach(button => {
-      button.textContent-=1;
-      pageNumb=button.textContent
-    })
-  
+async function loadPrevPage(){  
+    if (pageOneBtn.textContent!="1") { buttonNumered.forEach(button => {
+      button.textContent--
+      // pageNumb=button.textContent
+    })};
+    const prevPage = pageNumb - 1;
+      try{await loadPage(prevPage)
+      
+       } catch (error) {
+         console.log(error);
        }
+     };
 
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
-  ;
-  try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
-    console.log(response.data);
-    const { results } = response.data;
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
-  } catch (error) {
-    console.log(error);
-  }
-};
+//   if (pageOneBtn.textContent!="1") {
+    
+//     buttonNumered.forEach(button => {
+//       button.textContent-=1;
+//       pageNumb=button.textContent
+//     })
+  
+//        }
+
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
+//   ;
+//   try {
+//     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`);
+//     console.log(response.data);
+//     const { results } = response.data;
+//     // Створюємо карточки рецептів та додаємо їх на сторінку
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 ////Функція яка повертає на останню сторінку рецептів/////
 const loadLastPage = async () => {
   if (window.innerWidth < 768) {
@@ -434,47 +453,49 @@ const loadLastPage = async () => {
   } else {
     pageNumb=32
   }
-
-  let category="";   
-  let categoryActive = document.querySelectorAll(".category-item")
-  categoryActive.forEach(categoryListItem=>{
-    if (categoryListItem.classList.contains("active")) {
-     category=categoryListItem.firstElementChild.textContent;
-      console.log(category)  
-          }    
-  })
+  try{ await loadPage(pageNumb)
+//      const allPages = response.data.totalPages
+//  pageNumb=allPages;
+//  if (allPages>=3) {
+  pageThreeBtn.textContent=pageNumb
+  pageTwoBtn.textContent=pageNumb-1
+  pageOneBtn.textContent=pageNumb-2
+//    }
+   } catch (error) {
+     console.log(error);
+   }
+ };
+//   let category="";   
+//   let categoryActive = document.querySelectorAll(".category-item")
+//   categoryActive.forEach(categoryListItem=>{
+//     if (categoryListItem.classList.contains("active")) {
+//      category=categoryListItem.firstElementChild.textContent;
+//       console.log(category)  
+//           }    
+//   })
  
-  try {
-    const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`,
-    );
-    console.log(response.data);
-    
-
-    const { results } = response.data;
- const allPages = response.data.totalPages
- pageNumb=allPages;
-//  if(pageNumb=allPages){
-//   nextPagePagBtn.removeEventListener('click', loadNextPage)
-// }
-// nextPagePagBtn.addEventListener('click', loadNextPage)
- if (allPages>=3) {
-  pageThreeBtn.textContent=allPages
-  pageTwoBtn.textContent=allPages-1
-  pageOneBtn.textContent=allPages-2
-  
- }
-
-console.log(allPages);
-    // Створюємо карточки рецептів та додаємо їх на сторінку
-    const recipeCards = results.map(generateRecipeCard).join('');
-    if (recipesContainer) {
-      recipesContainer.innerHTML = recipeCards;
-    }
-    addToFavorite();
-  } catch (error) {
-    console.log(error);
-  }
-};
+//   try {
+//     const response = await axios.get(`https://tasty-treats-backend.p.goit.global/api/recipes?category=${category}&limit=${cardsPerPage}&page=${pageNumb}`,
+//     );
+//     console.log(response.data);
+//      const { results } = response.data;
+//  const allPages = response.data.totalPages
+//  pageNumb=allPages;
+//  if (allPages>=3) {
+//   pageThreeBtn.textContent=allPages
+//   pageTwoBtn.textContent=allPages-1
+//   pageOneBtn.textContent=allPages-2
+//    }
+// console.log(allPages);
+//     const recipeCards = results.map(generateRecipeCard).join('');
+//     if (recipesContainer) {
+//       recipesContainer.innerHTML = recipeCards;
+//     }
+//     addToFavorite();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 backToFirstPage.addEventListener('click', backToFirst);
@@ -485,10 +506,17 @@ lastPageBtn.addEventListener('click', loadLastPage);
 previousPageButton.addEventListener('click', loadPrevPage);
 nextPagePagBtn.addEventListener('click', loadNextPage);
 
-// getAllRecipes();
-// getAllRecipesWithOptions()
-
 function renderRecipes(recipes) {
   const recipeCards = recipes.map(generateRecipeCard).join('');
   recipesContainer.innerHTML = recipeCards;
+}
+function changeButtonColor() {
+  buttonNumered.forEach(button => {
+    const pageNum = parseInt(button.textContent);
+    if (pageNum === pageNumb) {
+      button.classList.add('pag-btn-on-hover');
+    } else {
+      button.classList.remove('pag-btn-on-hover');
+    }
+  });
 }
