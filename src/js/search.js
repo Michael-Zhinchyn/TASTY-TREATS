@@ -49,12 +49,14 @@ const recipesRender = async () => {
 async function getAllRecipes() {
   try {
     const results = await recipesRender();
-    // if (results.lenght == 0) {
-    //   Notiflix.Report.failure(
-    //     'No recipes found matching the selected filters!'
-    //   );
-    // }
     const recipeCards = results.map(generateRecipeCard).join('');
+    if (!recipeCards) {
+      Notiflix.Report.failure(
+        'No recipes found matching the selected filters!'
+      );
+      resetTheFilter();
+      await getAllRecipes();
+    }
     recipeList.innerHTML = recipeCards;
 
     // ---------------------------------------------------------------------------------------------------------------------------------------
