@@ -186,11 +186,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
 
   .main-filter {
     padding-top: 80px;
@@ -487,11 +482,6 @@ option:checked {
 
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
 
   .main-filter {
     padding-top: 80px;
